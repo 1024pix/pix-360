@@ -4,5 +4,6 @@
     <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %>
   <% else %>
     <%= link_to 'Se connecter', new_user_session_path %>
+    <%= link_to 'Se connecter avec Google', user_google_oauth2_omniauth_authorize_path, method: :post %>
   <% end %>
 </p>
