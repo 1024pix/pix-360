@@ -1,24 +1,48 @@
-# README
+# PIX 360
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Installation
 
-Things you may want to cover:
+1. Copy sample.env
 
-* Ruby version
+```shell
+cp sample.env .env
+```
 
-* System dependencies
+2. Run docker-compose :
+```shell
+docker-compose up -d
+```
 
-* Configuration
+3. Run pix 360 app :
+```shell
+docker compose run --rm --service-ports --name pix360 app
+```
 
-* Database creation
+Inside Pix 360 container: 
+4. Install gems :
+````shell
+bundle install
+````
 
-* Database initialization
+5. Prepare database :
+````shell
+rails db:reset && rails db:migrate
+````
 
-* How to run the test suite
+6. Run server : 
+````shell
+rails server -p $PORT -b 0.0.0.0.
+````
 
-* Services (job queues, cache servers, search engines, etc.)
+# Docker usage : 
 
-* Deployment instructions
+- To run one container :
 
-* ...
+```shell
+docker compose run --rm --service-ports --name pix360 app
+```
+
+- To run in multiple terminal windows:
+```shell
+docker exec -it pix360 /bin/bash
+```
