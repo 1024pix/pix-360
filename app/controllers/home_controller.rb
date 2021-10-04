@@ -1,10 +1,9 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
+  before_action :authenticate_user!, only: [:private]
 
-  before_action :authentication_user!, only: [:private]
+  def index; end
 
-  def index
-  end
-
-  def private
-  end
+  def private; end
 end

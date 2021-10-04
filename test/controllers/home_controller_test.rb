@@ -11,7 +11,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
   end
 
-  test 'should get private' do
+  test 'should get private after login' do
     get home_private_url
     assert_response :success
   end
