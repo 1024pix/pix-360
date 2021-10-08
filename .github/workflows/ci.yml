@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: 'ubuntu-latest'
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - run: yarn install
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+
+      - name: Run Tests
+        env:
+          TEST_DATABASE_URL: postgresql://admin:admin@localhost/pix360_test
+          RAILS_ENV: test
+          DISABLE_SPRING: 1
+        run: |
+          bin/rails db:setup
+          bin/rails test
