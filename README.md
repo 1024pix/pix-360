@@ -19,9 +19,9 @@ docker compose run --rm --service-ports --name pix360 app
 ```
 
 Inside Pix 360 container: 
-4. Install gems :
+4. Install gems and packages :
 ````shell
-bundle install
+bundle install && yarn install
 ````
 
 5. Prepare database :
@@ -31,7 +31,7 @@ rails db:reset && rails db:migrate
 
 6. Run server : 
 ````shell
-rails server -p $PORT -b 0.0.0.0.
+rails server -p $PORT -b 0.0.0.0
 ````
 
 # Docker usage : 
