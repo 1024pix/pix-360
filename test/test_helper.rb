@@ -18,7 +18,7 @@ module ActiveSupport
 
     def log_in(user)
       if integration_test?
-        login_as(user, :scope => :user)
+        login_as(user, scope: :user)
       else
         sign_in(user)
       end
