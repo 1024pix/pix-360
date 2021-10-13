@@ -1,9 +1,13 @@
-<h1>Bienvenue sur Pix 360</h1>
-<p>
-  <% if user_signed_in? %>
-    <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Se connecter', new_user_session_path %>
-    <%= link_to 'Se connecter avec Google', user_google_oauth2_omniauth_authorize_path, method: :post %>
-  <% end %>
-</p>
+<div class="home__sign-in">
+  <h1>Bienvenue sur Pix 360</h1>
+  <p>
+    <% if user_signed_in? %>
+      <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, :class=>"home--sign-in__button" do %>
+        <%= image_tag "logo_google.svg", :class => "home--sign-in--button__logo"%>
+        <%= content_tag :span, "Se connecter avec Google", :class => "home--sign-in--button__text" %>
+      <% end %>
+    <% end %>
+  </p>
+</div>
