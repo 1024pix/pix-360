@@ -46,3 +46,11 @@ docker compose run --rm --service-ports --name pix360 app
 ```shell
 docker exec -it pix360 /bin/bash
 ```
+
+# Development 
+
+- Run lint :
+
+```shell
+bundle exec rubocop -a
+```
