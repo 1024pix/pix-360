@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/VincentHardouin/pix-360/compare/v1.1.0...v1.1.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* sass loading ([d911335](https://github.com/VincentHardouin/pix-360/commit/d911335c3e6bf843b64d9cd0d87f20d97f9f8151))
+
 # [1.1.0](https://github.com/VincentHardouin/pix-360/compare/v1.0.0...v1.1.0) (2021-10-13)
 
 
