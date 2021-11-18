@@ -1,0 +1,30 @@
+<h1>Formulaire de changement de mot de passe</h1>
+
+<p>Afin de chiffrer vos données, nous avons besoin que vous renseignez un mot de passe</p>
+<p>La perte du mot de passe entrainera la perte de toutes vos informations</p>
+
+<%= form_with model: @user, url: passwords_update_path do |f| %>
+  <%= f.hidden_field :must_change_password, value: false %>
+
+  <% if f.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% f.object.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password, "Nouveau mot de passe" %><br />
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmation de nouveau mot de passe" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Valider mon mot de passe" %>
+  </div>
+<% end %>
