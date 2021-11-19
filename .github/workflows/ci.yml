@@ -45,3 +45,6 @@ jobs:
         run: |
           bin/rails db:setup
           bin/rails test
+
+      - name: Run Lint
+        run: bin/bundle exec rubocop

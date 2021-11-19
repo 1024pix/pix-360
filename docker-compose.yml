@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./:/code:delagated
+      - ./:/code:delegated
     environment:
       - BUNDLE_PATH=/code/.bundle
 
