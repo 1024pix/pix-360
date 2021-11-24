@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/VincentHardouin/pix-360/compare/v1.2.0...v1.3.0) (2021-11-24)
+
+
+### Features
+
+* **passwords_controller:** Use users create_encryption_keys method ([b86b07c](https://github.com/VincentHardouin/pix-360/commit/b86b07c0a2660ae4ea448ff76abecbc5293b93d8))
+* **User:** Add create_encryption_keys method ([a601e3e](https://github.com/VincentHardouin/pix-360/commit/a601e3e2b2792518430450a18de6e0c28e0a03af))
+
 # [1.2.0](https://github.com/VincentHardouin/pix-360/compare/v1.1.1...v1.2.0) (2021-11-19)
 
 
