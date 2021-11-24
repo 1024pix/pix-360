@@ -10,6 +10,7 @@ class PasswordsController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(password_params)
+      @user.create_encryption_keys
       redirect_to home_private_url, notice: 'Votre mot de passe a bien été ajouté'
     else
       render :edit

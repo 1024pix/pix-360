@@ -26,5 +26,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # Reload association to fetch updated data and assert that title is updated.
     @user.reload
     assert_equal false, @user.must_change_password
+    assert_not_empty @user.private_key
+    assert_not_empty @user.public_key
   end
 end
