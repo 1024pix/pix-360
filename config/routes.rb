@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'encryption/password'
   patch 'encryption/save'
 
-  devise_for :users, controllers: {
+  devise_for :users, skip: [:users, :registrable, :password], controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
