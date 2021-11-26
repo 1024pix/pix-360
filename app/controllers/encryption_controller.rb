@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EncryptionController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :provide_encryption_password, only: [:password, :save]
 
   def password; end
 

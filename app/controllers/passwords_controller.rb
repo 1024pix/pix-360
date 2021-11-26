@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class PasswordsController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :create_encryption_password, :provide_encryption_password, only: [:edit, :update]
+
+  # TODO : move in EncryptionController
 
   def edit
     @user = User.find(current_user.id)

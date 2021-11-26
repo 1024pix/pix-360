@@ -2,6 +2,8 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    skip_before_action :create_encryption_password, :provide_encryption_password, only: [:google_oauth2]
+
     def google_oauth2
       @user = User.from_google_oauth2(request.env['omniauth.auth'])
       if @user.persisted?

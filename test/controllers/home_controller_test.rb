@@ -9,7 +9,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   end
 
   setup do
-    sign_in users(:one)
+    sign_in users(:two)
+    cookies[:encryption_password] = 'pa$$word'
   end
 
   test 'should get private after login' do
