@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/VincentHardouin/pix-360/compare/v1.3.0...v1.4.0) (2021-11-30)
+
+
+### Features
+
+* **encryption:** Add form to get user password ([9a54126](https://github.com/VincentHardouin/pix-360/commit/9a541265c54f605649952e8387e537131d95af8d))
+
 # [1.3.0](https://github.com/VincentHardouin/pix-360/compare/v1.2.0...v1.3.0) (2021-11-24)
 
 
