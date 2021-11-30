@@ -2,9 +2,9 @@
 
 class EncryptionController < ApplicationController
   skip_before_action :create_encryption_password, only: [:edit, :update]
-  skip_before_action :provide_encryption_password, only: [:password, :save, :edit, :update]
+  skip_before_action :provide_encryption_password, only: [:index, :save, :edit, :update]
 
-  def password; end
+  def index; end
 
   def save
     if current_user.valid_password?(password_params)
@@ -12,7 +12,7 @@ class EncryptionController < ApplicationController
       redirect_to home_private_url, notice: 'Votre mot de passe a bien été envoyé'
     else
       flash[:alert] = 'Le mot de passe saisie ne correspond pas.'
-      render :password
+      render :index
     end
   end
 

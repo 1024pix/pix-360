@@ -5,7 +5,7 @@ require 'test_helper'
 class EncryptionControllerTest < ActionDispatch::IntegrationTest
   test 'should get password when user has sign in' do
     sign_in users(:two)
-    get encryption_password_url
+    get encryption_url
     assert_response :success
   end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'encryption/password'
+  get 'encryption', to: 'encryption#index'
   patch 'encryption/save'
   get 'encryption/edit'
   patch 'encryption/update'

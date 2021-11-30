@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
 
   def create_encryption_password
     if current_user.must_change_password
-      redirect_to passwords_edit_url
+      redirect_to encryption_edit_url
     end
   end
 
   def provide_encryption_password
     unless cookies[:encryption_password]
-      redirect_to encryption_password_url
+      redirect_to encryption_url
     end
   end
 end
