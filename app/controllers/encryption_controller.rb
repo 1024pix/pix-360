@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class EncryptionController < ApplicationController
-  skip_before_action :provide_encryption_password, only: [:password, :save]
+  skip_before_action :create_encryption_password, only: [:edit, :update]
+  skip_before_action :provide_encryption_password, only: [:password, :save, :edit, :update]
 
   def password; end
 
@@ -15,7 +16,25 @@ class EncryptionController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def update
+    @user = User.find(current_user.id)
+    if @user.update(password_params_from_edit)
+      @user.create_encryption_keys
+      redirect_to home_private_url, notice: 'Votre mot de passe a bien été ajouté'
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def password_params_from_edit
+    params.require(:user).permit(:password, :password_confirmation, :must_change_password)
+  end
 
   def password_params
     params.require(:user).permit(:password)
