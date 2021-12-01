@@ -23,5 +23,10 @@ module ActiveSupport
         sign_in(user)
       end
     end
+
+    def set_encryption_password_cookie
+      patch encryption_save_url,
+            params: { user: { password: '123456' } }
+    end
   end
 end

@@ -3,7 +3,7 @@
 <p>Afin de chiffrer vos données, nous avons besoin que vous renseignez un mot de passe</p>
 <p>La perte du mot de passe entrainera la perte de toutes vos informations</p>
 
-<%= form_with model: @user, url: passwords_update_path do |f| %>
+<%= form_with model: @user, url: encryption_update_path do |f| %>
   <%= f.hidden_field :must_change_password, value: false %>
 
   <% if f.object.errors.any? %>
