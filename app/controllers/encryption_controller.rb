@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class EncryptionController < ApplicationController
-  skip_before_action :create_encryption_password, only: [:edit, :update]
-  skip_before_action :provide_encryption_password, only: [:index, :save, :edit, :update]
+  skip_before_action :create_encryption_password, only: %i[edit update]
+  skip_before_action :provide_encryption_password, only: %i[index save edit update]
 
   def index; end
 

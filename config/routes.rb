@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'users/sign_in', to: 'home#index'
   end
 
-  devise_for :users, skip: [:users, :registrable, :password], controllers: {
+  devise_for :users, skip: %i[users registrable password], controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
