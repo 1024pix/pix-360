@@ -14,7 +14,8 @@ class EncryptionControllerTest < ActionDispatch::IntegrationTest
     patch encryption_save_url,
           params: { user: { password: '123456' } }
 
-    assert_equal(cookies[:encryption_password], '123456')
+    jar = ActionDispatch::Cookies::CookieJar.build(request, cookies.to_hash)
+    assert_equal(jar.encrypted[:encryption_password], '123456')
   end
 
   test '#edit, should go to passwords edit when login' do

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def provide_encryption_password
-    unless cookies[:encryption_password]
+    unless cookies.encrypted[:encryption_password]
       redirect_to encryption_url
     end
   end
