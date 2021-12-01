@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/VincentHardouin/pix-360/compare/v1.4.0...v1.5.0) (2021-12-01)
+
+
+### Features
+
+* **application_controller:** add actions ([7cfb5ff](https://github.com/VincentHardouin/pix-360/commit/7cfb5fffe9ac2598aa1cc3a632a9fecf309b7df9))
+* **authenticate_user:** Add before_action authenticate_user in application_controller ([1f1bc90](https://github.com/VincentHardouin/pix-360/commit/1f1bc900c55aa00f669641f126ce6eaf10ed2f7e))
+* **devise:** Change sign_in redirect ([bf36008](https://github.com/VincentHardouin/pix-360/commit/bf360086535b4030a45fa6fc785e1ddcbd9859ef))
+* **devise:** Remove useless routes ([df062e7](https://github.com/VincentHardouin/pix-360/commit/df062e79c69e0a94dfab3cc102de32490c79dc85))
+* **encryption:** Change cookie to encrypted cookie ([e967a83](https://github.com/VincentHardouin/pix-360/commit/e967a832418c572e428e4451b6f1f931aa16a30c))
+* **encryption:** Move password in encryption controller ([7d763d9](https://github.com/VincentHardouin/pix-360/commit/7d763d9bfedd3dbb4e83f0ef34033a6a7594f3c7))
+* **encryption:** Rename password action to index ([02a6486](https://github.com/VincentHardouin/pix-360/commit/02a6486ddc3880ce2e74d7d8f6667baf8a5c65c5))
+
 # [1.4.0](https://github.com/VincentHardouin/pix-360/compare/v1.3.0...v1.4.0) (2021-11-30)
 
 
