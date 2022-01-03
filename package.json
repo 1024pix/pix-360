@@ -1,6 +1,10 @@
 {
   "name": "pix-360",
   "private": true,
+  "engines": {
+    "node": "14",
+    "npm": "6"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
