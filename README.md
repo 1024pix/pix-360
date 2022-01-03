@@ -1,5 +1,12 @@
 # PIX 360
 
+# One-Click Deployment
+
+
+[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/VincentHardouin/pix-360#main) 
+
+
+
 # Installation
 
 1. Copy sample.env

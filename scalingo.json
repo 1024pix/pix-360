@@ -1,0 +1,16 @@
+{
+  "name": "Pix 360",
+  "description": "Pix 360: It's 360 feedback...",
+  "repository": "https://github.com/VincentHardouin/pix-360",
+  "env": {
+    "GOOGLE_CLIENT_ID": {
+      "description": "Identfiant de connexion du client google pour le SSO ",
+      "required": true
+    },
+    "GOOGLE_CLIENT_SECRET": {
+      "description": "Mot de passe de connexion a l'application google permettant le SSO",
+      "required":true
+    }
+  },
+  "addons": ["postgresql"]
+}
