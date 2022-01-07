@@ -2,6 +2,6 @@
 
 module Users
   class SessionsController < Devise::SessionsController
-    skip_before_action :create_encryption_password, :provide_encryption_password, only: [:destroy]
+    skip_before_action :create_encryption_password, :provide_encryption_password, only: %i[new destroy]
   end
 end

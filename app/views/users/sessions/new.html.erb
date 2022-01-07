@@ -1,0 +1,8 @@
+<div class="users__sign-in">
+  <h2 class="users--sign-in__title">Connectez-vous</h2>
+
+  <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, :class=>"users--sign-in__button" do %>
+    <%= image_tag "logo_google.svg", :class => "users--sign-in--button__logo"%>
+    <%= content_tag :span, "Se connecter avec Google", :class => "users--sign-in--button__text" %>
+  <% end %>
+</div>
