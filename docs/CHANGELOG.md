@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/VincentHardouin/pix-360/compare/v1.5.0...v1.5.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* **sign_out:** allow to sign_out with button ([c45697c](https://github.com/VincentHardouin/pix-360/commit/c45697c2944077b99d5642e2b303ef56ddf6e79e))
+
 # [1.5.0](https://github.com/VincentHardouin/pix-360/compare/v1.4.0...v1.5.0) (2021-12-01)
 
 
