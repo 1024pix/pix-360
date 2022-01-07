@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   get 'encryption/edit'
   patch 'encryption/update'
 
-  devise_scope :user do
-    get 'users/sign_in', to: 'home#index'
-  end
-
   devise_for :users, skip: %i[users registrable password], controllers: {
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
