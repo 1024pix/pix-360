@@ -1,3 +1,111 @@
 // Place all the styles related to the Encryption controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "globals";
+
+.encryption-edit-page {
+  display: flex;
+  justify-content: center;
+  background: $default-gradient;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  align-items: center;
+
+  abbr {
+    text-decoration: none;
+  }
+}
+
+.encryption-edit {
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    max-width: 420px;
+    border-radius: 10px;
+    background-color: $white;
+    margin: 0 auto;
+    padding: 20px 10px;
+
+    @include device-is('tablet') {
+      width: 609px;
+      margin: 20px 0;
+      padding: 40px 80px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 21px;
+  }
+
+  &__body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.encryption-edit-header {
+
+  &__title {
+    font-family: $font-open-sans;
+    font-weight: $font-light;
+    font-size: 1.563rem;
+    color: $grey-80;
+    margin: 0;
+    text-align: center;
+
+    @include device-is('desktop') {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__subtitle {
+    padding: 5px 20px 0 20px;
+    text-align: center;
+    font-family: $font-open-sans;
+    font-size: 1rem;
+    font-weight: $font-light;
+    color: $grey-80;
+  }
+}
+
+.encryption-edit-body {
+  &__field {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__button {
+    margin-top: 32px;
+  }
+}
+
+.encryption-edit-field {
+  &__label {
+    font-size: .938rem;
+    font-weight: $font-medium;
+    color: $grey-80;
+    letter-spacing: .031rem;
+  }
+
+  &__input {
+    height: 40px;
+    outline: 0;
+    padding: 0 10px;
+    border-radius: 3px;
+    border: 2px solid #DFE1E6;
+  }
+}
