@@ -1,3 +1,11 @@
+# [1.7.0](https://github.com/VincentHardouin/pix-360/compare/v1.6.0...v1.7.0) (2022-01-09)
+
+
+### Features
+
+* **encryption:** Improve style ([d5b470c](https://github.com/VincentHardouin/pix-360/commit/d5b470cf4023600d91209ad744d331ccca4f4fd5))
+* **encryption:** Improve wording ([5bdf2fb](https://github.com/VincentHardouin/pix-360/commit/5bdf2fbeae4ba44cda5bfeff909a134c537cc560))
+
 # [1.6.0](https://github.com/VincentHardouin/pix-360/compare/v1.5.1...v1.6.0) (2022-01-09)
 
 
