@@ -1,0 +1,9 @@
+.pix-360-logo {
+  &__image {
+      width: 200px;
+
+    @include device-is('desktop') {
+        width: 215px;
+    }
+  }
+}

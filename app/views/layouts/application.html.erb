@@ -7,14 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application',
-                            'https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap',
+                            'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..900&family=Roboto:wght@300..900&display=swap',
                             media: 'all', 'data-turbolinks-track': 'reload' unless Rails.env.test? %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

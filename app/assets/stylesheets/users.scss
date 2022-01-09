@@ -5,22 +5,92 @@
 
 .users {
   &__sign-in {
-    width: 420px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    padding: 32px;
+    display: flex;
+    justify-content: center;
+    background: $default-gradient;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    align-items: center;
+
+    abbr {
+      text-decoration: none;
+    }
   }
 }
 
-.users--sign-in {
-  &__title {
-    font-family: $font-open-sans;
-    font-size: 2.25rem;
-    font-weight: $font-light;
+.sign-in-form {
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    max-width: 420px;
+    border-radius: 10px;
+    background-color: $white;
+    margin: 0 auto;
+    padding: 20px 10px;
+
+    @include device-is('tablet') {
+      width: 609px;
+      margin: 20px 0;
+      padding: 40px 80px;
+    }
   }
 
-  &__button {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  &__body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__notification-message {
+    width: 100%;
+    text-align: center;
+    color: $white;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+
+    &--success {
+      color: $success;
+    }
+
+    &--error {
+      color: $dark-error;
+    }
+  }
+}
+
+// Text Styles
+
+.sign-in-form-title {
+  font-family: $font-open-sans;
+  color: $grey-80;
+  margin: 0;
+  font-size: 1.563rem;
+  font-weight: $font-light;
+
+  @include device-is('desktop') {
+    font-size: 2.25rem;
+  }
+}
+
+.sign-in-form-body {
+
+  &__google-connect-link {
     padding: 1rem;
     box-shadow: 0 2px 2px rgba(0,0,0, 0.13);
     border: 1px solid #f0f0f0;
@@ -31,6 +101,7 @@
     text-align: center;
     text-decoration: none;
     color: $grey-70;
+    background-color: $white;
 
     &:hover {
       box-shadow: 0 2px 2px rgba(0,0,0, 0.2);
@@ -43,7 +114,7 @@
   }
 }
 
-.users--sign-in--button {
+.sign-in-form-google-connect-link {
   &__logo {
     margin-right: 8px;
   }
