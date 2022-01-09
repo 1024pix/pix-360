@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/VincentHardouin/pix-360/compare/v1.5.1...v1.6.0) (2022-01-09)
+
+
+### Features
+
+* **sign-in:** Improve style ([57211a2](https://github.com/VincentHardouin/pix-360/commit/57211a28bcbd413ced3b2666ca2666d072e0c6cc))
+
 ## [1.5.1](https://github.com/VincentHardouin/pix-360/compare/v1.5.0...v1.5.1) (2022-01-07)
 
 
