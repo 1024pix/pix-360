@@ -15,7 +15,7 @@ With Scalingo
 
 With Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/VincentHardouin/pix-360)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.dev/VincentHardouin/pix-360/tree/feat-add-new-deployment-method)
 
 # Installation
 
