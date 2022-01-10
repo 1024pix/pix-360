@@ -35,7 +35,7 @@ class EncryptionControllerTest < ActionDispatch::IntegrationTest
           params: { user: { password: 'updated-password', password_confirmation: 'updated-password',
                             must_change_password: false } }
 
-    assert_redirected_to home_private_url
+    assert_redirected_to root_url
     # Reload association to fetch updated data and assert that title is updated.
     @user.reload
     assert_equal false, @user.must_change_password
