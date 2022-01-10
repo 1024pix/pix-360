@@ -9,7 +9,7 @@ class EncryptionController < ApplicationController
   def save
     if current_user.valid_password?(password_params)
       cookies.encrypted[:encryption_password] = password_params
-      redirect_to home_private_url, notice: 'Votre mot de passe a bien été envoyé'
+      redirect_to root_url, notice: 'Votre mot de passe a bien été envoyé'
     else
       flash[:alert] = 'Le mot de passe saisie ne correspond pas.'
       render :index
@@ -24,7 +24,7 @@ class EncryptionController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update(password_params_from_edit)
       @user.create_encryption_keys
-      redirect_to home_private_url, notice: 'Votre mot de passe a bien été ajouté'
+      redirect_to root_url, notice: 'Votre mot de passe a bien été ajouté'
     else
       render :edit
     end
