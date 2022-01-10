@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/VincentHardouin/pix-360/compare/v1.7.0...v1.7.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* **home#private:** delete page ([19ad3a2](https://github.com/VincentHardouin/pix-360/commit/19ad3a2b50abbeb84e973e2a73691029e3f5b40d))
+
 # [1.7.0](https://github.com/VincentHardouin/pix-360/compare/v1.6.0...v1.7.0) (2022-01-09)
 
 
