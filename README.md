@@ -9,7 +9,13 @@ https://developers.google.com/identity/protocols/oauth2
 
 # One-Click Deployment
 
+With Scalingo
+
 [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/VincentHardouin/pix-360#main) 
+
+With Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/VincentHardouin/pix-360#fea-add-new-deployment-method)
 
 # Installation
 
