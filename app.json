@@ -10,8 +10,7 @@
        "GOOGLE_CLIENT_SECRET":{
           "description":"Mot de passe de connexion a l'application google permettant le SSO",
           "required":true
-       },
-       "NPM_CONFIG_PRODUCTION": "false"
+       }
     },
     "addons":[
        {
