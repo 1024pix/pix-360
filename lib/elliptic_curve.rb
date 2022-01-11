@@ -14,4 +14,12 @@ class EllipticCurve
     public_key_point = OpenSSL::PKey::EC::Point.new(group, OpenSSL::BN.new(public_key_string))
     @keys.dh_compute_key(public_key_point)
   end
+
+  def public_key
+    @keys.public_key.to_bn.to_s
+  end
+
+  def private_key
+    @keys.to_pem
+  end
 end
