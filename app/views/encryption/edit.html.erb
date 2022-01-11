@@ -20,17 +20,17 @@
         </div>
       <% end %>
 
-      <div class="encryption-edit-body__field">
+      <div class="encryption-body__field">
         <%= f.label :password, "Nouveau mot de passe", class: 'encryption-edit-field__label' %>
-        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'encryption-edit-field__input' %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'encryption-field__input' %>
       </div>
 
-      <div class="encryption-edit-body__field">
-        <%= f.label :password_confirmation, "Confirmation du nouveau mot de passe", class: 'encryption-edit-field__label' %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'encryption-edit-field__input' %>
+      <div class="encryption-body__field">
+        <%= f.label :password_confirmation, "Confirmez votre mot de passe", class: 'encryption-field__label' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'encryption-field__input' %>
       </div>
 
-      <div class="encryption-edit-body__button">
+      <div class="encryption-body__button">
         <%= f.submit "J'enregistre mon mot de passe", class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
       </div>
     <% end %>
