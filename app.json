@@ -16,5 +16,13 @@
        {
           "plan":"heroku-postgresql:hobby-dev"
        }
+    ],
+    "buildpacks": [
+        {
+          "url": "heroku/ruby"
+        },
+        {
+          "url": "heroku/nodejs"
+        }
     ]
  }
