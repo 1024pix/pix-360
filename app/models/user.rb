@@ -10,6 +10,15 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 
+  has_many :given_feedbacks, class_name: 'Feedback',
+                             foreign_key: 'respondent_id',
+                             dependent: :destroy,
+                             inverse_of: :giver
+  has_many :received_feedbacks, class_name: 'Feedback',
+                                foreign_key: 'requester_id',
+                                dependent: :destroy,
+                                inverse_of: :requester
+
   def self.from_google_oauth2(auth)
     where(google_id: auth.uid).first_or_create do |user|
       user.email = auth.info.email
