@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require('aes_256_gcm_encryption')
+require('elliptic_curve')
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -9,6 +10,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   devise :omniauthable, omniauth_providers: [:google_oauth2]
+
+  has_many :given_feedbacks, class_name: 'Feedback',
+                             foreign_key: 'respondent_id',
+                             dependent: :destroy,
+                             inverse_of: :giver
+  has_many :received_feedbacks, class_name: 'Feedback',
+                                foreign_key: 'requester_id',
+                                dependent: :destroy,
+                                inverse_of: :requester
 
   def self.from_google_oauth2(auth)
     where(google_id: auth.uid).first_or_create do |user|
@@ -19,9 +29,9 @@ class User < ApplicationRecord
   end
 
   def create_encryption_keys
-    keys = OpenSSL::PKey::EC.generate('secp521r1')
-    self.public_key = keys.public_key.to_bn.to_s
-    self.private_key = Aes256GcmEncryption.encrypt(keys.to_pem, password)
+    keys = EllipticCurve.new
+    self.public_key = keys.public_key
+    self.private_key = Aes256GcmEncryption.encrypt(keys.private_key, password)
     save
   end
 
