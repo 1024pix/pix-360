@@ -1,0 +1,23 @@
+<div class="navbar">
+  <nav>
+    <a>
+      <%= link_to image_tag("pix-360-logo.svg", :class => "pix-360-logo__image"), root_path %>
+    </a>
+    <div class="dropdown">
+      <button class="dropdown__button">Évaluation
+      </button>
+      <div class="dropdown__content">
+        <%= link_to "Mes évaluations", feedbacks_path %>
+        <%= link_to "Créer une évaluation", new_feedback_path %>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropdown__button">Profil</button>
+      <div class="dropdown__content">
+        <%= link_to "Modifier mon profil", edit_user_registration_path %>
+        <%= link_to "Modifier ma clé de chiffrement", encryption_edit_path %>
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  </nav>
+</div>
