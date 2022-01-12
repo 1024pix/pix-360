@@ -4,11 +4,35 @@
   "repository": "https://github.com/VincentHardouin/pix-360",
   "env": {
     "GOOGLE_CLIENT_ID": {
-      "description": "Identfiant de connexion du client google pour le SSO ",
+      "description": "Google OAauth 2.0 Client ID",
       "required": true
     },
     "GOOGLE_CLIENT_SECRET": {
-      "description": "Mot de passe de connexion a l'application google permettant le SSO",
+      "description": "Google OAuth 2.0 Password",
+      "required":true
+    },
+    "ACTION_MAILER_ADDRESS": {
+      "description": "SMTP server address, more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
+      "required": true
+    },
+    "ACTION_MAILER_PORT": {
+      "description": "SMTP server port, more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
+      "required":true
+    },
+    "ACTION_MAILER_DOMAIN": {
+      "description": "SMTP server domain, more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
+      "required": true
+    },
+    "ACTION_MAILER_USERNAME": {
+      "description": "SMTP server username, more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
+      "required":true
+    },
+    "ACTION_MAILER_PASSWORD": {
+      "description": "SMTP server password, more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
+      "required": true
+    },
+    "ACTION_MAILER_DEFAULT HOST": {
+      "description": "Application's url (ex: 360.pix.fr), more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
       "required":true
     }
   },
