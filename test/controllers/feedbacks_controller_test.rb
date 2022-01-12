@@ -21,7 +21,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
     test 'should create feedback with shared_key' do
       post feedbacks_url,
-           params: { feedback: {} }
+           params: { feedback: { recipient_email: 'test@exemple.net' } }
 
       assert_response :redirect
       assert_not_empty @user.received_feedbacks

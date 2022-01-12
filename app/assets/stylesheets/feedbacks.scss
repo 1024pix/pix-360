@@ -75,3 +75,21 @@
     resize: vertical;
   }
 }
+
+.feedbacks-field-mail{
+  &__label {
+    margin-bottom: 7px;
+    font-size: .938rem;
+    font-weight: $font-normal;
+    color: $grey-80;
+    letter-spacing: .031rem;
+  }
+
+  &__input {
+    height: 40px;
+    outline: 0;
+    padding: 0 10px;
+    border-radius: 3px;
+    border: 2px solid #DFE1E6;
+  }
+}
