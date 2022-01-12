@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/VincentHardouin/pix-360/compare/v1.7.1...v1.8.0) (2022-01-12)
+
+
+### Features
+
+* **feedback:** Allow to create one ([c237126](https://github.com/VincentHardouin/pix-360/commit/c237126e09586ce223865ccfc24d83f61bb24dfc))
+
 ## [1.7.1](https://github.com/VincentHardouin/pix-360/compare/v1.7.0...v1.7.1) (2022-01-10)
 
 
