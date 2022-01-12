@@ -4,3 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+first_feedback:
+  id: 1
+  content: null
+  requester_id: 1
+  shared_key: 123456
+  shared_key_hash: $2a$12$DPymqobdrzKf.5tgtk1HcOS/WoY/7YQsuvE4eQYkB1NRvFIa/lXhe
+
+second_feedback:
+  id: 2
+  content: null
+  requester_id: 1
+  respondent_id: 2
+  shared_key: 123456
+  shared_key_hash: $2a$12$DPymqobdrzKf.5tgtk1HcOS/WoY/7YQsuvE4eQYkB1NRvFIa/lXhe

@@ -28,5 +28,14 @@ module ActiveSupport
       patch encryption_save_url,
             params: { user: { password: '123456' } }
     end
+
+    def sign_in_and_set_encryption(user)
+      @user = user
+      sign_in @user
+      @user.password = '123456'
+      @user.create_encryption_keys
+      patch encryption_save_url,
+            params: { user: { password: '123456' } }
+    end
   end
 end

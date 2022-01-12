@@ -41,4 +41,16 @@ class Feedback < ApplicationRecord
                                                feedback_params[:decrypted_shared_key])
     save
   end
+
+  def verify_shared_key(shared_key_to_verify)
+    BCrypt::Password.new(shared_key_hash) == shared_key_to_verify
+  end
+
+  def already_edit_by_user?
+    !!respondent_id
+  end
+
+  def edited_by_user?(user_id)
+    respondent_id == user_id
+  end
 end

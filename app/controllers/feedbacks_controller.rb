@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class FeedbacksController < ApplicationController
+  skip_before_action :authenticate_user!, only: :edit
   before_action :set_feedback, only: %i[show edit update destroy]
+  before_action :should_seen_sign_in_page, only: :edit
   helper_method :edit_feedback_link
 
   def index
@@ -15,8 +17,20 @@ class FeedbacksController < ApplicationController
   end
 
   def edit
-    @feedback.decrypted_shared_key = params[:shared_key]
-    @feedback.decrypt_content
+    if @feedback.already_edit_by_user? && user_signed_in? && @feedback.edited_by_user?(current_user.id)
+      @feedback.decrypted_shared_key = params[:shared_key]
+      @feedback.decrypt_content
+      return
+    end
+
+    if !@feedback.already_edit_by_user? && @feedback.verify_shared_key(params[:shared_key])
+      @feedback.decrypted_shared_key = params[:shared_key]
+      @feedback.decrypt_content
+      return
+    end
+
+    redirect_to feedbacks_url,
+                { flash: { error: 'You are not allowed.' } }
   end
 
   def create
@@ -52,6 +66,8 @@ class FeedbacksController < ApplicationController
 
   def set_feedback
     @feedback = Feedback.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to feedbacks_url, flash: { error: 'Feedback not found.' }
   end
 
   def feedback_params
@@ -61,5 +77,13 @@ class FeedbacksController < ApplicationController
   def edit_feedback_link(feedback)
     shared_key = feedback.decrypt_shared_key cookies[:encryption_password]
     edit_feedback_url(id: feedback.id, shared_key: shared_key)
+  end
+
+  def should_seen_sign_in_page
+    redirect_to new_user_session_url(feedback: params[:id], shared_key: params[:shared_key]) unless seen_sign_in_page?
+  end
+
+  def seen_sign_in_page?
+    user_signed_in? || params[:external_user] == 'true'
   end
 end
