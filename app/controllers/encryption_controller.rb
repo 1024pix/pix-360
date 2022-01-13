@@ -3,6 +3,7 @@
 class EncryptionController < ApplicationController
   skip_before_action :create_encryption_password, only: %i[edit update]
   skip_before_action :provide_encryption_password, only: %i[index save edit update]
+  before_action :encryption_already_set, only: %i[edit]
 
   def index; end
 
@@ -39,5 +40,9 @@ class EncryptionController < ApplicationController
   def password_params
     params.require(:user).permit(:password)
     params[:user][:password]
+  end
+
+  def encryption_already_set
+    redirect_to root_url if encryption_ready?
   end
 end

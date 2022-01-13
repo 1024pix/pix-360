@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
   def provide_encryption_password
     redirect_to encryption_url unless cookies.encrypted[:encryption_password]
   end
+
+  def encryption_ready?
+    !current_user.must_change_password && cookies.encrypted[:encryption_password]
+  end
+
 end
