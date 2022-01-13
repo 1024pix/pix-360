@@ -1,0 +1,18 @@
+<div class="navbar">
+  <nav>
+    <%= link_to image_tag("pix-360-logo.svg", :class => "pix-360-logo__image"), root_path %>
+    <div class="navbar__center">
+      <div class="navbar__item">
+        <%= link_to "Évaluations envoyées", feedbacks_path %>
+      </div>
+      <div class="navbar__item">
+        <%= link_to "Évaluations reçues", '#' %>
+      </div>
+    </div>
+    <div class="navbar__left">
+      <div class="navbar__item">
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  </nav>
+</div>
