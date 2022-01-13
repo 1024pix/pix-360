@@ -1,10 +1,10 @@
 @import "globals";
 
 .navbar {
-  border-bottom: 1px solid #eaecf0;
+  border-bottom: 1px solid $grey-15;
 
   nav {
-    background-color: rgb(255, 255, 255);
+    background-color: $white;
     display: flex;
     margin: 0 4vw 0 4vw;
   
@@ -21,12 +21,12 @@
     align-items: center;
 
     a {
-      color: #505f79;
+      color: $blue-zodiac;
       text-decoration: none;
       padding: .5em;
 
       &:hover {
-        color: #3d68ff;
+        color: $blue;
       }
     }
 
