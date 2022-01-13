@@ -12,7 +12,7 @@ class EllipticCurve
   def shared_key(public_key_string)
     group = OpenSSL::PKey::EC::Group.new(METHOD)
     public_key_point = OpenSSL::PKey::EC::Point.new(group, OpenSSL::BN.new(public_key_string))
-    @keys.dh_compute_key(public_key_point)
+    Base64.encode64 @keys.dh_compute_key(public_key_point)
   end
 
   def public_key
