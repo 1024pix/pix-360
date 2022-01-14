@@ -1,0 +1,45 @@
+@import "globals";
+
+.navbar {
+  border-bottom: 1px solid $grey-15;
+
+  nav {
+    background-color: $white;
+    display: flex;
+    margin: 0 4vw 0 4vw;
+  
+    .pix-360-logo__image {
+      margin: .5em;
+      height: 50px;
+      width: auto;
+    }
+  }
+
+  &__item {
+
+    display: flex;
+    align-items: center;
+
+    a {
+      color: $blue-zodiac;
+      text-decoration: none;
+      padding: .5em;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+  }
+
+  &__center {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+}
