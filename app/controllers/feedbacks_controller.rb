@@ -2,6 +2,7 @@
 
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: %i[show edit update destroy]
+  helper_method :edit_feedback_link
 
   def index
     @feedbacks = current_user.received_feedbacks
@@ -52,5 +53,10 @@ class FeedbacksController < ApplicationController
 
   def feedback_params
     params.fetch(:feedback, {})
+  end
+
+  def edit_feedback_link(feedback)
+    shared_key = feedback.decrypted_shared_key cookies[:encryption_password]
+    edit_feedback_url(id: feedback.id, shared_key: shared_key)
   end
 end
