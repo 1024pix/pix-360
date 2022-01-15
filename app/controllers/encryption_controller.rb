@@ -10,7 +10,7 @@ class EncryptionController < ApplicationController
   def save
     if current_user.valid_password?(password_params)
       cookies.encrypted[:encryption_password] = password_params
-      redirect_to root_url, notice: 'Votre mot de passe a bien été envoyé'
+      redirect_back_or_default root_url
     else
       flash[:alert] = 'Le mot de passe saisie ne correspond pas.'
       render :index

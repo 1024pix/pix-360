@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, :create_encryption_password, :provide_encryption_password
+  before_action :store_location, :authenticate_user!, :create_encryption_password, :provide_encryption_password
 
   private
 
@@ -15,5 +15,14 @@ class ApplicationController < ActionController::Base
 
   def encryption_ready?
     !current_user.must_change_password && cookies.encrypted[:encryption_password]
+  end
+
+  def store_location
+    session[:return_to] = request.fullpath if request.get? && !%w[user_sessions sessions omniauth_callbacks
+                                                                  encryption].include?(controller_name)
+  end
+
+  def redirect_back_or_default(default)
+    redirect_to(session[:return_to] || default)
   end
 end
