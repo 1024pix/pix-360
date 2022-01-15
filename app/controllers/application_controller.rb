@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   private
 
   def create_encryption_password
-    redirect_to encryption_edit_url if current_user.must_change_password
+    redirect_to encryption_edit_url if user_signed_in? && current_user.must_change_password
   end
 
   def provide_encryption_password
-    redirect_to encryption_url unless cookies.encrypted[:encryption_password]
+    redirect_to encryption_url if user_signed_in? && !cookies.encrypted[:encryption_password]
   end
 
   def encryption_ready?
