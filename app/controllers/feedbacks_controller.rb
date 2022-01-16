@@ -14,7 +14,10 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
   end
 
-  def edit; end
+  def edit
+    @feedback.decrypted_shared_key = params[:shared_key]
+    @feedback.decrypt_content
+  end
 
   def create
     @feedback = current_user.received_feedbacks.create_with_shared_key cookies[:encryption_password]
@@ -30,7 +33,7 @@ class FeedbacksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @feedback.update(feedback_params)
+      if @feedback.update_content feedback_params
         format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,11 +55,11 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.fetch(:feedback, {})
+    params.fetch(:feedback, {}).permit(:decrypted_shared_key, content: %w[positive_points improvements_areas comments])
   end
 
   def edit_feedback_link(feedback)
-    shared_key = feedback.decrypted_shared_key cookies[:encryption_password]
+    shared_key = feedback.decrypt_shared_key cookies[:encryption_password]
     edit_feedback_url(id: feedback.id, shared_key: shared_key)
   end
 end
