@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Les évaluations données</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feedbacks.each do |feedback| %>
+      <tr>
+        <td><%= link_to 'Show', feedback %></td>
+        <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
