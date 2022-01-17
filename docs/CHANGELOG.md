@@ -1,3 +1,17 @@
+# [1.9.0](https://github.com/VincentHardouin/pix-360/compare/v1.8.0...v1.9.0) (2022-01-17)
+
+
+### Bug Fixes
+
+* **elliptic_curve:** Use urlsafe_encode64 for shared_key ([0ae6fe4](https://github.com/VincentHardouin/pix-360/commit/0ae6fe40d360ed1bf521ea0aef2e6c2cb9eda079))
+
+
+### Features
+
+* **Feedbacks:** Allow editing ([6efabba](https://github.com/VincentHardouin/pix-360/commit/6efabba3f08a10abd7da4523d99e09179aa09da8))
+* **Feedbacks:** Remove edit button in show page ([be5b6a7](https://github.com/VincentHardouin/pix-360/commit/be5b6a78200d80cf65ad0d715c1ca5faec530014))
+* **Feedbacks:** Remove form in new page ([ea3a615](https://github.com/VincentHardouin/pix-360/commit/ea3a615e348ae910ce9ca32e3f2ee4c68779fa04))
+
 # [1.8.0](https://github.com/VincentHardouin/pix-360/compare/v1.7.1...v1.8.0) (2022-01-12)
 
 
