@@ -37,6 +37,6 @@ class User < ApplicationRecord
 
   def elliptic_curve
     decrypted_private_key = Aes256GcmEncryption.decrypt(private_key, password)
-    OpenSSL::PKey::EC.new(decrypted_private_key)
+    EllipticCurve.new(decrypted_private_key)
   end
 end
