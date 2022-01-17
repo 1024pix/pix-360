@@ -5,8 +5,12 @@ require('openssl')
 class EllipticCurve
   METHOD = 'secp521r1'
 
-  def initialize
-    @keys = OpenSSL::PKey::EC.generate(METHOD)
+  def initialize(private_key = nil)
+    if private_key
+      @keys = OpenSSL::PKey::EC.new(private_key)
+    else
+      @keys = OpenSSL::PKey::EC.generate(METHOD)
+    end
   end
 
   def shared_key(public_key_string)
