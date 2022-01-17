@@ -34,8 +34,7 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @feedback = current_user.received_feedbacks.create_with_shared_key cookies[:encryption_password]
-
+    @feedback = current_user.received_feedbacks.create_with_shared_key cookies.encrypted[:encryption_password]
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
@@ -75,7 +74,7 @@ class FeedbacksController < ApplicationController
   end
 
   def edit_feedback_link(feedback)
-    shared_key = feedback.decrypt_shared_key cookies[:encryption_password]
+    shared_key = feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
     edit_feedback_url(id: feedback.id, shared_key: shared_key)
   end
 
