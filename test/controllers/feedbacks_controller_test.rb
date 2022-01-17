@@ -25,7 +25,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :redirect
       assert_not_empty @user.received_feedbacks
-      assert_not_empty @user.received_feedbacks[0].shared_key
+      assert_not_empty @user.received_feedbacks.last.shared_key
     end
   end
 
@@ -53,10 +53,10 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
           class WhenUserIsConnected < FeedbacksControllerTest
             test 'should redirect when respondent is not equal to current_user' do
               # given
-              sign_in_and_set_encryption users(:three)
+              sign_in_and_set_encryption users(:two)
 
               # when
-              get edit_feedback_url(id: 2)
+              get edit_feedback_url(id: 3)
 
               # then
               assert_response :redirect
@@ -64,10 +64,13 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
             test 'should can edit when respondent is equal to current_user' do
               # given
-              sign_in_and_set_encryption users(:two)
+              @user = users(:three)
+              sign_in @user
+              patch encryption_save_url,
+                    params: { user: { password: '123456' } }
 
               # when
-              get edit_feedback_url(id: 2)
+              get edit_feedback_url(id: 3)
 
               # then
               assert_response :success

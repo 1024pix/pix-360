@@ -37,5 +37,13 @@ module ActiveSupport
       patch encryption_save_url,
             params: { user: { password: '123456' } }
     end
+
+    def create_feedback_with_user(user)
+      sign_in_and_set_encryption users(user)
+      post feedbacks_url,
+           params: { feedback: {} }
+      delete destroy_user_session_url
+      Feedback.last
+    end
   end
 end

@@ -16,22 +16,25 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def edit
     if @feedback.already_edit_by_user? && user_signed_in? && @feedback.edited_by_user?(current_user.id)
-      @feedback.decrypted_shared_key = params[:shared_key]
-      @feedback.decrypt_content
+      decrypt_content shared_key_with_requester
       return
     end
 
     if !@feedback.already_edit_by_user? && @feedback.verify_shared_key(params[:shared_key])
-      @feedback.decrypted_shared_key = params[:shared_key]
-      @feedback.decrypt_content
+      decrypt_content params[:shared_key]
+      @feedback.decrypted_shared_key = shared_key_with_requester if user_signed_in?
       return
     end
 
     redirect_to feedbacks_url,
                 { flash: { error: 'You are not allowed.' } }
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def create
     @feedback = current_user.received_feedbacks.create_with_shared_key cookies.encrypted[:encryption_password]
@@ -84,5 +87,15 @@ class FeedbacksController < ApplicationController
 
   def seen_sign_in_page?
     user_signed_in? || params[:external_user] == 'true'
+  end
+
+  def decrypt_content(shared_key)
+    @feedback.decrypted_shared_key = shared_key
+    @feedback.decrypt_content
+  end
+
+  def shared_key_with_requester
+    current_user.password = cookies.encrypted[:encryption_password]
+    current_user.shared_key_with @feedback.requester.id
   end
 end
