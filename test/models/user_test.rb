@@ -23,6 +23,6 @@ class UserTest < ActiveSupport::TestCase
 
     elliptic_curve = @user.elliptic_curve
 
-    assert_equal public_key, elliptic_curve.public_key.to_bn.to_s
+    assert_equal public_key, elliptic_curve.public_key
   end
 end

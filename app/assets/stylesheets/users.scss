@@ -91,6 +91,7 @@
 .sign-in-form-body {
 
   &__google-connect-link {
+    margin-bottom: 20px;
     padding: 1rem;
     box-shadow: 0 2px 2px rgba(0,0,0, 0.13);
     border: 1px solid #f0f0f0;
@@ -110,6 +111,25 @@
 
     &:visited {
       color: $grey-70;
+    }
+  }
+
+  &__bottom-decoration {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1.5px solid $grey-20;
+    line-height: 0.1rem;
+    margin: 30px 0 40px;
+
+    @include device-is('mobile') {
+      width: 100%;
+    }
+
+    span {
+      font-size: 16px;
+      color: $grey-80;
+      background: $white;
+      padding: 0 10px;
     }
   }
 }

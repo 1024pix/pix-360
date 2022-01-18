@@ -36,9 +36,22 @@ class Feedback < ApplicationRecord
     self.decrypted_shared_key = Aes256GcmEncryption.decrypt(shared_key, encryption_password)
   end
 
-  def update_content(feedback_params)
+  def update_content(feedback_params, respondent_id = nil)
     self.content = Aes256GcmEncryption.encrypt(feedback_params[:content].to_json,
                                                feedback_params[:decrypted_shared_key])
+    self.respondent_id = respondent_id
     save
+  end
+
+  def verify_shared_key(shared_key_to_verify)
+    BCrypt::Password.new(shared_key_hash) == shared_key_to_verify
+  end
+
+  def already_edit_by_user?
+    !!respondent_id
+  end
+
+  def edited_by_user?(user_id)
+    respondent_id == user_id
   end
 end

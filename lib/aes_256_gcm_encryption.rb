@@ -15,7 +15,7 @@ module Aes256GcmEncryption
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def self.decrypt(encrypted_data, password)
-    base64_decoded = Base64.decode64(encrypted_data)
+    base64_decoded = Base64.urlsafe_decode64(encrypted_data)
     salt = base64_decoded[0..63]
     iv = base64_decoded[64..75]
     tag = base64_decoded[76..91]
@@ -44,7 +44,7 @@ module Aes256GcmEncryption
     encrypted = cipher.update(data) + cipher.final
     tag = cipher.auth_tag
 
-    Base64.encode64(salt + iv + tag + encrypted)
+    Base64.urlsafe_encode64(salt + iv + tag + encrypted)
   end
   # rubocop:enable Metrics/AbcSize
 end

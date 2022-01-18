@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class FeedbacksController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[edit update]
   before_action :set_feedback, only: %i[show edit update destroy]
+  before_action :should_seen_sign_in_page, only: :edit
   helper_method :edit_feedback_link
 
   def index
@@ -14,14 +16,28 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def edit
-    @feedback.decrypted_shared_key = params[:shared_key]
-    @feedback.decrypt_content
+    if @feedback.already_edit_by_user? && user_signed_in? && @feedback.edited_by_user?(current_user.id)
+      decrypt_content shared_key_with_requester
+      return
+    end
+
+    if !@feedback.already_edit_by_user? && @feedback.verify_shared_key(params[:shared_key])
+      decrypt_content params[:shared_key]
+      @feedback.decrypted_shared_key = shared_key_with_requester if user_signed_in?
+      return
+    end
+
+    redirect_to feedbacks_url,
+                { flash: { error: 'You are not allowed.' } }
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def create
-    @feedback = current_user.received_feedbacks.create_with_shared_key cookies[:encryption_password]
-
+    @feedback = current_user.received_feedbacks.create_with_shared_key cookies.encrypted[:encryption_password]
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
@@ -33,7 +49,8 @@ class FeedbacksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @feedback.update_content feedback_params
+      respondent_id = current_user ? current_user.id : nil
+      if @feedback.update_content(feedback_params, respondent_id)
         format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,6 +69,8 @@ class FeedbacksController < ApplicationController
 
   def set_feedback
     @feedback = Feedback.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to feedbacks_url, flash: { error: 'Feedback not found.' }
   end
 
   def feedback_params
@@ -59,7 +78,25 @@ class FeedbacksController < ApplicationController
   end
 
   def edit_feedback_link(feedback)
-    shared_key = feedback.decrypt_shared_key cookies[:encryption_password]
+    shared_key = feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
     edit_feedback_url(id: feedback.id, shared_key: shared_key)
+  end
+
+  def should_seen_sign_in_page
+    redirect_to new_user_session_url(feedback: params[:id], shared_key: params[:shared_key]) unless seen_sign_in_page?
+  end
+
+  def seen_sign_in_page?
+    user_signed_in? || params[:external_user] == 'true'
+  end
+
+  def decrypt_content(shared_key)
+    @feedback.decrypted_shared_key = shared_key
+    @feedback.decrypt_content
+  end
+
+  def shared_key_with_requester
+    current_user.password = cookies.encrypted[:encryption_password]
+    current_user.shared_key_with @feedback.requester.id
   end
 end

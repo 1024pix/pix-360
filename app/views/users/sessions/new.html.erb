@@ -12,6 +12,15 @@
         <%= image_tag "logo_google.svg", :class => "sign-in-form-google-connect-link__logo"%>
         <%= content_tag :span, "Se connecter avec Google", :class => "sign-in-form-google-connect-link__text" %>
       <% end %>
+
+      <% if from_feedback? %>
+        <div class="sign-in-form-body__bottom-decoration">
+          <span>OU</span>
+        </div>
+
+        <%= link_to 'Je suis une personne extérieure', edit_feedback_path(id: feedback_id, shared_key: shared_key, external_user:true), class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
+      <% end %>
+
     </form>
   </main>
 </div>
