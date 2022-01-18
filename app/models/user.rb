@@ -20,13 +20,17 @@ class User < ApplicationRecord
                                 dependent: :destroy,
                                 inverse_of: :requester
 
+  # rubocop:disable Metrics/AbcSize
   def self.from_google_oauth2(auth)
     where(google_id: auth.uid).first_or_create do |user|
       user.email = auth.info.email
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
       user.password = Devise.friendly_token[0, 20]
       user.must_change_password = true
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def create_encryption_keys
     keys = EllipticCurve.new
