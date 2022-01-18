@@ -12,11 +12,11 @@ class FeedbacksController < ApplicationController
   end
 
   def show
-    if @feedback.respondent_id
-      shared_key  = shared_key_with @feedback.respondent_id
-    else
-      shared_key = @feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
-    end
+    shared_key = if @feedback.respondent_id
+                   shared_key_with @feedback.respondent_id
+                 else
+                   @feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
+                 end
     decrypt_content shared_key
   end
 

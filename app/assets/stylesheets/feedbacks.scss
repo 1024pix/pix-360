@@ -93,3 +93,77 @@
     border: 2px solid #DFE1E6;
   }
 }
+
+.show-feedback {
+  &__page {
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    @include device-is('tablet') {
+      width: 820px;
+      margin: 20px auto;
+      padding: 40px 80px;
+    }
+  }
+
+  &__title {
+    font-family: $font-open-sans;
+    font-weight: $font-light;
+    font-size: 1.563rem;
+    color: $grey-80;
+    margin-top: 0;
+    margin-bottom: 32px;
+    text-align: center;
+
+    @include device-is('desktop') {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    margin-bottom: 21px;
+  }
+
+  &__link {
+    width: 100%;
+    margin-bottom: 21px;
+  }
+}
+
+.show-feedback-field {
+  &__label {
+    font-size: 1.2rem;
+    font-weight: $font-normal;
+    color: $grey-80;
+    letter-spacing: .031rem;
+    margin-bottom: 7px;
+  }
+
+  &__input {
+    border: solid 1px $grey-20;
+    padding: 7px;
+    min-height: 70px;
+  }
+}
+
+.show-feedback-link {
+  &__label {
+    font-size: 1.2rem;
+    font-weight: $font-normal;
+    color: $grey-80;
+    letter-spacing: .031rem;
+    margin-bottom: 7px;
+  }
+
+  &__value {
+    font-size: 1rem;
+    font-weight: $font-normal;
+    font-weight: $grey-100;
+  }
+}
