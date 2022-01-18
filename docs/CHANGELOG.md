@@ -1,3 +1,22 @@
+# [1.10.0](https://github.com/VincentHardouin/pix-360/compare/v1.9.0...v1.10.0) (2022-01-18)
+
+
+### Bug Fixes
+
+* **edit_feedback:** Change button wording ([62ab5d6](https://github.com/VincentHardouin/pix-360/commit/62ab5d6eee63bbec1ca6624a79e6e0d62bc503d3))
+
+
+### Features
+
+* **edit_feedback:** Handle good shared_key ([76c3f63](https://github.com/VincentHardouin/pix-360/commit/76c3f6389ad3f0bc7531c52023362312eab888ee))
+* **EllipticCurve:** Allow initiate with private_key ([f6311ed](https://github.com/VincentHardouin/pix-360/commit/f6311edb7ca1507aac30b6b724135a56b24ceced))
+* **encryption_filters:** Improve to handle redirection only when user is signed in ([f2bc11f](https://github.com/VincentHardouin/pix-360/commit/f2bc11fa04db5f7c6090ea43e60f002e64c063a0))
+* **redirection:** Handle url where the user comes from ([abae1d2](https://github.com/VincentHardouin/pix-360/commit/abae1d25fe545192b5a588fd6ab85486fd00b5ad))
+* **Sign-in:** Handle external user when user comes from edit feedback page ([79f15de](https://github.com/VincentHardouin/pix-360/commit/79f15de93beef5977519394ee9448cddd614ca71))
+* **update_feedback:** Allow update by not logged-in user ([210b8a3](https://github.com/VincentHardouin/pix-360/commit/210b8a31c9c8bcd6bc9027a18b82e75df879737c))
+* **update_feedback:** Set respondent_id ([eaaba38](https://github.com/VincentHardouin/pix-360/commit/eaaba384f21120fbb8cd85e0c5d4e4ee3694bea3))
+* **User:** Use new elliptic_curve initialisation ([7fd6a00](https://github.com/VincentHardouin/pix-360/commit/7fd6a00af46f9df1a0771abd3d29509a60ff3c5b))
+
 # [1.9.0](https://github.com/VincentHardouin/pix-360/compare/v1.8.0...v1.9.0) (2022-01-17)
 
 
