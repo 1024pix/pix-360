@@ -3,4 +3,21 @@
 <p>Lien de partage :</p>
 <p><%= edit_feedback_link @feedback %></p>
 
+<div class="feedbacks__field">
+  <label for="feedbacks_content_positive_points" class="feedbacks-field__label">Points positifs</label>
+  <textarea id="feedbacks_content_positive_points"  class="feedbacks-field__input" name="feedback[content][positive_points]" disabled><%= @feedback.decrypted_content[:positive_points] %></textarea>
+</div>
+
+<div class="feedbacks__field">
+  <label for="feedbacks_content_improvements_areas" class="feedbacks-field__label">Axes d'amélioration</label>
+  <textarea id="feedbacks_content_improvements_areas"  class="feedbacks-field__input" name="feedback[content][improvements_areas]" disabled><%= @feedback.decrypted_content[:improvements_areas]%></textarea>
+</div>
+
+<div class="feedbacks__field">
+  <label for="feedbacks_content_comments" class="feedbacks-field__label">Commentaires</label>
+  <textarea id="feedbacks_content_comments"  class="feedbacks-field__input" name="feedback[content][comments]" disabled><%= @feedback.decrypted_content[:comments]%></textarea>
+</div>
+
+
+
 <%= link_to 'Back', feedbacks_path %>

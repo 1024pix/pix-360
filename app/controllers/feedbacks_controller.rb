@@ -11,7 +11,14 @@ class FeedbacksController < ApplicationController
     @feedbacks = current_user.received_feedbacks
   end
 
-  def show; end
+  def show
+    if @feedback.respondent_id
+      shared_key  = shared_key_with @feedback.respondent_id
+    else
+      shared_key = @feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
+    end
+    decrypt_content shared_key
+  end
 
   def new
     @feedback = Feedback.new
@@ -21,7 +28,8 @@ class FeedbacksController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def edit
     if @feedback.already_edit_by_user? && user_signed_in? && @feedback.edited_by_user?(current_user.id)
-      decrypt_content shared_key_with_requester
+      shared_key = shared_key_with(@feedback.requester.id)
+      decrypt_content shared_key
       return
     end
 
@@ -102,9 +110,9 @@ class FeedbacksController < ApplicationController
     @feedback.decrypt_content
   end
 
-  def shared_key_with_requester
+  def shared_key_with(user_id)
     current_user.password = cookies.encrypted[:encryption_password]
-    current_user.shared_key_with @feedback.requester.id
+    current_user.shared_key_with user_id
   end
 
   def send_feedback_request_mail
