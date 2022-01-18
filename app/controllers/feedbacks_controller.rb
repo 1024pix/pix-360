@@ -3,6 +3,7 @@
 class FeedbacksController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[edit update]
   before_action :set_feedback, only: %i[show edit update destroy]
+  before_action :requester?, only: :show
   before_action :should_seen_sign_in_page, only: :edit
   helper_method :edit_feedback_link
 
@@ -77,6 +78,10 @@ class FeedbacksController < ApplicationController
   def feedback_params
     params.fetch(:feedback, {}).permit(:decrypted_shared_key,
                                        :recipient_email, content: %w[positive_points improvements_areas comments])
+  end
+
+  def requester?
+    redirect_to feedbacks_url, flash: { error: 'Feedback not found.' } unless @feedback.requester_id == current_user.id
   end
 
   def edit_feedback_link(feedback)
