@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/VincentHardouin/pix-360/compare/v1.10.0...v1.11.0) (2022-01-18)
+
+
+### Features
+
+* **users:** save user name ([700e1a5](https://github.com/VincentHardouin/pix-360/commit/700e1a5bcf9707f8701fbe4c4aa79c2072c4da15))
+
 # [1.10.0](https://github.com/VincentHardouin/pix-360/compare/v1.9.0...v1.10.0) (2022-01-18)
 
 
