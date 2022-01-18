@@ -11,6 +11,7 @@
 
   <tbody>
     <% @feedbacks.each do |feedback| %>
+      <%= "Evaluation donnée à #{current_user.first_name} #{current_user.last_name} le #{feedback.updated_at.strftime("%d/%m/%y")}" %>
       <tr>
         <td><%= link_to 'Show', feedback %></td>
         <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
