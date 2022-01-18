@@ -49,7 +49,8 @@ class FeedbacksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @feedback.update_content feedback_params
+      respondent_id = current_user ? current_user.id : nil
+      if @feedback.update_content(feedback_params, respondent_id)
         format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
