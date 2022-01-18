@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FeedbacksController < ApplicationController
-  skip_before_action :authenticate_user!, only: :edit
+  skip_before_action :authenticate_user!, only: %i[edit update]
   before_action :set_feedback, only: %i[show edit update destroy]
   before_action :should_seen_sign_in_page, only: :edit
   helper_method :edit_feedback_link
