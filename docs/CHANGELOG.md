@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/VincentHardouin/pix-360/compare/v1.11.0...v1.12.0) (2022-01-19)
+
+
+### Features
+
+* **Feedbacks:** Send e-mail after create ([1a8c8da](https://github.com/VincentHardouin/pix-360/commit/1a8c8da37539cf6b376cae88f2c0beaaa59aefd0))
+
 # [1.11.0](https://github.com/VincentHardouin/pix-360/compare/v1.10.0...v1.11.0) (2022-01-18)
 
 
