@@ -4,8 +4,6 @@
 
 <%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
 
-<br>
-
  <div class="index-feedback__row">
 
   <% @feedbacks.each do |feedback| %>
@@ -17,8 +15,10 @@
       <%= "Remplie par #{feedback.requester.first_name} #{feedback.requester.last_name}"%>
           <%= "le : #{feedback.updated_at.strftime("%d/%m/%y à %Hh%M")}"%>
       <% end %>
-      <%= link_to '👁 Ouvrir', feedback, class: 'pix-button pix-button--shape-rounded pix-button--size-little pix-button--background-blue' %>
-      <%= link_to '🗑 Supprimer', feedback, class: 'pix-button pix-button--shape-rounded pix-button--size-little pix-button--background-blue', method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+      <div>
+      <%= link_to '👁 Ouvrir', feedback %>
+      <%= link_to '🗑 Supprimer', feedback, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+    </div>
     </div>
 
   <% end %>
