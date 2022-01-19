@@ -75,6 +75,10 @@ class FeedbacksController < ApplicationController
     end
   end
 
+  def given
+    @feedbacks = current_user.given_feedbacks
+  end
+
   private
 
   def set_feedback

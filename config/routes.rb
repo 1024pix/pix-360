@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :feedbacks
+  resources :feedbacks do
+    collection do
+      get 'given'
+    end
+  end
   get 'encryption', to: 'encryption#index'
   patch 'encryption/save'
   get 'encryption/edit'
