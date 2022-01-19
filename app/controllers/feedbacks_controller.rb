@@ -35,7 +35,7 @@ class FeedbacksController < ApplicationController
 
     if !@feedback.already_edit_by_user? && @feedback.verify_shared_key(params[:shared_key])
       decrypt_content params[:shared_key]
-      @feedback.decrypted_shared_key = shared_key_with_requester if user_signed_in?
+      @feedback.decrypted_shared_key = shared_key_with(@feedback.requester.id) if user_signed_in?
       return
     end
 

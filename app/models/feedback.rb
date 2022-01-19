@@ -23,7 +23,7 @@ class Feedback < ApplicationRecord
   end
 
   def create_content
-    content = { 'positive_points': '', 'improve_areas': '', 'comments': '' }
+    content = { 'positive_points': '', 'improvements_areas': '', 'comments': '' }
     self.content = Aes256GcmEncryption.encrypt(content.to_json, decrypted_shared_key)
   end
 
