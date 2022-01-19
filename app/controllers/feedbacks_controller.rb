@@ -3,6 +3,7 @@
 class FeedbacksController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[edit update]
   before_action :set_feedback, only: %i[show edit update destroy]
+  before_action :requester?, only: :show
   before_action :should_seen_sign_in_page, only: :edit
   helper_method :edit_feedback_link
 
@@ -10,7 +11,14 @@ class FeedbacksController < ApplicationController
     @feedbacks = current_user.received_feedbacks
   end
 
-  def show; end
+  def show
+    shared_key = if @feedback.respondent_id
+                   shared_key_with @feedback.respondent_id
+                 else
+                   @feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
+                 end
+    decrypt_content shared_key
+  end
 
   def new
     @feedback = Feedback.new
@@ -20,7 +28,8 @@ class FeedbacksController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def edit
     if @feedback.already_edit_by_user? && user_signed_in? && @feedback.edited_by_user?(current_user.id)
-      decrypt_content shared_key_with_requester
+      shared_key = shared_key_with(@feedback.requester.id)
+      decrypt_content shared_key
       return
     end
 
@@ -79,6 +88,10 @@ class FeedbacksController < ApplicationController
                                        :recipient_email, content: %w[positive_points improvements_areas comments])
   end
 
+  def requester?
+    redirect_to feedbacks_url, flash: { error: 'Feedback not found.' } unless @feedback.requester_id == current_user.id
+  end
+
   def edit_feedback_link(feedback)
     shared_key = feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
     edit_feedback_url(id: feedback.id, shared_key: shared_key)
@@ -97,9 +110,9 @@ class FeedbacksController < ApplicationController
     @feedback.decrypt_content
   end
 
-  def shared_key_with_requester
+  def shared_key_with(user_id)
     current_user.password = cookies.encrypted[:encryption_password]
-    current_user.shared_key_with @feedback.requester.id
+    current_user.shared_key_with user_id
   end
 
   def send_feedback_request_mail
