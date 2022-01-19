@@ -40,6 +40,7 @@ class FeedbacksController < ApplicationController
     @feedback = current_user.received_feedbacks.create_with_shared_key cookies.encrypted[:encryption_password]
     respond_to do |format|
       if @feedback.save
+        send_feedback_request_mail
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -74,7 +75,8 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.fetch(:feedback, {}).permit(:decrypted_shared_key, content: %w[positive_points improvements_areas comments])
+    params.fetch(:feedback, {}).permit(:decrypted_shared_key,
+                                       :recipient_email, content: %w[positive_points improvements_areas comments])
   end
 
   def edit_feedback_link(feedback)
@@ -98,5 +100,10 @@ class FeedbacksController < ApplicationController
   def shared_key_with_requester
     current_user.password = cookies.encrypted[:encryption_password]
     current_user.shared_key_with @feedback.requester.id
+  end
+
+  def send_feedback_request_mail
+    FeedbackMailer.with(link: edit_feedback_link(@feedback), user: current_user,
+                        email: feedback_params[:recipient_email]).feedback_email.deliver_now
   end
 end
