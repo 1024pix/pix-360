@@ -1,25 +1,26 @@
 <p id="notice"><%= notice %></p>
+<main class="index-feedback__page">
+<h1 class="index-feedback__title">Mes évaluations</h1>
 
-<h1>Feedbacks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @feedbacks.each do |feedback| %>
-      <tr>
-        <td><%= link_to 'Show', feedback %></td>
-        <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
-        <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
 
 <br>
 
-<%= link_to 'New Feedback', new_feedback_path %>
+ <div class="index-feedback__row">
+
+  <% @feedbacks.each do |feedback| %>
+
+    <div class="index-feedback__column">
+      <% if feedback.respondent_id == nil %>
+        <p>Aucune réponse</p>
+      <% else %>
+      <%= "Remplie par #{feedback.requester.first_name} #{feedback.requester.last_name}"%>
+          <%= "le : #{feedback.updated_at.strftime("%d/%m/%y à %Hh%M")}"%>
+      <% end %>
+      <%= link_to '👁 Ouvrir', feedback, class: 'pix-button pix-button--shape-rounded pix-button--size-little pix-button--background-blue' %>
+      <%= link_to '🗑 Supprimer', feedback, class: 'pix-button pix-button--shape-rounded pix-button--size-little pix-button--background-blue', method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+    </div>
+
+  <% end %>
+
+</div>

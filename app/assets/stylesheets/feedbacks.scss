@@ -167,3 +167,57 @@
     font-weight: $grey-100;
   }
 }
+
+.index-feedback {
+  &__page {
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    @include device-is('tablet') {
+      width: 820px;
+      margin: 20px auto;
+      padding: 40px 80px;
+    }
+  }
+
+  &__title {
+    font-family: $font-open-sans;
+    font-weight: $font-light;
+    font-size: 1.563rem;
+    color: $grey-80;
+    margin-top: 0;
+    margin-bottom: 32px;
+    text-align: center;
+
+    @include device-is('desktop') {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+    text-align: center;
+
+    p {
+      margin : 0;
+    }
+  }
+}
