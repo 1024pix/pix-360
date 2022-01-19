@@ -1,3 +1,12 @@
+# [1.13.0](https://github.com/VincentHardouin/pix-360/compare/v1.12.0...v1.13.0) (2022-01-19)
+
+
+### Features
+
+* **feedback#show:** Only show feedback when current user is requester ([3bd4f11](https://github.com/VincentHardouin/pix-360/commit/3bd4f111092811af469b8e91d58f6e6909c12bba))
+* **feedback#show:** Show content in page ([30f9a07](https://github.com/VincentHardouin/pix-360/commit/30f9a070ba6d4bf524999680624c9885e2666a29))
+* **feedbacks#show:** Improve style and support markdown content ([9b7c4b6](https://github.com/VincentHardouin/pix-360/commit/9b7c4b64397c7abe8c483c814ca884f688280d1e))
+
 # [1.12.0](https://github.com/VincentHardouin/pix-360/compare/v1.11.0...v1.12.0) (2022-01-19)
 
 
