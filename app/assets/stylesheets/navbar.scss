@@ -13,6 +13,13 @@
       height: 50px;
       width: auto;
     }
+
+    align-items: center;
+    flex-direction: column;
+
+    @include device-is('tablet') {
+      flex-direction: row;
+    }
   }
 
   &__item {
@@ -36,6 +43,11 @@
     display: flex;
     flex: 1;
     justify-content: center;
+    flex-direction: column;
+
+    @include device-is('tablet') {
+      flex-direction: row;
+    }
   }
 
   &__left {
