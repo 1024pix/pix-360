@@ -40,6 +40,7 @@ class Feedback < ApplicationRecord
     self.content = Aes256GcmEncryption.encrypt(feedback_params[:content].to_json,
                                                feedback_params[:decrypted_shared_key])
     self.respondent_id = respondent_id
+    self.is_filled = true
     save
   end
 

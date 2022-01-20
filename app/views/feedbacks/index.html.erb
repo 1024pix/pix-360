@@ -1,25 +1,32 @@
 <p id="notice"><%= notice %></p>
+<main class="index-feedback__page">
+<h1 class="index-feedback__title">Évaluations reçues</h1>
 
-<h1>Feedbacks</h1>
+<%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+ <div class="index-feedback__row">
 
-  <tbody>
-    <% @feedbacks.each do |feedback| %>
-      <tr>
-        <td><%= link_to 'Show', feedback %></td>
-        <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
-        <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <% @feedbacks.each do |feedback| %>
+
+    <%= link_to feedback, class: 'feedback' do %>
+      <div class="feedback__informations">
+        <div class="feedback-informations__respondent">
+          <% if feedback.is_filled %>
+            <% if feedback.giver %>
+              <%= "Remplie par #{feedback.giver.first_name} #{feedback.giver.last_name}" %>
+            <% else %>
+              <%= "Remplie par une personne extérieure" %>
+            <% end %> 
+          <% else %>
+            <p>L'évaluation n'a pas encore reçue de réponse</p>
+          <% end %>    
+        </div>
+        <div class="feedback-informations__date">
+          <%= feedback.created_at.strftime("%d/%m/%y") %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+  <% end %>
 
-<%= link_to 'New Feedback', new_feedback_path %>
+</div>
