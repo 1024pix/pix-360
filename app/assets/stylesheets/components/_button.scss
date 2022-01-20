@@ -62,6 +62,10 @@
     @include colorizeBackground($blue, $blue);
   }
 
+  &--background-red {
+    @include colorizeBackground($red, $red);
+  }
+
   &--background-transparent-light {
     background-color: transparent;
     border-color: transparent;

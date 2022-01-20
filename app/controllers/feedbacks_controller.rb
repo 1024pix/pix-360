@@ -8,7 +8,7 @@ class FeedbacksController < ApplicationController
   helper_method :edit_feedback_link
 
   def index
-    @feedbacks = current_user.received_feedbacks
+    @feedbacks = current_user.received_feedbacks.order(created_at: :desc)
   end
 
   def show
