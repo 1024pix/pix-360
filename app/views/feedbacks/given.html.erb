@@ -1,23 +1,22 @@
 <p id="notice"><%= notice %></p>
+<main class="index-feedback__page">
+<h1 class="index-feedback__title">Évaluations données</h1>
 
-<h1>Les évaluations données</h1>
+ <div class="index-feedback__row">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @feedbacks.each do |feedback| %>
 
-  <tbody>
-    <% @feedbacks.each do |feedback| %>
-      <%= "Evaluation donnée à #{current_user.first_name} #{current_user.last_name} le #{feedback.updated_at.strftime("%d/%m/%y")}" %>
-      <tr>
-        <td><%= link_to 'Show', feedback %></td>
-        <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
-      </tr>
+    <%= link_to feedback, class: 'feedback' do %>
+      <div class="feedback__informations">
+        <div class="feedback-informations__respondent">
+              <%= "Remplie pour #{feedback.requester.first_name} #{feedback.requester.last_name}" %>
+        </div>
+        <div class="feedback-informations__date">
+          <%= feedback.created_at.strftime("%d/%m/%y") %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+  <% end %>
+
+</div>

@@ -76,7 +76,7 @@ class FeedbacksController < ApplicationController
   end
 
   def given
-    @feedbacks = current_user.given_feedbacks
+    @feedbacks = current_user.given_feedbacks.order(created_at: :desc)
   end
 
   private
