@@ -10,7 +10,8 @@
       </div>
     </div>
     <div class="navbar__left">
-      <div class="navbar__item">
+      <div class="navbar__left__item">
+        <%= "#{current_user.first_name} #{current_user.last_name}" %>
         <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
       </div>
     </div>

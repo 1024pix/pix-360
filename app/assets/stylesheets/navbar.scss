@@ -52,6 +52,23 @@
 
   &__left {
     display: flex;
-    align-items: center;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      a {
+        color: $blue-zodiac;
+        text-decoration: none;
+  
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
   }
 }
