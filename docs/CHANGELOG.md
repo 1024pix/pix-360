@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/VincentHardouin/pix-360/compare/v1.16.1...v1.16.2) (2022-01-21)
+
+
+### Bug Fixes
+
+* **omniauth:** Add default redirect ([cfbc30c](https://github.com/VincentHardouin/pix-360/commit/cfbc30ccfaf670b5dedf6fc3d2a8cfbc88623856))
+
 ## [1.16.1](https://github.com/VincentHardouin/pix-360/compare/v1.16.0...v1.16.1) (2022-01-21)
 
 
