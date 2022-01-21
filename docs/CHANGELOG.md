@@ -1,3 +1,11 @@
+## [1.13.1](https://github.com/VincentHardouin/pix-360/compare/v1.13.0...v1.13.1) (2022-01-21)
+
+
+### Bug Fixes
+
+* **feedbacks#edit:** Change title to french ([323b4e2](https://github.com/VincentHardouin/pix-360/commit/323b4e2610f16d8a1430d203cadbba731decead7))
+* **feedbacks#given:** Fix link to edit feedback ([917ef3b](https://github.com/VincentHardouin/pix-360/commit/917ef3b612dd026c65119b29a89c2ab54844dd48))
+
 # [1.13.0](https://github.com/VincentHardouin/pix-360/compare/v1.12.0...v1.13.0) (2022-01-19)
 
 
