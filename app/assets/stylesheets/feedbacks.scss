@@ -138,6 +138,12 @@
     width: 100%;
     margin-bottom: 21px;
   }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+  }
 }
 
 .show-feedback-field {

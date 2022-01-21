@@ -28,7 +28,9 @@
     </div>
   </div>
 
-  <%= link_to 'Retour aux évaluations', feedbacks_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
-  <%= link_to 'Supprimer', @feedback, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-red' %>
+  <div class="show-feedback__actions">
+    <%= link_to 'Retour aux évaluations', feedbacks_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
+    <%= link_to 'Supprimer', @feedback, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-red' %>
+  </div>
 
 </main>
