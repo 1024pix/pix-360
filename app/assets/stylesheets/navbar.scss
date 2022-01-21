@@ -2,20 +2,18 @@
 
 .navbar {
   border-bottom: 1px solid $grey-15;
+  box-shadow: -1px 9px 29px -16px rgba(199, 191, 199, 0.9);
 
   nav {
     background-color: $white;
     display: flex;
     margin: 0 4vw 0 4vw;
-  
+
     .pix-360-logo__image {
       margin: .5em;
       height: 50px;
       width: auto;
     }
-
-    align-items: center;
-    flex-direction: column;
 
     @include device-is('tablet') {
       flex-direction: row;
@@ -23,27 +21,22 @@
   }
 
   &__item {
-
     display: flex;
     align-items: center;
+    color: $blue-zodiac;
+    text-decoration: none;
 
-    a {
-      color: $blue-zodiac;
-      text-decoration: none;
-      padding: .5em;
-
-      &:hover {
-        color: $blue;
-      }
+    &:hover {
+      color: $blue;
     }
-
   }
 
   &__center {
     display: flex;
     flex: 1;
+    gap: 2em;
+    margin: 0 .5em;
     justify-content: center;
-    flex-direction: column;
 
     @include device-is('tablet') {
       flex-direction: row;
@@ -51,8 +44,11 @@
   }
 
   &__left {
-    display: flex;
+  display: flex;
+  margin: .5em;
+  }
 
+  .navbar-left {
     &__item {
       display: flex;
       flex-direction: column;
@@ -60,15 +56,6 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-
-      a {
-        color: $blue-zodiac;
-        text-decoration: none;
-  
-        &:hover {
-          color: $blue;
-        }
-      }
     }
   }
 }
