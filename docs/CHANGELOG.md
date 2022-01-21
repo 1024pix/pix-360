@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/VincentHardouin/pix-360/compare/v1.14.0...v1.15.0) (2022-01-21)
+
+
+### Features
+
+* **nav:** Improve design and add connected user name ([b12f344](https://github.com/VincentHardouin/pix-360/commit/b12f3441d3ec3fda662e01567b5d384bd73ddd1f))
+
 # [1.14.0](https://github.com/VincentHardouin/pix-360/compare/v1.13.1...v1.14.0) (2022-01-21)
 
 
