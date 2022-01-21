@@ -9,7 +9,7 @@
       <%= link_to edit_feedback_path(feedback), class: 'feedback' do %>
         <div class="feedback__informations">
           <div class="feedback-informations__respondent">
-                <%= "Remplie pour #{feedback.requester.first_name} #{feedback.requester.last_name}" %>
+                <%= "Remplie pour #{feedback.requester.full_name}" %>
           </div>
           <div class="feedback-informations__date">
             <%= feedback.created_at.strftime("%d/%m/%y") %>
