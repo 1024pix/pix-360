@@ -1,5 +1,5 @@
 <main class="edit-feedback__page">
-  <h1 class="edit-feedback__title">Nouvelle Evaluation</h1>
+  <h1 class="edit-feedback__title">Nouvelle évaluation</h1>
 
   <%= form_with model: @feedback, class: 'feedbacks__form' do |form| %>
     <% if @feedback.errors.any? %>
@@ -16,7 +16,7 @@
 
     <div class="feedbacks__field">
       <%= form.label :recipient_email, "Entrez l'e-mail du destinataire", class: 'feedbacks-field-mail__label' %>
-      <%= form.text_field :recipient_email, autofocus: true, class: 'feedbacks-field-mail__input' %>
+      <%= form.email_field :recipient_email, autofocus: true, class: 'feedbacks-field-mail__input' %>
     </div>
 
     <div class="feedbacks__button">

@@ -69,10 +69,14 @@
   &__input {
     height: 180px;
     outline: 0;
-    padding: 0 10px;
+    padding: 10px 10px;
     border-radius: 3px;
-    border: 2px solid #DFE1E6;
+    border: 2px solid $grey-20;
     resize: vertical;
+
+    &:focus {
+      border: 2px solid $blue-hover;
+    }
   }
 }
 
@@ -133,6 +137,12 @@
   &__link {
     width: 100%;
     margin-bottom: 21px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
   }
 }
 
