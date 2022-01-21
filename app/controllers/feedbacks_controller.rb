@@ -40,39 +40,35 @@ class FeedbacksController < ApplicationController
     end
 
     redirect_to feedbacks_url,
-                { flash: { error: 'You are not allowed.' } }
+                { flash: { error: "Vous n'êtes pas autorisé à éditer cette évaluation." } }
   end
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
   def create
     @feedback = current_user.received_feedbacks.create_with_shared_key cookies.encrypted[:encryption_password]
-    respond_to do |format|
-      if @feedback.save
-        send_feedback_request_mail
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @feedback.save
+      send_feedback_request_mail
+      redirect_to @feedback, flash: { success: "L'évaluation a été demandée avec succès." }
+    else
+      flash[:error] = "Une erreur s'est produite durant la création de l'évaluation."
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      respondent_id = current_user ? current_user.id : nil
-      if @feedback.update_content(feedback_params, respondent_id)
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    respondent_id = current_user ? current_user.id : nil
+    if @feedback.update_content(feedback_params, respondent_id)
+      redirect_to @feedback, flash: { success: "L'évaluation a bien été modifiée." }
+    else
+      flash[:error] = "Une erreur s'est produite durant la mise à jour de l'évaluation."
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @feedback.destroy
-    respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
-    end
+    redirect_to feedbacks_url, flash: { success: "L'évaluation a bien été supprimée." }
   end
 
   def given
@@ -84,7 +80,7 @@ class FeedbacksController < ApplicationController
   def set_feedback
     @feedback = Feedback.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to feedbacks_url, flash: { error: 'Feedback not found.' }
+    redirect_to feedbacks_url, flash: { error: "L'évaluation est introuvable." }
   end
 
   def feedback_params
@@ -93,7 +89,10 @@ class FeedbacksController < ApplicationController
   end
 
   def requester?
-    redirect_to feedbacks_url, flash: { error: 'Feedback not found.' } unless @feedback.requester_id == current_user.id
+    return if @feedback.requester_id == current_user.id
+
+    redirect_to feedbacks_url,
+                flash: { error: "Vous n'êtes pas autorisé à consulter cette évaluation." }
   end
 
   def edit_feedback_link(feedback)

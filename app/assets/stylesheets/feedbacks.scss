@@ -227,6 +227,7 @@
   border: 1px solid $grey-20;
   transition: all 0.1s linear;
   text-decoration: none;
+  color: $grey-100;
 
   p {
     margin: 0;
@@ -236,6 +237,7 @@
   &:hover {
     top: -6px;
     box-shadow: 0 7px 14px 0 rgba(12, 22, 58, 0.2), 0 3px 6px 0 rgba($grey-200, 0.2);
+    color: $grey-200;
   }
 
 

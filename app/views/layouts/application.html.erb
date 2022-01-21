@@ -12,10 +12,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <% if user_signed_in? && encryption_ready? %>
-    <%= render 'layouts/navbar' %>
-  <% end %>
   <body>
+    <% if user_signed_in? && encryption_ready? %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
+
+    <% flash.each do |type, message| %>
+      <div class="flash <%= "flash__#{type}" %>">
+        <%= message %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
