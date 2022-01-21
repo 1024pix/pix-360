@@ -16,9 +16,9 @@
 
     <%= form.hidden_field :decrypted_shared_key %>
 
-    <div class="feedbacks__field">
-      <label for="feedbacks_content_positive_points" class="feedbacks-field__label">Points positifs</label>
-      <textarea id="feedbacks_content_positive_points"  class="feedbacks-field__input" name="feedback[content][positive_points]"><%= @feedback.decrypted_content[:positive_points] %></textarea>
+    <div class="feedbacks_field">
+      <input type="hidden" name="feedback[content][positive_points]" id="feedbacks_content_positive_points_trix_input" value="<h1>Default message</h1>">
+      <trix-editor input="feedbacks_content_positive_points_trix_input"></trix-editor>
     </div>
 
     <div class="feedbacks__field">
