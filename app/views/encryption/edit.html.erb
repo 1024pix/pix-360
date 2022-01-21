@@ -13,11 +13,11 @@
       <%= f.hidden_field :must_change_password, value: false %>
 
       <% if f.object.errors.any? %>
-        <div class="alert alert-danger">
-          <% f.object.errors.full_messages.each do |message| %>
+        <% f.object.errors.full_messages.each do |message| %>
+          <div class="flash flash__error" >
             <div><%= message %></div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% end %>
 
       <div class="encryption-body__field">
