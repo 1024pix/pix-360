@@ -1,3 +1,25 @@
+# [1.16.0](https://github.com/VincentHardouin/pix-360/compare/v1.15.0...v1.16.0) (2022-01-21)
+
+
+### Bug Fixes
+
+* **encryption#edit:** Fix input width to prevent width with error ([a883379](https://github.com/VincentHardouin/pix-360/commit/a883379f5df88c00efabfcb4360d794c99eaadcc))
+* **feedbacks#edit:** Add color on focus ([f22961f](https://github.com/VincentHardouin/pix-360/commit/f22961f3deed20dcb0452c345eba9caee927af6a))
+* **feedbacks#edit:** Add padding in textarea ([f0e6ee1](https://github.com/VincentHardouin/pix-360/commit/f0e6ee17f8fcc240767696e5840ec18e2b44bc14))
+* **feedbacks#index:** Add missing close tag ([8d24060](https://github.com/VincentHardouin/pix-360/commit/8d24060599a0bc20f6150f22722a6ec693a2d528))
+* **feedbacks#new:** Allow only e-mail ([4973413](https://github.com/VincentHardouin/pix-360/commit/4973413d97cbd83b72fa2b54abb63cc498ecf85b))
+* **feedbacks#show:** Improve actions design ([240e423](https://github.com/VincentHardouin/pix-360/commit/240e42300c1b89a3afadf8349c27fdd0de33c24a))
+* **feedbacks:** Add accent in Évaluation ([8b2de97](https://github.com/VincentHardouin/pix-360/commit/8b2de97c4eb51d65e4d73b43cd541ecba318fcc9))
+* **feedbacks:** Use specific colors instead of anchor colors ([e71df58](https://github.com/VincentHardouin/pix-360/commit/e71df5832bc2f2f5dc606b4ecbd2426d3b2891e6))
+
+
+### Features
+
+* **application:** Improve flash design ([fa9d813](https://github.com/VincentHardouin/pix-360/commit/fa9d8136d55add94780b3c6e455999646a447ca1))
+* **encryption#edit:** Improve flash messages ([ff35ed9](https://github.com/VincentHardouin/pix-360/commit/ff35ed952e8b97ce25e108a517b8fb94e26d3507))
+* **encryption:** Sign in after update encryption password ([3056c04](https://github.com/VincentHardouin/pix-360/commit/3056c0447f99612c084f2498a3d9650c46a6e54d))
+* **feedbacks_controller:** Improve flash wording ([6f68a44](https://github.com/VincentHardouin/pix-360/commit/6f68a4423768ea1cc0aa8f454b77a06e46a84128))
+
 # [1.15.0](https://github.com/VincentHardouin/pix-360/compare/v1.14.0...v1.15.0) (2022-01-21)
 
 
