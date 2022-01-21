@@ -1,3 +1,12 @@
+# [1.14.0](https://github.com/VincentHardouin/pix-360/compare/v1.13.1...v1.14.0) (2022-01-21)
+
+
+### Features
+
+* **feedbacks_mailer:** Add name to e-mail address ([86411be](https://github.com/VincentHardouin/pix-360/commit/86411be73be60f0c24fe4366d47c6683790d46c6))
+* **feedbacks:** Improve responsive ([57d9797](https://github.com/VincentHardouin/pix-360/commit/57d979703bc5f4e07ba675c7acf75bb6d4a702fc))
+* **navbar:** Improve responsive ([3678edd](https://github.com/VincentHardouin/pix-360/commit/3678edd7ab3dcd998190af2adf4819704f953d82))
+
 ## [1.13.1](https://github.com/VincentHardouin/pix-360/compare/v1.13.0...v1.13.1) (2022-01-21)
 
 
