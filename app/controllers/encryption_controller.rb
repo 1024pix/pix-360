@@ -8,8 +8,9 @@ class EncryptionController < ApplicationController
   def index; end
 
   def save
-    if current_user.valid_password?(password_params)
-      cookies.encrypted[:encryption_password] = password_params
+    password = params[:user][:password]
+    if current_user.valid_password?(password)
+      cookies.encrypted[:encryption_password] = password
       redirect_back_or_default root_url
     else
       flash[:alert] = 'Le mot de passe saisie ne correspond pas.'
@@ -23,7 +24,7 @@ class EncryptionController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(password_params_from_edit)
+    if @user.update(encryption_params)
       @user.create_encryption_keys
       cookies.encrypted[:encryption_password] = params[:user][:password]
       bypass_sign_in @user, scope: :user
@@ -36,13 +37,8 @@ class EncryptionController < ApplicationController
 
   private
 
-  def password_params_from_edit
+  def encryption_params
     params.require(:user).permit(:password, :password_confirmation, :must_change_password)
-  end
-
-  def password_params
-    params.require(:user).permit(:password)
-    params[:user][:password]
   end
 
   def encryption_already_set
