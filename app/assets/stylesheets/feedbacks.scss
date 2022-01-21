@@ -71,8 +71,12 @@
     outline: 0;
     padding: 10px 10px;
     border-radius: 3px;
-    border: 2px solid #DFE1E6;
+    border: 2px solid $grey-20;
     resize: vertical;
+
+    &:focus {
+      border: 2px solid $blue-hover;
+    }
   }
 }
 
