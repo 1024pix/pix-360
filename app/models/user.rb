@@ -48,4 +48,8 @@ class User < ApplicationRecord
     user = User.find_by(id: user_id)
     elliptic_curve.shared_key user.public_key
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

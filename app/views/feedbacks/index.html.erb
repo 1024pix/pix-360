@@ -13,13 +13,13 @@
         <div class="feedback-informations__respondent">
           <% if feedback.is_filled %>
             <% if feedback.giver %>
-              <%= "Remplie par #{feedback.giver.first_name} #{feedback.giver.last_name}" %>
+              <%= "Remplie par #{feedback.giver.full_name}" %>
             <% else %>
               <%= "Remplie par une personne extérieure" %>
             <% end %> 
           <% else %>
             <p>L'évaluation n'a pas encore reçue de réponse</p>
-          <% end %>    
+          <% end %>
         </div>
         <div class="feedback-informations__date">
           <%= feedback.created_at.strftime("%d/%m/%y") %>
