@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/VincentHardouin/pix-360/compare/v1.16.0...v1.16.1) (2022-01-21)
+
+
+### Bug Fixes
+
+* **encryption:** Use good params for encryption_password cookie ([e3ee12a](https://github.com/VincentHardouin/pix-360/commit/e3ee12a0cd12050531c775e1846fc7161a8ea836))
+
 # [1.16.0](https://github.com/VincentHardouin/pix-360/compare/v1.15.0...v1.16.0) (2022-01-21)
 
 
