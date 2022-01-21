@@ -22,10 +22,13 @@ class EncryptionController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
+    @user = current_user
     if @user.update(password_params_from_edit)
       @user.create_encryption_keys
-      redirect_to root_url, notice: 'Votre mot de passe a bien été ajouté'
+      cookies.encrypted[:encryption_password] = params[:password]
+      bypass_sign_in @user, scope: :user
+      flash[:notice] = 'Votre mot de passe a bien été ajouté.'
+      redirect_back_or_default root_url
     else
       render :edit
     end
