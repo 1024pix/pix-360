@@ -25,7 +25,7 @@ class EncryptionController < ApplicationController
     @user = current_user
     if @user.update(password_params_from_edit)
       @user.create_encryption_keys
-      cookies.encrypted[:encryption_password] = params[:password]
+      cookies.encrypted[:encryption_password] = params[:user][:password]
       bypass_sign_in @user, scope: :user
       flash[:notice] = 'Votre mot de passe a bien été ajouté.'
       redirect_back_or_default root_url
