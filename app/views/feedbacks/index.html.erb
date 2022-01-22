@@ -1,7 +1,6 @@
 <main class="index-feedback__page">
   <h1 class="index-feedback__title">Évaluations reçues</h1>
-
-  <% if @feedback %>
+  <% if @feedbacks.present? %>
     <%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
     <div class="index-feedback__row">
       <% @feedbacks.each do |feedback| %>
