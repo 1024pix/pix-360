@@ -1,32 +1,37 @@
 <main class="index-feedback__page">
   <h1 class="index-feedback__title">Évaluations reçues</h1>
 
-  <%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
+  <% if @feedback %>
+    <%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
+    <div class="index-feedback__row">
+      <% @feedbacks.each do |feedback| %>
 
-   <div class="index-feedback__row">
-
-     <% @feedbacks.each do |feedback| %>
-
-      <%= link_to feedback, class: 'feedback' do %>
-        <div class="feedback__information">
-          <div class="feedback-information__respondent">
-            <% if feedback.is_filled %>
-              <% if feedback.giver %>
-                <%= "Remplie par #{feedback.giver.full_name}" %>
+        <%= link_to feedback, class: 'feedback' do %>
+          <div class="feedback__information">
+            <div class="feedback-information__respondent">
+              <% if feedback.is_filled %>
+                <% if feedback.giver %>
+                  <%= "Remplie par #{feedback.giver.full_name}" %>
+                <% else %>
+                  <%= "Remplie par une personne extérieure" %>
+                <% end %>
               <% else %>
-                <%= "Remplie par une personne extérieure" %>
+                <p>L'évaluation n'a pas encore reçue de réponse</p>
               <% end %>
-            <% else %>
-              <p>L'évaluation n'a pas encore reçue de réponse</p>
-            <% end %>
+            </div>
+            <div class="feedback-information__date">
+              <%= feedback.created_at.strftime("%d/%m/%y") %>
+            </div>
           </div>
-          <div class="feedback-information__date">
-            <%= feedback.created_at.strftime("%d/%m/%y") %>
-          </div>
-        </div>
+        <% end %>
+
       <% end %>
-
-    <% end %>
-
-  </div>
+   </div>
+  <% else %>
+    <div class="feedbacks__content">
+      <p class="feedbacks-content__information">Vous n'avez pas encore reçu d'évaluation.</p>
+      <p class="feedbacks-content__details">Vous pouvez demander une évaluation en cliquant sur le bouton ci-dessous : </p>
+      <%= link_to 'Demander une évaluation', new_feedback_path, class: 'feedbacks-content__button pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
+    </div>
+  <% end %>
 </main>
