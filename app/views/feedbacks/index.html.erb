@@ -8,7 +8,7 @@
         <%= link_to feedback, class: 'feedback' do %>
           <div class="feedback__information">
             <div class="feedback-information__respondent">
-              <% if feedback.is_filled %>
+              <% if feedback.is_submitted %>
                 <% if feedback.giver %>
                   <%= "Remplie par #{feedback.giver.full_name}" %>
                 <% else %>
