@@ -44,6 +44,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
           get edit_feedback_url(id: 55_665)
 
           assert_response :redirect
+          assert_equal "L'évaluation est introuvable.", flash[:error]
         end
       end
 
@@ -60,6 +61,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
               # then
               assert_response :redirect
+              assert_equal "Vous n'êtes pas autorisé à éditer cette évaluation.", flash[:error]
             end
 
             test 'should can edit when respondent is equal to current_user' do
@@ -83,6 +85,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
               # then
               assert_response :redirect
+              assert_equal "Vous n'êtes pas autorisé à éditer cette évaluation.", flash[:error]
             end
           end
         end
@@ -93,6 +96,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
             get edit_feedback_url(id: 1), params: { shared_key: 'bad_shared_key', external_user: 'true' }
 
             assert_response :redirect
+            assert_equal "Vous n'êtes pas autorisé à éditer cette évaluation.", flash[:error]
           end
 
           test 'should can edit feedback when shared_key is valid' do
