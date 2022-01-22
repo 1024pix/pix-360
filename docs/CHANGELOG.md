@@ -1,3 +1,11 @@
+# [1.18.0](https://github.com/VincentHardouin/pix-360/compare/v1.17.0...v1.18.0) (2022-01-22)
+
+
+### Features
+
+* **feedbacks:** Add information when user doesn't have feedbacks ([b590a89](https://github.com/VincentHardouin/pix-360/commit/b590a89c768d6a90aea70a1e59f055f8e3c476ab))
+* **feedbacks:** Add information when user has not yet given feedbacks ([848c461](https://github.com/VincentHardouin/pix-360/commit/848c461ea1cea27a5cd16e5636db09165380581f))
+
 # [1.17.0](https://github.com/VincentHardouin/pix-360/compare/v1.16.3...v1.17.0) (2022-01-22)
 
 
