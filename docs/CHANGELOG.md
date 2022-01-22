@@ -1,3 +1,15 @@
+# [1.17.0](https://github.com/VincentHardouin/pix-360/compare/v1.16.3...v1.17.0) (2022-01-22)
+
+
+### Bug Fixes
+
+* **feedbacks_mailer:** template comment validation ([05ef50d](https://github.com/VincentHardouin/pix-360/commit/05ef50da2a7d6b85e765af353481171a46795c91))
+
+
+### Features
+
+* **feedbacks#show:** Add copy link button ([f0a8a27](https://github.com/VincentHardouin/pix-360/commit/f0a8a2775f02264578f37c126ebb7f4580139e71))
+
 ## [1.16.3](https://github.com/VincentHardouin/pix-360/compare/v1.16.2...v1.16.3) (2022-01-22)
 
 
