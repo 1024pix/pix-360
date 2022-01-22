@@ -135,10 +135,20 @@ class FeedbacksController < ApplicationController
   def update_content(is_submitted, success_message, error_message)
     respondent_id = current_user ? current_user.id : nil
     if @feedback.update_content(feedback_params, respondent_id, is_submitted: is_submitted)
-      redirect_to @feedback, flash: { success: success_message }
+      flash[:success] = success_message
+      redirect_after_update
     else
       flash[:error] = error_message
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def redirect_after_update
+    if user_signed_in?
+      redirect_to feedbacks_path
+    else
+      shared_key = params[:feedback][:decrypted_shared_key]
+      redirect_to edit_feedback_path(id: @feedback.id, shared_key: shared_key, external_user: true)
     end
   end
 end
