@@ -36,6 +36,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
+gem 'font-awesome-rails'
 gem 'redcarpet'
 
 group :development, :test do

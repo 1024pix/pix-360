@@ -111,6 +111,8 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.4)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
     hashie (4.1.0)
@@ -294,6 +296,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
+  font-awesome-rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
   omniauth
