@@ -1,5 +1,5 @@
-<main class="index-feedback__page">
-  <h1 class="index-feedback__title">Évaluations reçues</h1>
+<main class="feedbacks__page">
+  <h1 class="feedbacks__title">Évaluations reçues</h1>
   <% if @feedbacks.present? %>
     <%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
     <div class="index-feedback__row">
@@ -8,7 +8,7 @@
         <%= link_to feedback, class: 'feedback' do %>
           <div class="feedback__information">
             <div class="feedback-information__respondent">
-              <% if feedback.is_filled %>
+              <% if feedback.is_submitted %>
                 <% if feedback.giver %>
                   <%= "Remplie par #{feedback.giver.full_name}" %>
                 <% else %>

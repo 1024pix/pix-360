@@ -1,6 +1,6 @@
 <%= javascript_pack_tag 'clipboard' %>
-<main class="show-feedback__page">
-  <h1 class="show-feedback__title">Évaluation</h1>
+<main class="feedbacks__page">
+  <h1 class="feedbacks__title">Évaluation</h1>
 
   <div class="show-feedback__link">
     <button class="show-feedback--link pix-button pix-button--background-blue pix-button--size-big pix-button--shape-rounded" data-clipboard-text="<%= edit_feedback_link @feedback %>">
@@ -9,28 +9,17 @@
     </button>
   </div>
 
-  <div class="show-feedback__field">
-    <div class="show-feedback-field__label">Points positifs</div>
-    <div class="show-feedback-field__input">
-      <%= sanitize markdown(@feedback.decrypted_content[:positive_points]) %>
+  <% if @feedback.is_submitted %>
+    <%= render "content" %>
+  <% else %>
+    <div class="feedbacks-content">
+      <div class="feedbacks-content__information">
+        L'évaluation n'a pas encore reçu de réponse.
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="show-feedback__field">
-    <div class="show-feedback-field__label">Axes d'amélioration</div>
-    <div class="show-feedback-field__input">
-      <%= sanitize markdown(@feedback.decrypted_content[:improvements_areas]) %>
-    </div>
-  </div>
-
-  <div class="show-feedback__field">
-    <div class="show-feedback-field__label">Commentaires</div>
-    <div class="show-feedback-field__input">
-      <%= sanitize markdown(@feedback.decrypted_content[:comments]) %>
-    </div>
-  </div>
-
-  <div class="show-feedback__actions">
+  <div class="feedbacks__actions">
     <%= link_to 'Retour aux évaluations', feedbacks_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
     <%= link_to 'Supprimer', @feedback, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-red' %>
   </div>

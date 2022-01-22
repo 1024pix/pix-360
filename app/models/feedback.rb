@@ -36,11 +36,12 @@ class Feedback < ApplicationRecord
     self.decrypted_shared_key = Aes256GcmEncryption.decrypt(shared_key, encryption_password)
   end
 
-  def update_content(feedback_params, respondent_id = nil)
+  def update_content(feedback_params, respondent_id = nil, is_submitted: false)
     self.content = Aes256GcmEncryption.encrypt(feedback_params[:content].to_json,
                                                feedback_params[:decrypted_shared_key])
     self.respondent_id = respondent_id
     self.is_filled = true
+    self.is_submitted = is_submitted
     save
   end
 
