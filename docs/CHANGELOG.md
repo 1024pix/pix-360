@@ -1,3 +1,10 @@
+## [1.16.3](https://github.com/VincentHardouin/pix-360/compare/v1.16.2...v1.16.3) (2022-01-22)
+
+
+### Bug Fixes
+
+* **feedbacks_mailer:** Change e-mail template ([a623825](https://github.com/VincentHardouin/pix-360/commit/a6238255106c8e9218ac1f490577b0670fc72b31))
+
 ## [1.16.2](https://github.com/VincentHardouin/pix-360/compare/v1.16.1...v1.16.2) (2022-01-21)
 
 
