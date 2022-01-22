@@ -1,6 +1,5 @@
-<main class="edit-feedback__page">
-  <h1 class="edit-feedback__title">Modification de l'évaluation</h1>
-
+<main class="feedbacks__page">
+  <h1 class="feedbacks__title">Modification de l'évaluation</h1>
   <%= form_with model: @feedback, class: 'feedbacks__form' do |form| %>
     <% if @feedback.errors.any? %>
       <div id="error_explanation">
