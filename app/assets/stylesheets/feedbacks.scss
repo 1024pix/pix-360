@@ -253,7 +253,7 @@
   }
 }
 
-.feedback-informations {
+.feedback-information {
   &__respondent {
     font-size: 1.1rem;
     font-weight: $font-normal;
@@ -263,5 +263,37 @@
   &__date {
     font-weight: $font-light;
     font-size: .85rem;
+  }
+}
+
+.feedbacks {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.feedbacks-content {
+  &__information {
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: $font-roboto;
+    font-weight: $font-medium;
+    color: $grey-80;
+  }
+
+  &__details {
+    text-align: center;
+    font-size: 1rem;
+    font-family: $font-roboto;
+    font-weight: $font-normal;
+    margin-bottom: 42px;
+    color: $grey-90;
+  }
+
+  &__button {
+    width: 250px;
   }
 }
