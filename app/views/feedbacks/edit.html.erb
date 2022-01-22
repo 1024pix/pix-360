@@ -5,40 +5,50 @@
       Pour : <%= @feedback.requester.full_name %>
     </div>
   </div>
-  <%= form_with model: @feedback, class: 'feedbacks__form' do |form| %>
-    <% if @feedback.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
-        <ul>
-          <% @feedback.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+  <% if @feedback.is_submitted %>
+    <%= render "content" %>
+
+    <% if user_signed_in? %>
+      <div class="feedbacks__actions">
+        <%= link_to 'Retour aux évaluations', feedbacks_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
       </div>
     <% end %>
+  <% else %>
+    <%= form_with model: @feedback, class: 'feedbacks__form' do |form| %>
+      <% if @feedback.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
-    <%= form.hidden_field :decrypted_shared_key %>
+          <ul>
+            <% @feedback.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-    <div class="feedbacks__field">
-      <label for="feedbacks_content_positive_points" class="feedbacks-field__label">Points positifs</label>
-      <textarea id="feedbacks_content_positive_points"  class="feedbacks-field__input" name="feedback[content][positive_points]"><%= @feedback.decrypted_content[:positive_points] %></textarea>
-    </div>
+      <%= form.hidden_field :decrypted_shared_key %>
 
-    <div class="feedbacks__field">
-      <label for="feedbacks_content_improvements_areas" class="feedbacks-field__label">Axes d'amélioration</label>
-      <textarea id="feedbacks_content_improvements_areas"  class="feedbacks-field__input" name="feedback[content][improvements_areas]"><%= @feedback.decrypted_content[:improvements_areas]%></textarea>
-    </div>
+      <div class="feedbacks__field">
+        <label for="feedbacks_content_positive_points" class="feedbacks-field__label">Points positifs</label>
+        <textarea id="feedbacks_content_positive_points"  class="feedbacks-field__input" name="feedback[content][positive_points]"><%= @feedback.decrypted_content[:positive_points] %></textarea>
+      </div>
 
-    <div class="feedbacks__field">
-      <label for="feedbacks_content_comments" class="feedbacks-field__label">Commentaires</label>
-      <textarea id="feedbacks_content_comments"  class="feedbacks-field__input" name="feedback[content][comments]"><%= @feedback.decrypted_content[:comments]%></textarea>
-    </div>
+      <div class="feedbacks__field">
+        <label for="feedbacks_content_improvements_areas" class="feedbacks-field__label">Axes d'amélioration</label>
+        <textarea id="feedbacks_content_improvements_areas"  class="feedbacks-field__input" name="feedback[content][improvements_areas]"><%= @feedback.decrypted_content[:improvements_areas]%></textarea>
+      </div>
 
-    <div class="feedbacks__actions">
-      <%= form.button "Enregistrer", class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
-      <%= form.button "Enregistrer et envoyer", name: 'submit', data: { confirm: "Êtes-vous certains d'envoyer l'évaluation ? Vous ne pourrez plus la modifier." }, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
-    </div>
+      <div class="feedbacks__field">
+        <label for="feedbacks_content_comments" class="feedbacks-field__label">Commentaires</label>
+        <textarea id="feedbacks_content_comments"  class="feedbacks-field__input" name="feedback[content][comments]"><%= @feedback.decrypted_content[:comments]%></textarea>
+      </div>
+
+      <div class="feedbacks__actions">
+        <%= form.button "Enregistrer", class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
+        <%= form.button "Enregistrer et envoyer", name: 'submit', data: { confirm: "Êtes-vous certains d'envoyer l'évaluation ? Vous ne pourrez plus la modifier." }, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
+      </div>
+    <% end %>
   <% end %>
-
 </main>
