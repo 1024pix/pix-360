@@ -136,7 +136,9 @@
 
   &__link {
     width: 100%;
-    margin-bottom: 21px;
+    margin-bottom: 56px;
+    display: flex;
+    justify-content: center;
   }
 
   &__actions {
@@ -163,18 +165,8 @@
 }
 
 .show-feedback-link {
-  &__label {
-    font-size: 1.2rem;
-    font-weight: $font-normal;
-    color: $grey-80;
-    letter-spacing: .031rem;
-    margin-bottom: 7px;
-  }
-
-  &__value {
-    font-size: 1rem;
-    font-weight: $font-normal;
-    font-weight: $grey-100;
+  &__icon {
+    margin-right: 7px;
   }
 }
 

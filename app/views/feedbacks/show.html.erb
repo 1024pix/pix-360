@@ -1,9 +1,12 @@
+<%= javascript_pack_tag 'clipboard' %>
 <main class="show-feedback__page">
   <h1 class="show-feedback__title">Évaluation</h1>
 
   <div class="show-feedback__link">
-    <div class="show-feedback-link__label">Lien de partage :</div>
-    <p class="show-feedback-link__value"><%= edit_feedback_link @feedback %></p>
+    <button class="show-feedback--link pix-button pix-button--background-blue pix-button--size-big pix-button--shape-rounded" data-clipboard-text="<%= edit_feedback_link @feedback %>">
+      <%= fa_icon "copy", class: "show-feedback-link__icon" %>
+      Copier le lien
+    </button>
   </div>
 
   <div class="show-feedback__field">
