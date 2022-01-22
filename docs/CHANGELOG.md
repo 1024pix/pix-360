@@ -1,3 +1,10 @@
+## [1.18.2](https://github.com/VincentHardouin/pix-360/compare/v1.18.1...v1.18.2) (2022-01-22)
+
+
+### Bug Fixes
+
+* **feedback_mailer:** Revert remove special comments ([2eead84](https://github.com/VincentHardouin/pix-360/commit/2eead84a44b0b11266154313cd7b18c431c68a93))
+
 ## [1.18.1](https://github.com/VincentHardouin/pix-360/compare/v1.18.0...v1.18.1) (2022-01-22)
 
 
