@@ -8,8 +8,8 @@
      <% @feedbacks.each do |feedback| %>
 
       <%= link_to feedback, class: 'feedback' do %>
-        <div class="feedback__informations">
-          <div class="feedback-informations__respondent">
+        <div class="feedback__information">
+          <div class="feedback-information__respondent">
             <% if feedback.is_filled %>
               <% if feedback.giver %>
                 <%= "Remplie par #{feedback.giver.full_name}" %>
@@ -20,7 +20,7 @@
               <p>L'évaluation n'a pas encore reçue de réponse</p>
             <% end %>
           </div>
-          <div class="feedback-informations__date">
+          <div class="feedback-information__date">
             <%= feedback.created_at.strftime("%d/%m/%y") %>
           </div>
         </div>
