@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/VincentHardouin/pix-360/compare/v1.18.0...v1.18.1) (2022-01-22)
+
+
+### Bug Fixes
+
+* **feedbacks:** show feedbacks in index and given pages ([ffb7663](https://github.com/VincentHardouin/pix-360/commit/ffb76639c911b0b179761a46e049554fcc5dd0b3))
+
 # [1.18.0](https://github.com/VincentHardouin/pix-360/compare/v1.17.0...v1.18.0) (2022-01-22)
 
 
