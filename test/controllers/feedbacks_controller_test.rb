@@ -108,4 +108,53 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  class Update < FeedbacksControllerTest
+    test 'it should update feedback content' do
+      patch feedback_path(id: 1),
+            params: { feedback: { 'decrypted_shared_key': 'Azerty123*',
+                                  content: { 'positive_points' => 'foo', 'improvements_areas' => 'foo',
+                                             'comments' => 'foo' } } }
+
+      assert_response :redirect
+      assert_equal "L'évaluation a bien été modifiée.", flash[:success]
+
+      feedback = Feedback.find_by(id: 1)
+      assert_equal true, feedback.is_filled
+      assert_equal false, feedback.is_submitted
+    end
+
+    test 'it should update feedback content and submit it' do
+      patch feedback_path(id: 1),
+            params: { submit: '',
+                      feedback: { 'decrypted_shared_key': 'Azerty123*',
+                                  content: { 'positive_points' => 'foo', 'improvements_areas' => 'foo',
+                                             'comments' => 'foo' } } }
+
+      assert_response :redirect
+      assert_equal "L'évaluation a bien été envoyée.", flash[:success]
+
+      feedback = Feedback.find_by(id: 1)
+      assert_equal true, feedback.is_filled
+      assert_equal true, feedback.is_submitted
+    end
+
+    test 'it should not update feedback when feedback is already submitted' do
+      # given
+      feedback = Feedback.find_by(id: 1)
+      feedback.is_submitted = true
+      feedback.save
+
+      # when
+      patch feedback_path(id: 1),
+            params: { submit: '',
+                      feedback: { 'decrypted_shared_key': 'Azerty123*',
+                                  content: { 'positive_points' => 'foo', 'improvements_areas' => 'foo',
+                                             'comments' => 'foo' } } }
+
+      # then
+      assert_response :redirect
+      assert_equal 'Cette évaluation a déjà été soumise.', flash[:error]
+    end
+  end
 end

@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class FeedbacksController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[edit update]
   before_action :set_feedback, only: %i[show edit update destroy]
   before_action :requester?, only: :show
   before_action :should_seen_sign_in_page, only: :edit
+  before_action :should_be_editable, only: :update
   helper_method :edit_feedback_link
 
   def index
@@ -57,12 +59,12 @@ class FeedbacksController < ApplicationController
   end
 
   def update
-    respondent_id = current_user ? current_user.id : nil
-    if @feedback.update_content(feedback_params, respondent_id)
-      redirect_to @feedback, flash: { success: "L'évaluation a bien été modifiée." }
+    if params[:submit]
+      update_content(true, "L'évaluation a bien été envoyée.",
+                     "Une erreur s'est produite durant l'envoie de l'évaluation.")
     else
-      flash[:error] = "Une erreur s'est produite durant la mise à jour de l'évaluation."
-      render :edit, status: :unprocessable_entity
+      update_content(false, "L'évaluation a bien été modifiée.",
+                     "Une erreur s'est produite durant la mise à jour de l'évaluation.")
     end
   end
 
@@ -104,6 +106,13 @@ class FeedbacksController < ApplicationController
     redirect_to new_user_session_url(feedback: params[:id], shared_key: params[:shared_key]) unless seen_sign_in_page?
   end
 
+  def should_be_editable
+    return unless @feedback.is_submitted
+
+    redirect_to feedbacks_url,
+                flash: { error: 'Cette évaluation a déjà été soumise.' }
+  end
+
   def seen_sign_in_page?
     user_signed_in? || params[:external_user] == 'true'
   end
@@ -122,4 +131,15 @@ class FeedbacksController < ApplicationController
     FeedbackMailer.with(link: edit_feedback_link(@feedback), user: current_user,
                         email: feedback_params[:recipient_email]).feedback_email.deliver_now
   end
+
+  def update_content(is_submitted, success_message, error_message)
+    respondent_id = current_user ? current_user.id : nil
+    if @feedback.update_content(feedback_params, respondent_id, is_submitted: is_submitted)
+      redirect_to @feedback, flash: { success: success_message }
+    else
+      flash[:error] = error_message
+      render :edit, status: :unprocessable_entity
+    end
+  end
 end
+# rubocop:enable Metrics/ClassLength
