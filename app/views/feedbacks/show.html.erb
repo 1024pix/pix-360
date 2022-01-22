@@ -10,26 +10,7 @@
   </div>
 
   <% if @feedback.is_submitted %>
-    <div class="show-feedback__field">
-      <div class="show-feedback-field__label">Points positifs</div>
-      <div class="show-feedback-field__input">
-        <%= sanitize markdown(@feedback.decrypted_content[:positive_points]) %>
-      </div>
-    </div>
-
-    <div class="show-feedback__field">
-      <div class="show-feedback-field__label">Axes d'amélioration</div>
-      <div class="show-feedback-field__input">
-        <%= sanitize markdown(@feedback.decrypted_content[:improvements_areas]) %>
-      </div>
-    </div>
-
-    <div class="show-feedback__field">
-      <div class="show-feedback-field__label">Commentaires</div>
-      <div class="show-feedback-field__input">
-        <%= sanitize markdown(@feedback.decrypted_content[:comments]) %>
-      </div>
-    </div>
+    <%= render "content" %>
   <% else %>
     <div class="feedbacks-content">
       <div class="feedbacks-content__information">
