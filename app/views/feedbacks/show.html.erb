@@ -9,26 +9,34 @@
     </button>
   </div>
 
-  <div class="show-feedback__field">
-    <div class="show-feedback-field__label">Points positifs</div>
-    <div class="show-feedback-field__input">
-      <%= sanitize markdown(@feedback.decrypted_content[:positive_points]) %>
+  <% if @feedback.is_submitted %>
+    <div class="show-feedback__field">
+      <div class="show-feedback-field__label">Points positifs</div>
+      <div class="show-feedback-field__input">
+        <%= sanitize markdown(@feedback.decrypted_content[:positive_points]) %>
+      </div>
     </div>
-  </div>
 
-  <div class="show-feedback__field">
-    <div class="show-feedback-field__label">Axes d'amélioration</div>
-    <div class="show-feedback-field__input">
-      <%= sanitize markdown(@feedback.decrypted_content[:improvements_areas]) %>
+    <div class="show-feedback__field">
+      <div class="show-feedback-field__label">Axes d'amélioration</div>
+      <div class="show-feedback-field__input">
+        <%= sanitize markdown(@feedback.decrypted_content[:improvements_areas]) %>
+      </div>
     </div>
-  </div>
 
-  <div class="show-feedback__field">
-    <div class="show-feedback-field__label">Commentaires</div>
-    <div class="show-feedback-field__input">
-      <%= sanitize markdown(@feedback.decrypted_content[:comments]) %>
+    <div class="show-feedback__field">
+      <div class="show-feedback-field__label">Commentaires</div>
+      <div class="show-feedback-field__input">
+        <%= sanitize markdown(@feedback.decrypted_content[:comments]) %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="feedbacks-content">
+      <div class="feedbacks-content__information">
+        L'évaluation n'a pas encore reçu de réponse.
+      </div>
+    </div>
+  <% end %>
 
   <div class="feedbacks__actions">
     <%= link_to 'Retour aux évaluations', feedbacks_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
