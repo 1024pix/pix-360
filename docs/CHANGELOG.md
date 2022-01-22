@@ -1,3 +1,16 @@
+# [1.19.0](https://github.com/VincentHardouin/pix-360/compare/v1.18.2...v1.19.0) (2022-01-22)
+
+
+### Features
+
+* **feedbacks#edit:** Render content when is submitted and form instead ([636e2c1](https://github.com/VincentHardouin/pix-360/commit/636e2c1208e56efc8333c588f89569b6b2a7cc5e))
+* **feedbacks#index:** Use is_submitted instead of is_filled to show feedback ([097298b](https://github.com/VincentHardouin/pix-360/commit/097298b57ef0046fe9dc04600513760eb9aeb614))
+* **feedbacks#show:** Remove fields when feedback is not submitted ([6f75e0c](https://github.com/VincentHardouin/pix-360/commit/6f75e0c7d43ad26718614257b22e6517fec6478e))
+* **feedbacks#update:** Add submitted action ([8ec239f](https://github.com/VincentHardouin/pix-360/commit/8ec239fcf1713e0d00a96e898aaa56189024a1c4))
+* **feedbacks#update:** Improve redirect after update ([4a04814](https://github.com/VincentHardouin/pix-360/commit/4a04814b37962e4428bf535b5e739ebe527316a5))
+* **feedbacks:** Add requester to edit page ([9b073cd](https://github.com/VincentHardouin/pix-360/commit/9b073cd254e94cc5c8de068f70326c10011c4c4b))
+* **feedbacks:** Extract feedback content fields in content view ([625f533](https://github.com/VincentHardouin/pix-360/commit/625f533c84dd061974f56bab552d65e22f436d5b))
+
 ## [1.18.2](https://github.com/VincentHardouin/pix-360/compare/v1.18.1...v1.18.2) (2022-01-22)
 
 
