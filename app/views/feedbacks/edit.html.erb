@@ -2,7 +2,7 @@
   <h1 class="feedbacks__title">Modification de l'évaluation</h1>
   <div class="feedbacks__content">
     <div class="feedbacks-content__information">
-      Pour : <%= @feedback.requester.full_name %>
+      Pour <%= @feedback.requester.full_name %>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
 
       <div class="feedbacks__actions">
         <%= form.button "Enregistrer", class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>
-        <%= form.button "Enregistrer et envoyer", name: 'submit', data: { confirm: "Êtes-vous certains d'envoyer l'évaluation ? Vous ne pourrez plus la modifier." }, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
+        <%= form.button "Enregistrer et envoyer", name: 'submit', data: { confirm: "Êtes-vous sûr d'envoyer l'évaluation ? Vous ne pourrez plus la modifier." }, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
       </div>
     <% end %>
   <% end %>
