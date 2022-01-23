@@ -1,12 +1,12 @@
-<div class="encryption-index-page">
-  <main class="encryption-index__container">
+<div class="encryption__page">
+  <main class="encryption__container">
 
-    <div class="encryption-index__header">
-      <h1 class="encryption-index-header__title">Authentification</h1>
-      <p class="encryption-index-header__subtitle">Votre mot de passe sert à chiffrer vos données.</p>
+    <div class="encryption__header">
+      <h1 class="encryption-header__title">Authentification</h1>
+      <p class="encryption-header__subtitle">Votre mot de passe sert à chiffrer vos données.</p>
     </div>
 
-    <%= form_with model: current_user, url: encryption_save_path, class: 'encryption-edit__body' do |f| %>
+    <%= form_with model: current_user, url: encryption_save_path, class: 'encryption__body' do |f| %>
       <% if f.object.errors.any? %>
         <div class="alert alert-danger">
           <% f.object.errors.full_messages.each do |message| %>
