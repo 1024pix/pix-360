@@ -5,9 +5,11 @@
       <%= link_to "Évaluations reçues", feedbacks_path, class:"navbar__item" %>
       <%= link_to "Évaluations données", given_feedbacks_path, class:"navbar__item" %>
     </div>
-    <div class="navbar__left">
-      <div class="navbar-left__item">
+    <div class="navbar__user-information">
+      <div class="navbar-user-information__name">
         <%= current_user.full_name %>
+      </div>
+      <div class="navbar-user-information__link">
         <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"navbar__item" %>
       </div>
     </div>

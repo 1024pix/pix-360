@@ -8,15 +8,19 @@
     background-color: $white;
     display: flex;
     margin: 0 4vw 0 4vw;
+    gap: 1em;
+    align-items: center;
+    flex-direction: column;
+
+    @include device-is('tablet') {
+      gap: 0;
+      flex-direction: row;
+    }
 
     .pix-360-logo__image {
       margin: .5em;
       height: 50px;
       width: auto;
-    }
-
-    @include device-is('tablet') {
-      flex-direction: row;
     }
   }
 
@@ -34,28 +38,48 @@
   &__center {
     display: flex;
     flex: 1;
-    gap: 2em;
+    gap: 1em;
     margin: 0 .5em;
     justify-content: center;
+    flex-direction: column;
 
     @include device-is('tablet') {
+      gap: 2em;
       flex-direction: row;
     }
   }
 
-  &__left {
-  display: flex;
-  margin: .5em;
+  &__user-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    @include device-is('tablet') {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.navbar-user-information {
+  &__name {
+    font-family: $font-roboto;
+    font-weight: $font-normal;
+    font-size: 1rem;
+    color: $grey-90;
   }
 
-  .navbar-left {
-    &__item {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 auto;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
+  &__link {
+    font-family: $font-roboto;
+    font-weight: $font-light;
+    font-size: 1rem;
+    color: $blue-zodiac;
+    text-decoration: none;
+
+    &:hover {
+      color: $blue;
     }
   }
 }
