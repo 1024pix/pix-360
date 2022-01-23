@@ -1,3 +1,11 @@
+## [1.19.1](https://github.com/VincentHardouin/pix-360/compare/v1.19.0...v1.19.1) (2022-01-23)
+
+
+### Bug Fixes
+
+* **navbar:** Add deleting responsive css ([dc715d7](https://github.com/VincentHardouin/pix-360/commit/dc715d73cb98a74b80f930e46c197cb7891c8611))
+* **routes:** Redirect to feedbacks index ([4b8288c](https://github.com/VincentHardouin/pix-360/commit/4b8288c071337422cacb54869aff7efd14138389))
+
 # [1.19.0](https://github.com/VincentHardouin/pix-360/compare/v1.18.2...v1.19.0) (2022-01-22)
 
 
