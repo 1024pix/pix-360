@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/VincentHardouin/pix-360/compare/v1.19.1...v1.20.0) (2022-01-23)
+
+
+### Features
+
+* Improve wording ([15c1e87](https://github.com/VincentHardouin/pix-360/commit/15c1e87a03ba2e09616ae076012bf127d15c9a28))
+
 ## [1.19.1](https://github.com/VincentHardouin/pix-360/compare/v1.19.0...v1.19.1) (2022-01-23)
 
 
