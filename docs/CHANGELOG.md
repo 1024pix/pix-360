@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/VincentHardouin/pix-360/compare/v1.21.0...v1.22.0) (2022-01-25)
+
+
+### Features
+
+* **feedbacks#edit:** Add logo ([bf5bd0f](https://github.com/VincentHardouin/pix-360/commit/bf5bd0fd74b4a01ee72f3d67d922ff5620792f78))
+
 # [1.21.0](https://github.com/VincentHardouin/pix-360/compare/v1.20.0...v1.21.0) (2022-01-25)
 
 
