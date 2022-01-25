@@ -1,4 +1,9 @@
 <main class="feedbacks__page">
+  <% unless user_signed_in? %>
+    <div class="feedbacks__logo">
+      <%= image_tag "pix-360-logo.svg", :class => "pix-360-logo__image"%>
+    </div>
+  <% end %>
   <% if @feedback.is_submitted %>
     <h1 class="feedbacks__title">Évaluation envoyée</h1>
     <div class="feedbacks__content">
