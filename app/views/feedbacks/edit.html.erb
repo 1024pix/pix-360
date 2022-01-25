@@ -1,12 +1,14 @@
 <main class="feedbacks__page">
-  <h1 class="feedbacks__title">Modification de l'évaluation</h1>
-  <div class="feedbacks__content">
-    <div class="feedbacks-content__information">
-      Pour <%= @feedback.requester.full_name %>
-    </div>
-  </div>
-
   <% if @feedback.is_submitted %>
+    <h1 class="feedbacks__title">Évaluation envoyée</h1>
+    <div class="feedbacks__content">
+      <div class="feedbacks-content__information">
+        Pour <%= @feedback.requester.full_name %>
+      </div>
+      <div class="feedbacks-content__details">
+        Le <%= @feedback.updated_at.strftime("%d/%m/%Y") %>
+      </div>
+    </div>
     <%= render "content" %>
 
     <% if user_signed_in? %>
@@ -15,6 +17,16 @@
       </div>
     <% end %>
   <% else %>
+    <h1 class="feedbacks__title">Modification de l'évaluation</h1>
+    <div class="feedbacks__content">
+      <div class="feedbacks-content__information">
+        Pour <%= @feedback.requester.full_name %>
+      </div>
+      <div class="feedbacks-content__details">
+        Démandée le <%= @feedback.created_at.strftime("%d/%m/%Y") %>
+      </div>
+    </div>
+
     <%= form_with model: @feedback, class: 'feedbacks__form' do |form| %>
       <% if @feedback.errors.any? %>
         <div id="error_explanation">
