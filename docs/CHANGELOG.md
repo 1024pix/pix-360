@@ -1,3 +1,11 @@
+# [1.21.0](https://github.com/VincentHardouin/pix-360/compare/v1.20.0...v1.21.0) (2022-01-25)
+
+
+### Features
+
+* **feedbacks#edit:** Add title and date ([a2ab586](https://github.com/VincentHardouin/pix-360/commit/a2ab5861d2b0f930b86004beb6592289386efc3e))
+* **feedbacks#show:** Add date and giver details ([191221c](https://github.com/VincentHardouin/pix-360/commit/191221c50ca13d496e61cf8d452a6d789b0aa0cd))
+
 # [1.20.0](https://github.com/VincentHardouin/pix-360/compare/v1.19.1...v1.20.0) (2022-01-23)
 
 
