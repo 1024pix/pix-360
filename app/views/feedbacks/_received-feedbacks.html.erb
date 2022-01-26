@@ -1,0 +1,24 @@
+<div class="index-feedback__row">
+  <% feedbacks.each do |feedback| %>
+
+    <%= link_to feedback, class: 'feedback' do %>
+      <div class="feedback__information">
+        <div class="feedback-information__respondent">
+          <% if feedback.is_submitted %>
+            <% if feedback.giver %>
+              <%= "Remplie par #{feedback.giver.full_name}" %>
+            <% else %>
+              <%= "Remplie par une personne extérieure" %>
+            <% end %>
+          <% else %>
+            <p>L'évaluation n'a pas encore reçu de réponse</p>
+          <% end %>
+        </div>
+        <div class="feedback-information__date">
+          <%= feedback.created_at.strftime("%d/%m/%y") %>
+        </div>
+      </div>
+    <% end %>
+
+  <% end %>
+</div>

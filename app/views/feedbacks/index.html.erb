@@ -1,31 +1,28 @@
 <main class="feedbacks__page">
   <h1 class="feedbacks__title">Évaluations reçues</h1>
   <% if @feedbacks.present? %>
-    <%= link_to 'Demander une évaluation', new_feedback_path, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
-    <div class="index-feedback__row">
-      <% @feedbacks.each do |feedback| %>
+    <%= link_to 'Demander une évaluation', new_feedback_path, class: 'index-feedback__button pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
 
-        <%= link_to feedback, class: 'feedback' do %>
-          <div class="feedback__information">
-            <div class="feedback-information__respondent">
-              <% if feedback.is_submitted %>
-                <% if feedback.giver %>
-                  <%= "Remplie par #{feedback.giver.full_name}" %>
-                <% else %>
-                  <%= "Remplie par une personne extérieure" %>
-                <% end %>
-              <% else %>
-                <p>L'évaluation n'a pas encore reçu de réponse</p>
-              <% end %>
-            </div>
-            <div class="feedback-information__date">
-              <%= feedback.created_at.strftime("%d/%m/%y") %>
-            </div>
-          </div>
-        <% end %>
+    <h2 class="feedbacks__subtitle">Évaluations en attente</h2>
 
-      <% end %>
-   </div>
+    <% if @feedbacks.not_submitted.present? %>
+      <%= render "received-feedbacks", feedbacks: @feedbacks.not_submitted %>
+    <% else %>
+      <div class="feedbacks__content">
+        <div class="feedbacks-content__information">Vous n'avez pas d'évaluation en attente.</div>
+      </div>
+    <% end %>
+
+    <h2 class="feedbacks__subtitle">Évaluations reçues</h2>
+
+    <% if @feedbacks.submitted.present? %>
+      <%= render "received-feedbacks", feedbacks: @feedbacks.submitted %>
+    <% else %>
+      <div class="feedbacks__content">
+        <div class="feedbacks-content__information">Vous n'avez pas encore reçue d'évaluation.</div>
+      </div>
+    <% end %>
+
   <% else %>
     <div class="feedbacks__content">
       <p class="feedbacks-content__information">Vous n'avez pas encore reçu d'évaluation.</p>

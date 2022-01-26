@@ -7,6 +7,9 @@ require('bcrypt')
 class Feedback < ApplicationRecord
   attr_accessor :decrypted_shared_key, :decrypted_content
 
+  scope :not_submitted, -> { where(is_submitted: false) }
+  scope :submitted, -> { where(is_submitted: true) }
+
   belongs_to :giver, class_name: 'User', optional: true, foreign_key: 'respondent_id', inverse_of: :given_feedbacks
   belongs_to :requester, class_name: 'User', inverse_of: :received_feedbacks
 
