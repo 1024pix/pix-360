@@ -1,3 +1,12 @@
+# [1.24.0](https://github.com/VincentHardouin/pix-360/compare/v1.23.0...v1.24.0) (2022-01-26)
+
+
+### Features
+
+* **feedbacks#new:** Add full_name input in feedback ([7176d5d](https://github.com/VincentHardouin/pix-360/commit/7176d5d081ebe0dfa6fb59527f01151bf7b1baf2))
+* **feedbacks#new:** Encrypt respondent_information ([130358a](https://github.com/VincentHardouin/pix-360/commit/130358a6a34b198b0740e6d5754c57d6c58d8b3d))
+* **feedbacks:** Use respondent_information to improve context information ([1891a1a](https://github.com/VincentHardouin/pix-360/commit/1891a1af8dcb7cd292c7f7682b620e9c32cd95c1))
+
 # [1.23.0](https://github.com/VincentHardouin/pix-360/compare/v1.22.0...v1.23.0) (2022-01-26)
 
 
