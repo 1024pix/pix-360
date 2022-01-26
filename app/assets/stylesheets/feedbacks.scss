@@ -34,10 +34,27 @@
     }
   }
 
+  &__subtitle {
+    font-family: $font-open-sans;
+    font-weight: $font-normal;
+    font-size: 1.2rem;
+    color: $grey-70;
+    margin-top: 0;
+    margin-bottom: 32px;
+    text-align: center;
+    width: 100%;
+
+    @include device-is('desktop') {
+      font-size: 1.6rem;
+      text-align: left;
+    }
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 32px;
   }
 
   &__form {
@@ -156,15 +173,19 @@
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
-    margin-top: 40px;
+    margin-bottom: 40px;
     align-items: center;
     align-content: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 25px;
 
     @include device-is('tablet') {
       flex-direction: row;
     }
+  }
+
+  &__button {
+    margin-bottom: 40px;
   }
 }
 
@@ -173,13 +194,18 @@
   flex-direction: column;
   text-align: center;
   min-height: 100px;
-  width: 350px;
+  max-width: 400px;
+  width: 80%;
   box-shadow: 0 3px 4px 0 rgba(12, 22, 58, 0.1), 0 1px 3px 0 rgba($grey-200, 0.1);
   border-radius: 11px;
   border: 1px solid $grey-20;
   transition: all 0.1s linear;
   text-decoration: none;
   color: $grey-100;
+
+  @include device-is('tablet') {
+    width: 48%;
+  }
 
   p {
     margin: 0;
@@ -224,6 +250,11 @@
     font-family: $font-roboto;
     font-weight: $font-medium;
     color: $grey-80;
+
+    &--light {
+      font-size: 1.1rem;
+      font-weight: $font-normal;
+    }
   }
 
   &__details {
