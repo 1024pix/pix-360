@@ -250,6 +250,11 @@
     font-family: $font-roboto;
     font-weight: $font-medium;
     color: $grey-80;
+
+    &--light {
+      font-size: 1.1rem;
+      font-weight: $font-normal;
+    }
   }
 
   &__details {

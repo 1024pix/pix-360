@@ -8,7 +8,7 @@
       <%= render "given-feedbacks", feedbacks: @feedbacks.not_submitted %>
     <% else %>
       <div class="feedbacks__content">
-        <div class="feedbacks-content__information">Vous n'avez pas d'évaluation en attente d'envoi.</div>
+        <div class="feedbacks-content__information feedbacks-content__information--light">Vous n'avez pas d'évaluation en attente d'envoi.</div>
       </div>
     <% end %>
 
@@ -17,7 +17,7 @@
       <%= render "given-feedbacks", feedbacks: @feedbacks.submitted %>
     <% else %>
       <div class="feedbacks__content">
-        <div class="feedbacks-content__information">Vous n'avez pas encore donné d'évaluation.</div>
+        <div class="feedbacks-content__information feedbacks-content__information--light">Vous n'avez pas encore donné d'évaluation.</div>
       </div>
     <% end %>
 
