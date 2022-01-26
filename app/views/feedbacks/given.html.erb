@@ -2,22 +2,25 @@
   <h1 class="feedbacks__title">Évaluations données</h1>
 
   <% if @feedbacks.present? %>
-    <div class="index-feedback__row">
-      <% @feedbacks.each do |feedback| %>
+    <h2 class="feedbacks__subtitle">Évaluations en attente d'envoi</h2>
 
-        <%= link_to edit_feedback_path(feedback), class: 'feedback' do %>
-          <div class="feedback__information">
-            <div class="feedback-information__respondent">
-                  <%= "Remplie pour #{feedback.requester.full_name}" %>
-            </div>
-            <div class="feedback-information__date">
-              <%= feedback.created_at.strftime("%d/%m/%y") %>
-            </div>
-          </div>
-        <% end %>
+    <% if @feedbacks.not_submitted.present? %>
+      <%= render "given-feedbacks", feedbacks: @feedbacks.not_submitted %>
+    <% else %>
+      <div class="feedbacks__content">
+        <div class="feedbacks-content__information">Vous n'avez pas d'évaluation en attente d'envoi.</div>
+      </div>
+    <% end %>
 
-      <% end %>
-    </div>
+    <h2 class="feedbacks__subtitle">Évaluations envoyées</h2>
+    <% if @feedbacks.submitted.present? %>
+      <%= render "given-feedbacks", feedbacks: @feedbacks.submitted %>
+    <% else %>
+      <div class="feedbacks__content">
+        <div class="feedbacks-content__information">Vous n'avez pas encore donné d'évaluation.</div>
+      </div>
+    <% end %>
+
   <% else %>
     <div class="feedbacks__content">
       <p class="feedbacks-content__information">Vous n'avez pas encore donné d'évaluation.</p>
