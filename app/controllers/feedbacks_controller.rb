@@ -10,16 +10,22 @@ class FeedbacksController < ApplicationController
   helper_method :edit_feedback_link
 
   def index
-    @feedbacks = current_user.received_feedbacks.order(created_at: :desc)
+    encryption_password = cookies.encrypted[:encryption_password]
+    @awaiting_feedbacks = current_user.received_feedbacks.not_submitted.order(created_at: :desc)
+    @awaiting_feedbacks.each { |feedback| feedback.decrypt_respondent_information(encryption_password) }
+    @submitted_feedbacks = current_user.received_feedbacks.submitted.order(created_at: :desc)
+    @submitted_feedbacks.each { |feedback| feedback.decrypt_respondent_information(encryption_password) }
   end
 
   def show
+    encryption_password = cookies.encrypted[:encryption_password]
     shared_key = if @feedback.respondent_id
                    shared_key_with @feedback.respondent_id
                  else
-                   @feedback.decrypt_shared_key cookies.encrypted[:encryption_password]
+                   @feedback.decrypt_shared_key encryption_password
                  end
     decrypt_content shared_key
+    @feedback.decrypt_respondent_information encryption_password
   end
 
   def new
@@ -48,7 +54,8 @@ class FeedbacksController < ApplicationController
   # rubocop:enable Metrics/AbcSize
 
   def create
-    @feedback = current_user.received_feedbacks.create_with_shared_key(feedback_params, cookies.encrypted[:encryption_password])
+    @feedback = current_user.received_feedbacks.create_with_shared_key(feedback_params,
+                                                                       cookies.encrypted[:encryption_password])
     if @feedback.save
       send_feedback_request_mail
       redirect_to @feedback, flash: { success: "L'évaluation a été demandée avec succès." }
@@ -86,7 +93,8 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.fetch(:feedback, {}).permit(:decrypted_shared_key, content: %w[positive_points improvements_areas comments], respondent_information: %w[email full_name])
+    params.fetch(:feedback, {}).permit(:decrypted_shared_key, content: %w[positive_points improvements_areas comments],
+                                                              respondent_information: %w[email full_name])
   end
 
   def requester?

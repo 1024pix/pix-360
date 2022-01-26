@@ -5,7 +5,7 @@ require('elliptic_curve')
 require('bcrypt')
 
 class Feedback < ApplicationRecord
-  attr_accessor :decrypted_shared_key, :decrypted_content
+  attr_accessor :decrypted_shared_key, :decrypted_content, :decrypted_respondent_information
 
   scope :not_submitted, -> { where(is_submitted: false) }
   scope :submitted, -> { where(is_submitted: true) }
@@ -41,6 +41,11 @@ class Feedback < ApplicationRecord
   def decrypt_content
     decrypted_stringify_content = Aes256GcmEncryption.decrypt(content, decrypted_shared_key)
     self.decrypted_content = ActiveSupport::JSON.decode(decrypted_stringify_content).symbolize_keys
+  end
+
+  def decrypt_respondent_information(encryption_password)
+    decrypted_stringify_info = Aes256GcmEncryption.decrypt(respondent_information, encryption_password)
+    self.decrypted_respondent_information = ActiveSupport::JSON.decode(decrypted_stringify_info).symbolize_keys
   end
 
   def decrypt_shared_key(encryption_password)
