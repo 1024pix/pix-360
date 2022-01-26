@@ -1,3 +1,11 @@
+# [1.23.0](https://github.com/VincentHardouin/pix-360/compare/v1.22.0...v1.23.0) (2022-01-26)
+
+
+### Features
+
+* **feedbacks#given:** Filter feedbacks ([3e9e765](https://github.com/VincentHardouin/pix-360/commit/3e9e7652bc42f4ad1d9b967a47413b0b2e3bb0c9))
+* **feedbacks#index:** Filter feedbacks ([a4bdfe0](https://github.com/VincentHardouin/pix-360/commit/a4bdfe0eedce01c72dc0292ab60aff113d455c0b))
+
 # [1.22.0](https://github.com/VincentHardouin/pix-360/compare/v1.21.0...v1.22.0) (2022-01-25)
 
 
