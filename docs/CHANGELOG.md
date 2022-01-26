@@ -1,3 +1,12 @@
+## [1.24.1](https://github.com/VincentHardouin/pix-360/compare/v1.24.0...v1.24.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* **a11y:** Add missing alt in logo in edit feedback ([9d1e007](https://github.com/VincentHardouin/pix-360/commit/9d1e007c1de428167ead8db96cbd7b0e012e6936))
+* **a11y:** Add missing alt in logo in navbar ([22fa6b9](https://github.com/VincentHardouin/pix-360/commit/22fa6b9224b9f47bac2984e2b78062a6a0a50014))
+* **a11y:** Add missing lang ([7a4d4c3](https://github.com/VincentHardouin/pix-360/commit/7a4d4c3f8e07eec25434f4a626d8fa89535c4fb7))
+
 # [1.24.0](https://github.com/VincentHardouin/pix-360/compare/v1.23.0...v1.24.0) (2022-01-26)
 
 
