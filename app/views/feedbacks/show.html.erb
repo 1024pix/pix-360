@@ -5,7 +5,7 @@
   <% if @feedback.is_submitted %>
     <div class="feedbacks-content">
       <div class="feedbacks-content__information">
-        <%= @feedback.giver ? "Par #{@feedback.giver.full_name}" : "Par une personne extérieure" %>
+        <%= @feedback.giver ? "Par #{@feedback.giver.full_name}" : "Par #{@feedback.decrypted_respondent_information[:full_name]}" %>
       </div>
       <div class="feedbacks-content__details">
         Reçue le <%= @feedback.updated_at.strftime("%d/%m/%Y") %>
@@ -17,7 +17,7 @@
   <% else %>
     <div class="feedbacks-content">
       <div class="feedbacks-content__details">
-        Démandée le <%= @feedback.created_at.strftime("%d/%m/%Y") %>
+        Démandée le <%= @feedback.created_at.strftime("%d/%m/%Y") %> à <%= @feedback.decrypted_respondent_information[:full_name] %>
       </div>
     </div>
 

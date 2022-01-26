@@ -1,12 +1,12 @@
 <main class="feedbacks__page">
   <h1 class="feedbacks__title">Évaluations reçues</h1>
-  <% if @feedbacks.present? %>
+  <% if @awaiting_feedbacks.present? || @submitted_feedbacks.present? %>
     <%= link_to 'Demander une évaluation', new_feedback_path, class: 'index-feedback__button pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
 
     <h2 class="feedbacks__subtitle">Évaluations en attente</h2>
 
-    <% if @feedbacks.not_submitted.present? %>
-      <%= render "received-feedbacks", feedbacks: @feedbacks.not_submitted %>
+    <% if @awaiting_feedbacks.present? %>
+      <%= render "received-feedbacks", feedbacks: @awaiting_feedbacks %>
     <% else %>
       <div class="feedbacks__content">
         <div class="feedbacks-content__information feedbacks-content__information--light">Vous n'avez pas d'évaluation en attente.</div>
@@ -15,8 +15,8 @@
 
     <h2 class="feedbacks__subtitle">Évaluations reçues</h2>
 
-    <% if @feedbacks.submitted.present? %>
-      <%= render "received-feedbacks", feedbacks: @feedbacks.submitted %>
+    <% if @submitted_feedbacks.present? %>
+      <%= render "received-feedbacks", feedbacks: @submitted_feedbacks %>
     <% else %>
       <div class="feedbacks__content">
         <div class="feedbacks-content__information feedbacks-content__information--light">Vous n'avez pas encore reçu d'évaluation.</div>

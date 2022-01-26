@@ -5,13 +5,9 @@
       <div class="feedback__information">
         <div class="feedback-information__respondent">
           <% if feedback.is_submitted %>
-            <% if feedback.giver %>
-              <%= "Remplie par #{feedback.giver.full_name}" %>
-            <% else %>
-              <%= "Remplie par une personne extérieure" %>
-            <% end %>
+            <%= "Remplie par #{feedback.giver ? feedback.giver.full_name : feedback.decrypted_respondent_information[:full_name]}" %>
           <% else %>
-            <p>L'évaluation n'a pas encore reçu de réponse</p>
+            <%= "Demandée à #{feedback.decrypted_respondent_information[:full_name]}" %>
           <% end %>
         </div>
         <div class="feedback-information__date">
