@@ -11,7 +11,7 @@ class FeedbackTest < ActiveSupport::TestCase
     end
 
     test 'should create feedback from user and create shared_key' do
-      feedback = @user.received_feedbacks.create_with_shared_key 'toto123'
+      feedback = @user.received_feedbacks.create_with_shared_key({ email: 'foo@example.net' }, 'toto123')
       assert_not_empty feedback.shared_key
       assert_not_empty feedback.shared_key_hash
 
