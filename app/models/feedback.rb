@@ -13,8 +13,8 @@ class Feedback < ApplicationRecord
   belongs_to :giver, class_name: 'User', optional: true, foreign_key: 'respondent_id', inverse_of: :given_feedbacks
   belongs_to :requester, class_name: 'User', inverse_of: :received_feedbacks
 
-  def self.create_with_shared_key(encryption_password)
-    f = Feedback.new
+  def self.create_with_shared_key(feedback_params, encryption_password)
+    f = Feedback.new(feedback_params)
     keys = EllipticCurve.new
     shared_key = keys.shared_key(f.requester.public_key)
     f.decrypted_shared_key = shared_key

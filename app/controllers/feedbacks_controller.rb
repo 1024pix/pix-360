@@ -48,7 +48,7 @@ class FeedbacksController < ApplicationController
   # rubocop:enable Metrics/AbcSize
 
   def create
-    @feedback = current_user.received_feedbacks.create_with_shared_key cookies.encrypted[:encryption_password]
+    @feedback = current_user.received_feedbacks.create_with_shared_key(feedback_params, cookies.encrypted[:encryption_password])
     if @feedback.save
       send_feedback_request_mail
       redirect_to @feedback, flash: { success: "L'évaluation a été demandée avec succès." }
@@ -86,8 +86,7 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.fetch(:feedback, {}).permit(:decrypted_shared_key,
-                                       :recipient_email, content: %w[positive_points improvements_areas comments])
+    params.fetch(:feedback, {}).permit(:decrypted_shared_key, content: %w[positive_points improvements_areas comments], respondent_information: %w[email full_name])
   end
 
   def requester?
@@ -129,7 +128,7 @@ class FeedbacksController < ApplicationController
 
   def send_feedback_request_mail
     FeedbackMailer.with(link: edit_feedback_link(@feedback), user: current_user,
-                        email: feedback_params[:recipient_email]).feedback_email.deliver_now
+                        email: feedback_params[:respondent_information][:email]).feedback_email.deliver_now
   end
 
   def update_content(is_submitted, success_message, error_message)
