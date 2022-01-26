@@ -14,15 +14,23 @@ class Feedback < ApplicationRecord
   belongs_to :requester, class_name: 'User', inverse_of: :received_feedbacks
 
   def self.create_with_shared_key(feedback_params, encryption_password)
-    f = Feedback.new(feedback_params)
-    keys = EllipticCurve.new
-    shared_key = keys.shared_key(f.requester.public_key)
-    f.decrypted_shared_key = shared_key
-    f.shared_key = Aes256GcmEncryption.encrypt(shared_key, encryption_password)
-    f.shared_key_hash = BCrypt::Password.create(shared_key)
+    f = Feedback.new
+    f.create_shared_key_and_hash(encryption_password)
+    f.respondent_information = Aes256GcmEncryption.encrypt(feedback_params[:respondent_information].to_json,
+                                                           encryption_password)
     f.create_content
     f.save
     f
+  end
+
+  def create_shared_key_and_hash(encryption_password)
+    keys = EllipticCurve.new
+    shared_key = keys.shared_key(requester.public_key)
+    keys = EllipticCurve.new
+    self.shared_key = keys.shared_key(requester.public_key)
+    self.decrypted_shared_key = shared_key
+    self.shared_key = Aes256GcmEncryption.encrypt(shared_key, encryption_password)
+    self.shared_key_hash = BCrypt::Password.create(shared_key)
   end
 
   def create_content
