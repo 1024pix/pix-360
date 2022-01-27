@@ -58,15 +58,3 @@ body {
     color: $green-alert-dark;
   }
 }
-
-a {
-  color: $blue;
-
-  &:hover {
-    color: $blue-hover;
-  }
-
-  &:visited {
-    color: $blue;
-  }
-}
