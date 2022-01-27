@@ -57,11 +57,23 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
               sign_in_and_set_encryption users(:two)
 
               # when
-              get edit_feedback_url(id: 3)
+              get edit_feedback_url(id: 4)
 
               # then
               assert_response :redirect
               assert_equal "Vous n'êtes pas autorisé à éditer cette évaluation.", flash[:error]
+            end
+
+            test 'should redirect when respondent is equal to requester' do
+              # given
+              sign_in_and_set_encryption users(:two)
+
+              # when
+              get edit_feedback_url(id: 3)
+
+              # then
+              assert_response :redirect
+              assert_equal "Vous n'êtes pas autorisé à éditer votre évaluation.", flash[:error]
             end
 
             test 'should can edit when respondent is equal to current_user' do

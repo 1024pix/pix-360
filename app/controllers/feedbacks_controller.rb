@@ -6,6 +6,7 @@ class FeedbacksController < ApplicationController
   before_action :set_feedback, only: %i[show edit update destroy]
   before_action :requester?, only: :show
   before_action :should_seen_sign_in_page, only: :edit
+  before_action :not_requester?, only: :edit
   before_action :should_be_editable, only: :update
   helper_method :edit_feedback_link
 
@@ -102,6 +103,13 @@ class FeedbacksController < ApplicationController
 
     redirect_to feedbacks_url,
                 flash: { error: "Vous n'êtes pas autorisé à consulter cette évaluation." }
+  end
+
+  def not_requester?
+    return if !user_signed_in? || @feedback.requester_id != current_user.id
+
+    redirect_to feedbacks_url,
+                flash: { error: "Vous n'êtes pas autorisé à éditer votre évaluation." }
   end
 
   def edit_feedback_link(feedback)
