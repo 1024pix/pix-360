@@ -1,3 +1,15 @@
+# [1.25.0](https://github.com/VincentHardouin/pix-360/compare/v1.24.1...v1.25.0) (2022-01-27)
+
+
+### Bug Fixes
+
+* **feedbacks#edit:** Block access to requester ([b90ecf8](https://github.com/VincentHardouin/pix-360/commit/b90ecf8c007d97e1104271ba24dc16df5cf3f448))
+
+
+### Features
+
+* **feedbacks#edit:** Add markdown information ([0ea5b3c](https://github.com/VincentHardouin/pix-360/commit/0ea5b3c97b957a7675cee71668e6a802ba9a9720))
+
 ## [1.24.1](https://github.com/VincentHardouin/pix-360/compare/v1.24.0...v1.24.1) (2022-01-26)
 
 
