@@ -6,9 +6,9 @@
     "npm": "6"
   },
   "dependencies": {
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
+    "@rails/actioncable": "^7.0.1",
+    "@rails/activestorage": "^7.0.1",
+    "@rails/ujs": "^7.0.1",
     "@rails/webpacker": "5.4.3",
     "clipboard": "^2.0.8",
     "turbolinks": "^5.2.0",
