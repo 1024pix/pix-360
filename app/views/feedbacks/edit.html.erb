@@ -47,6 +47,12 @@
 
       <%= form.hidden_field :decrypted_shared_key %>
 
+      <div class="feedbacks-content">
+        <div class="feedbacks-content__details">
+          Les champs de saisie de ce formulaire acceptent <a href="https://www.markdownguide.org/cheat-sheet/">le markdown</a>.
+        </div>
+      </div>
+
       <div class="feedbacks__field">
         <label for="feedbacks_content_positive_points" class="feedbacks-field__label">Points positifs</label>
         <textarea id="feedbacks_content_positive_points"  class="feedbacks-field__input" name="feedback[content][positive_points]"><%= @feedback.decrypted_content[:positive_points] %></textarea>
