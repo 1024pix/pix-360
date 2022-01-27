@@ -264,6 +264,14 @@
     font-weight: $font-normal;
     margin-bottom: 42px;
     color: $grey-90;
+
+    a {
+      color: $blue;
+
+      &:hover {
+        color: $blue-hover;
+      }
+    }
   }
 
   &__button {
