@@ -1,3 +1,15 @@
+# [1.26.0](https://github.com/VincentHardouin/pix-360/compare/v1.25.0...v1.26.0) (2022-01-27)
+
+
+### Bug Fixes
+
+* Revert global anchor style ([1462ea4](https://github.com/VincentHardouin/pix-360/commit/1462ea4cc4413fd61d79af390cfcca3df19714ec))
+
+
+### Features
+
+* Improve anchor style in feedbacks details ([5a9f460](https://github.com/VincentHardouin/pix-360/commit/5a9f460a36c8d2b8f63de17bac5ff8f8aa762a29))
+
 # [1.25.0](https://github.com/VincentHardouin/pix-360/compare/v1.24.1...v1.25.0) (2022-01-27)
 
 
