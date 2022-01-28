@@ -70,6 +70,8 @@ class FeedbacksController < ApplicationController
     if params[:submit]
       update_content(true, "L'évaluation a bien été envoyée.",
                      "Une erreur s'est produite durant l'envoie de l'évaluation.")
+      FeedbackMailer.with(link: feedbacks_path(@feedback),
+                          email: @feedback.requester.email).new_received_email.deliver_now
     else
       update_content(false, "L'évaluation a bien été modifiée.",
                      "Une erreur s'est produite durant la mise à jour de l'évaluation.")
@@ -144,7 +146,7 @@ class FeedbacksController < ApplicationController
 
   def send_feedback_request_mail
     FeedbackMailer.with(link: edit_feedback_link(@feedback), user: current_user,
-                        email: feedback_params[:respondent_information][:email]).feedback_email.deliver_now
+                        email: feedback_params[:respondent_information][:email]).new_request_email.deliver_now
   end
 
   def update_content(is_submitted, success_message, error_message)
