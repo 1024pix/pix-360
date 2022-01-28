@@ -144,7 +144,7 @@ class FeedbacksController < ApplicationController
 
   def send_feedback_request_mail
     FeedbackMailer.with(link: edit_feedback_link(@feedback), user: current_user,
-                        email: feedback_params[:respondent_information][:email]).feedback_email.deliver_now
+                        email: feedback_params[:respondent_information][:email]).new_request_email.deliver_now
   end
 
   def update_content(is_submitted, success_message, error_message)
