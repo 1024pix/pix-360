@@ -1,7 +1,7 @@
 <div class="users__sign-in">
   <main class="sign-in-form__container">
 
-    <%= image_tag "pix-360-logo.svg", :class => "pix-360-logo__image"%>
+    <%= image_tag "pix-360-logo.svg", alt: 'Logo Pix 360', :class => "pix-360-logo__image"%>
 
     <div class="sign-in-form__header">
       <h1 class="sign-in-form-title">Connectez-vous</h1>
@@ -9,7 +9,7 @@
 
     <form class="sign-in-form__body">
       <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, :class=>"sign-in-form-body__google-connect-link" do %>
-        <%= image_tag "logo_google.svg", :class => "sign-in-form-google-connect-link__logo"%>
+        <%= image_tag "logo_google.svg", alt: '', :class => "sign-in-form-google-connect-link__logo"%>
         <%= content_tag :span, "Se connecter avec Google", :class => "sign-in-form-google-connect-link__text" %>
       <% end %>
 
