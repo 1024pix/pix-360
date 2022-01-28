@@ -1,3 +1,11 @@
+# [1.29.0](https://github.com/VincentHardouin/pix-360/compare/v1.28.0...v1.29.0) (2022-01-28)
+
+
+### Features
+
+* Add new email template for submit feedback ([267f60e](https://github.com/VincentHardouin/pix-360/commit/267f60e389bc9214976c86526cfaeb546df39982))
+* **feedback:** Send e-mail when feedback is submitted ([9cac1e1](https://github.com/VincentHardouin/pix-360/commit/9cac1e182dab601855ef59bdc88942e9b6b5e3c5))
+
 # [1.28.0](https://github.com/VincentHardouin/pix-360/compare/v1.27.0...v1.28.0) (2022-01-28)
 
 
