@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/VincentHardouin/pix-360/compare/v1.26.0...v1.27.0) (2022-01-28)
+
+
+### Features
+
+* **navbar:** Add active link style ([2271b6f](https://github.com/VincentHardouin/pix-360/commit/2271b6fb96f69373683a4a6b2134b8f341a07627))
+
 # [1.26.0](https://github.com/VincentHardouin/pix-360/compare/v1.25.0...v1.26.0) (2022-01-27)
 
 
