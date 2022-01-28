@@ -1,17 +1,21 @@
 <div class="navbar">
-  <nav>
     <%= link_to image_tag("pix-360-logo.svg", alt: "Pix 360 - Page d'accueil", :class => "pix-360-logo__image"), root_path %>
-    <div class="navbar__center">
-      <%= link_to "Évaluations reçues", feedbacks_path, class:"navbar__item" %>
-      <%= link_to "Évaluations données", given_feedbacks_path, class:"navbar__item" %>
-    </div>
+    <nav  class="navbar__center">
+      <ul class="navbar__content">
+        <li>
+          <%= link_to "Évaluations reçues", feedbacks_path, class: "navbar__item #{'navbar-item--active' if current_page?(feedbacks_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Évaluations données", given_feedbacks_path, class:"navbar__item #{'navbar-item--active' if current_page?(given_feedbacks_path)}" %>
+        </li>
+      </ul>
+    </nav>
     <div class="navbar__user-information">
       <div class="navbar-user-information__name">
         <%= current_user.full_name %>
       </div>
       <div class="navbar-user-information__link">
-        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"navbar__item" %>
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
       </div>
     </div>
-  </nav>
 </div>

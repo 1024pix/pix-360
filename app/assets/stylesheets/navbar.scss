@@ -4,31 +4,35 @@
   border-bottom: 1px solid $grey-15;
   box-shadow: -1px 9px 29px -16px rgba(199, 191, 199, 0.9);
 
-  nav {
-    background-color: $white;
+  background-color: $white;
+  display: flex;
+  padding: 0 4vw 0 4vw;
+  gap: 1em;
+  align-items: center;
+  flex-direction: column;
+
+  @include device-is('tablet') {
+    gap: 0;
+    flex-direction: row;
+  }
+
+  .pix-360-logo__image {
+    margin: .5em;
+    height: 50px;
+    width: auto;
+  }
+
+  &__content {
     display: flex;
-    margin: 0 4vw 0 4vw;
-    gap: 1em;
-    align-items: center;
-    flex-direction: column;
-
-    @include device-is('tablet') {
-      gap: 0;
-      flex-direction: row;
-    }
-
-    .pix-360-logo__image {
-      margin: .5em;
-      height: 50px;
-      width: auto;
-    }
+    list-style: none;
+    height: 24px;
   }
 
   &__item {
-    display: flex;
-    align-items: center;
     color: $blue-zodiac;
     text-decoration: none;
+    padding: 0 8px 10px;
+    line-height: 22px;
 
     &:hover {
       color: $blue;
@@ -63,6 +67,12 @@
   }
 }
 
+.navbar-item {
+  &--active {
+    border-bottom: 2px solid $blue;
+  }
+}
+
 .navbar-user-information {
   &__name {
     font-family: $font-roboto;
@@ -75,11 +85,14 @@
     font-family: $font-roboto;
     font-weight: $font-light;
     font-size: 1rem;
-    color: $blue-zodiac;
-    text-decoration: none;
 
-    &:hover {
-      color: $blue;
+    a {
+      color: $blue-zodiac;
+      text-decoration: none;
+
+      &:hover {
+        color: $blue;
+      }
     }
   }
 }
