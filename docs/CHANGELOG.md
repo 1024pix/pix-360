@@ -1,3 +1,11 @@
+# [1.28.0](https://github.com/VincentHardouin/pix-360/compare/v1.27.0...v1.28.0) (2022-01-28)
+
+
+### Features
+
+* Improve a11y in sign_in page ([0a1344d](https://github.com/VincentHardouin/pix-360/commit/0a1344d4378e9430ccf6aaa011e6b5235fbc6791))
+* Serve logo in feedback email from assets ([b8f2777](https://github.com/VincentHardouin/pix-360/commit/b8f27778840f94e6b8c363db06bd46ea39b046e1))
+
 # [1.27.0](https://github.com/VincentHardouin/pix-360/compare/v1.26.0...v1.27.0) (2022-01-28)
 
 
