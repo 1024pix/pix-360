@@ -1,3 +1,10 @@
+## [1.29.1](https://github.com/VincentHardouin/pix-360/compare/v1.29.0...v1.29.1) (2022-01-29)
+
+
+### Bug Fixes
+
+* **feedbacks_email:** Use url instead of path and fix typo ([3dde2ae](https://github.com/VincentHardouin/pix-360/commit/3dde2ae8de1cf8ece45f14123ebc044f293e7e33))
+
 # [1.29.0](https://github.com/VincentHardouin/pix-360/compare/v1.28.0...v1.29.0) (2022-01-28)
 
 
