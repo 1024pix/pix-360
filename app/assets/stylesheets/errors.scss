@@ -1,0 +1,23 @@
+@import "globals";
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+
+    img {
+        margin: 1em;
+        width: 30vw;
+    }
+
+    a {
+        text-decoration: none;
+        color: $blue;
+
+        &:hover {
+            color: $blue-hover;
+        }
+    }
+}
