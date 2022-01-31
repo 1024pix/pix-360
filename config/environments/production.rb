@@ -82,6 +82,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {
     host: ENV['ACTION_MAILER_DEFAULT_HOST']
   }
+  config.action_mailer.asset_host = config.action_mailer.default_url_options[:host]
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
