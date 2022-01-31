@@ -26,6 +26,7 @@
     display: flex;
     list-style: none;
     height: 24px;
+    padding: 0;
   }
 
   &__item {
@@ -59,6 +60,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 153px;
     margin-bottom: 10px;
 
     @include device-is('tablet') {
