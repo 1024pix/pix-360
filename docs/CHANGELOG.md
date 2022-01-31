@@ -1,3 +1,10 @@
+## [1.29.2](https://github.com/VincentHardouin/pix-360/compare/v1.29.1...v1.29.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* **feedbacks_email:** Add default host for asset ([ae55eb5](https://github.com/VincentHardouin/pix-360/commit/ae55eb5b9dba2f4e81ee61783094c389b0813284))
+
 ## [1.29.1](https://github.com/VincentHardouin/pix-360/compare/v1.29.0...v1.29.1) (2022-01-29)
 
 
