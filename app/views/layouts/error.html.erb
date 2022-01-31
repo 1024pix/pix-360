@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Pix 360</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application',
+                            'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..900&family=Roboto:wght@300..900&display=swap',
+                            media: 'all', 'data-turbolinks-track': 'reload' unless Rails.env.test? %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
