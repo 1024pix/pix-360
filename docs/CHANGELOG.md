@@ -1,3 +1,10 @@
+## [1.29.3](https://github.com/VincentHardouin/pix-360/compare/v1.29.2...v1.29.3) (2022-01-31)
+
+
+### Bug Fixes
+
+* **navbar:** Center content ([72eca2b](https://github.com/VincentHardouin/pix-360/commit/72eca2b1d8e4a7a25451483768e5dec729251acf))
+
 ## [1.29.2](https://github.com/VincentHardouin/pix-360/compare/v1.29.1...v1.29.2) (2022-01-31)
 
 
