@@ -1,3 +1,17 @@
+# [1.30.0](https://github.com/VincentHardouin/pix-360/compare/v1.29.3...v1.30.0) (2022-02-02)
+
+
+### Bug Fixes
+
+* **encryption:** Add required into input ([cb3a502](https://github.com/VincentHardouin/pix-360/commit/cb3a502337331e14bb47536227dcb3b94e78ad88))
+
+
+### Features
+
+* Add fr translation ([0afcf82](https://github.com/VincentHardouin/pix-360/commit/0afcf829f07237a7b73065c8198cefd038704b28))
+* **encryption:** Add padding for flash errors ([685ab5b](https://github.com/VincentHardouin/pix-360/commit/685ab5b4b03831fc7a94bb00ef244cfebeab37cb))
+* Use fr as default locale ([f04d5f0](https://github.com/VincentHardouin/pix-360/commit/f04d5f02248a0c85424715e00d1fb0781210ef70))
+
 ## [1.29.3](https://github.com/VincentHardouin/pix-360/compare/v1.29.2...v1.29.3) (2022-01-31)
 
 
