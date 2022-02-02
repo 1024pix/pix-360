@@ -14,7 +14,7 @@
 
       <% if f.object.errors.any? %>
         <% f.object.errors.full_messages.each do |message| %>
-          <div class="flash flash__error" >
+          <div class="flash flash__error flash--padding" >
             <div><%= message %></div>
           </div>
         <% end %>
@@ -22,12 +22,12 @@
 
       <div class="encryption-body__field">
         <%= f.label :password, "Nouveau mot de passe", class: 'encryption-field__label' %>
-        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'encryption-field__input' %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", required: true, class: 'encryption-field__input' %>
       </div>
 
       <div class="encryption-body__field">
         <%= f.label :password_confirmation, "Confirmez votre mot de passe", class: 'encryption-field__label' %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'encryption-field__input' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: 'encryption-field__input' %>
       </div>
 
       <div class="encryption-body__button">

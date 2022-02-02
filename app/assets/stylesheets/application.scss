@@ -58,4 +58,8 @@ body {
     background-color: $green-alert-light;
     color: $green-alert-dark;
   }
+
+  &--padding {
+    padding: 8px;
+  }
 }
