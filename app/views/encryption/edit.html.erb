@@ -14,7 +14,7 @@
 
       <% if f.object.errors.any? %>
         <% f.object.errors.full_messages.each do |message| %>
-          <div class="flash flash__error" >
+          <div class="flash flash__error flash--padding" >
             <div><%= message %></div>
           </div>
         <% end %>
