@@ -31,7 +31,7 @@
       "description": "SMTP server password, more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
       "required": true
     },
-    "ACTION_MAILER_DEFAULT HOST": {
+    "ACTION_MAILER_DEFAULT_HOST": {
       "description": "Application's url (ex: 360.pix.fr), more details https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration",
       "required":true
     }
