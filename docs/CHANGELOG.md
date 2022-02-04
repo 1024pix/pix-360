@@ -1,3 +1,10 @@
+## [1.30.3](https://github.com/VincentHardouin/pix-360/compare/v1.30.2...v1.30.3) (2022-02-04)
+
+
+### Bug Fixes
+
+* **feedbacks:** Typo ([545dca5](https://github.com/VincentHardouin/pix-360/commit/545dca5ee2e44ae820bc827de4a506705ac31d1a))
+
 ## [1.30.2](https://github.com/VincentHardouin/pix-360/compare/v1.30.1...v1.30.2) (2022-02-04)
 
 
