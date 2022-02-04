@@ -1,3 +1,10 @@
+## [1.30.1](https://github.com/VincentHardouin/pix-360/compare/v1.30.0...v1.30.1) (2022-02-04)
+
+
+### Bug Fixes
+
+* Page title ([c980d55](https://github.com/VincentHardouin/pix-360/commit/c980d558476bdf1f53149f2620eec3166bc81adb))
+
 # [1.30.0](https://github.com/VincentHardouin/pix-360/compare/v1.29.3...v1.30.0) (2022-02-02)
 
 
