@@ -1,3 +1,10 @@
+## [1.30.2](https://github.com/VincentHardouin/pix-360/compare/v1.30.1...v1.30.2) (2022-02-04)
+
+
+### Bug Fixes
+
+* **users:** Remove encryption password cookie when user sign out ([ed3efc1](https://github.com/VincentHardouin/pix-360/commit/ed3efc1f7122a483aa2a49af2823ddb51880be28))
+
 ## [1.30.1](https://github.com/VincentHardouin/pix-360/compare/v1.30.0...v1.30.1) (2022-02-04)
 
 
