@@ -5,6 +5,11 @@ module Users
     skip_before_action :create_encryption_password, :provide_encryption_password, only: %i[new destroy]
     helper_method :from_feedback?, :feedback_id, :shared_key
 
+    def destroy
+      cookies.delete(:encryption_password)
+      super
+    end
+
     private
 
     def from_feedback?
