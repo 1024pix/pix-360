@@ -1,5 +1,16 @@
 # PIX 360
 
+Cette application permet de faciliter la gestion des évaluations 360. 
+
+Parmi les fonctionnalités majeures : 
+- SSO via Google, qui permet de restreindre l'accès aux membres d'une organisation
+- Envoi d'une demande d'évaluation par e-mail 
+- Notification de reception d'une nouvelle évaluation
+- Stockage des évaluations reçues et données
+- Évaluations chiffrées de bout-en-bout
+
+![index-page](./docs/assets/index-page.png)
+
 # Requirement
 
 - App Google :
