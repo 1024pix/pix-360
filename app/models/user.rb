@@ -6,8 +6,7 @@ require('elliptic_curve')
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable
 
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 
