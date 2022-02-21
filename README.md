@@ -11,13 +11,16 @@ Parmi les fonctionnalités majeures :
 
 ![index-page](./docs/assets/index-page.png)
 
-# Requirement
+# Deployment
+
+## Requirement
 
 - App Google :
-You need to create a google ID client OAuth 2.0 for the connection with the SSO.
-To have them, follow the steps on this link : 
-https://developers.google.com/identity/protocols/oauth2
+  You need to create a google ID client OAuth 2.0 for the connection with the SSO.
+  To have them, follow the steps on this link :
+  https://developers.google.com/identity/protocols/oauth2
 
-# One-Click Deployment
+
+## One-Click Deployment
 
 [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/VincentHardouin/pix-360#main)
