@@ -1,3 +1,10 @@
+## [1.30.4](https://github.com/VincentHardouin/pix-360/compare/v1.30.3...v1.30.4) (2022-03-19)
+
+
+### Bug Fixes
+
+* npx -p options in cd workflow ([1650b35](https://github.com/VincentHardouin/pix-360/commit/1650b35fcc858fcc4bc34a781b693f6bd36c43ff))
+
 ## [1.30.3](https://github.com/VincentHardouin/pix-360/compare/v1.30.2...v1.30.3) (2022-02-04)
 
 
