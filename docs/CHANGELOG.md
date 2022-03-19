@@ -1,3 +1,11 @@
+# [1.31.0](https://github.com/VincentHardouin/pix-360/compare/v1.30.4...v1.31.0) (2022-03-19)
+
+
+### Features
+
+* remove deprecated alert for Cipher ([013c937](https://github.com/VincentHardouin/pix-360/commit/013c937e3b65bf4c9fbac2e9659a2ef7c7d6fb85))
+* update schema to v7 ([cd79151](https://github.com/VincentHardouin/pix-360/commit/cd79151422db0bcaf7926e41d15b5b221fa926cf))
+
 ## [1.30.4](https://github.com/VincentHardouin/pix-360/compare/v1.30.3...v1.30.4) (2022-03-19)
 
 
