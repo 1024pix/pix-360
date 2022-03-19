@@ -48,6 +48,14 @@ jobs:
           bin/rails test
 
       - name: Release
-        run: npx -p  @semantic-release/{commit-analyzer,changelog,git,github,npm,release-notes-generator} semantic-release
+        run: |
+          npx -p @semantic-release/commit-analyzer \
+          -p @semantic-release/changelog \
+          -p @semantic-release/git \
+          -p @semantic-release/github \
+          -p @semantic-release/npm \
+          -p @semantic-release/release-notes-generator \
+          -p semantic-release \
+          semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
