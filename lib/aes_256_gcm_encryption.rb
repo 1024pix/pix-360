@@ -21,7 +21,7 @@ module Aes256GcmEncryption
     tag = base64_decoded[76..91]
     data = base64_decoded[92..]
 
-    cipher = OpenSSL::Cipher::Cipher.new(Aes256GcmEncryption::CIPHER_TYPE).decrypt
+    cipher = OpenSSL::Cipher.new(Aes256GcmEncryption::CIPHER_TYPE).decrypt
     cipher.key = derive_key(password, salt)
     cipher.iv = iv
     cipher.auth_tag = tag
@@ -36,7 +36,7 @@ module Aes256GcmEncryption
   def self.encrypt(data, password)
     salt = OpenSSL::Random.random_bytes(64)
 
-    cipher = OpenSSL::Cipher::Cipher.new(Aes256GcmEncryption::CIPHER_TYPE).encrypt
+    cipher = OpenSSL::Cipher.new(Aes256GcmEncryption::CIPHER_TYPE).encrypt
     cipher.key = derive_key(password, salt)
     iv = cipher.random_iv
     cipher.iv = iv
