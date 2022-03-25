@@ -1,3 +1,10 @@
+# [1.32.0](https://github.com/1024pix/pix-360/compare/v1.31.0...v1.32.0) (2022-03-25)
+
+
+### Features
+
+* **config:** use login authentication instead of plain in smtp settings ([de13bfa](https://github.com/1024pix/pix-360/commit/de13bfa387f1d513813215a03e542267d25eb4bf))
+
 # [1.31.0](https://github.com/VincentHardouin/pix-360/compare/v1.30.4...v1.31.0) (2022-03-19)
 
 
