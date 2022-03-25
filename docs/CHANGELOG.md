@@ -1,3 +1,10 @@
+## [1.32.1](https://github.com/1024pix/pix-360/compare/v1.32.0...v1.32.1) (2022-03-25)
+
+
+### Bug Fixes
+
+* add protocol to action mailer asset host ([320a6b1](https://github.com/1024pix/pix-360/commit/320a6b1bff1ac7b9983cdb6db364b2788bc79a17))
+
 # [1.32.0](https://github.com/1024pix/pix-360/compare/v1.31.0...v1.32.0) (2022-03-25)
 
 
