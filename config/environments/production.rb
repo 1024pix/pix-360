@@ -74,7 +74,7 @@ Rails.application.configure do
     domain: ENV['ACTION_MAILER_DOMAIN'],
     user_name: ENV['ACTION_MAILER_USERNAME'],
     password: ENV['ACTION_MAILER_PASSWORD'],
-    authentication: 'plain',
+    authentication: 'login',
     enable_starttls_auto: true,
     open_timeout: 5,
     read_timeout: 5
