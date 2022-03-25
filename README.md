@@ -23,4 +23,4 @@ Parmi les fonctionnalités majeures :
 
 ## One-Click Deployment
 
-[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/VincentHardouin/pix-360#main)
+[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/1024pix/pix-360#main)
