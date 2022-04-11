@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/1024pix/pix-360/compare/v1.32.1...v1.33.0) (2022-04-11)
+
+
+### Features
+
+* filter feedback content params ([6c56c97](https://github.com/1024pix/pix-360/commit/6c56c9722d0fc0d5e6352fe44fe49d90a0dbdcb2))
+
 ## [1.32.1](https://github.com/1024pix/pix-360/compare/v1.32.0...v1.32.1) (2022-03-25)
 
 
