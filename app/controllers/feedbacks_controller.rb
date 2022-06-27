@@ -14,7 +14,7 @@ class FeedbacksController < ApplicationController
     encryption_password = cookies.encrypted[:encryption_password]
     @awaiting_feedbacks = current_user.received_feedbacks.not_submitted.order(created_at: :desc)
     @awaiting_feedbacks.each { |feedback| feedback.decrypt_respondent_information(encryption_password) }
-    @submitted_feedbacks = current_user.received_feedbacks.submitted.order(created_at: :desc)
+    @submitted_feedbacks = current_user.received_feedbacks.submitted.order(updated_at: :desc)
     @submitted_feedbacks.each { |feedback| feedback.decrypt_respondent_information(encryption_password) }
   end
 
