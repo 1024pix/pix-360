@@ -11,7 +11,7 @@
           <% end %>
         </div>
         <div class="feedback-information__date">
-          <%= feedback.created_at.strftime("%d/%m/%Y") %>
+          <%= feedback.is_submitted ? feedback.updated_at.strftime("%d/%m/%Y") :feedback.created_at.strftime("%d/%m/%Y") %>
         </div>
       </div>
     <% end %>
