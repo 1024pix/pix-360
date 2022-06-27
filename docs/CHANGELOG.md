@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/1024pix/pix-360/compare/v1.33.0...v1.33.1) (2022-06-27)
+
+
+### Bug Fixes
+
+* use updated_date for submitted feedback ([f3dfa46](https://github.com/1024pix/pix-360/commit/f3dfa461799a220c7aa32846a282f888c0092d02))
+
 # [1.33.0](https://github.com/1024pix/pix-360/compare/v1.32.1...v1.33.0) (2022-04-11)
 
 
