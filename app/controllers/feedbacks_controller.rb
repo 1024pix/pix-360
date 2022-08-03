@@ -3,12 +3,15 @@
 # rubocop:disable Metrics/ClassLength
 class FeedbacksController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[edit update]
-  before_action :set_feedback, only: %i[show edit update destroy]
   before_action :requester?, only: :show
   before_action :should_seen_sign_in_page, only: :edit
   before_action :not_requester?, only: :edit
   before_action :should_be_editable, only: :update
   helper_method :edit_feedback_link
+
+  rescue_from ActiveRecord::RecordNotFound do
+    redirect_to feedbacks_url, flash: { error: "L'évaluation est introuvable." }
+  end
 
   def index
     encryption_password = cookies.encrypted[:encryption_password]
@@ -19,6 +22,7 @@ class FeedbacksController < ApplicationController
   end
 
   def show
+    @feedback = require_feedback!
     encryption_password = cookies.encrypted[:encryption_password]
     shared_key = if @feedback.respondent_id
                    shared_key_with @feedback.respondent_id
@@ -36,6 +40,7 @@ class FeedbacksController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def edit
+    @feedback = require_feedback!
     if @feedback.already_edit_by_user? && user_signed_in? && @feedback.edited_by_user?(current_user.id)
       shared_key = shared_key_with(@feedback.requester.id)
       decrypt_content shared_key
@@ -67,6 +72,7 @@ class FeedbacksController < ApplicationController
   end
 
   def update
+    @feedback = require_feedback!
     if params[:submit]
       update_content(true, "L'évaluation a bien été envoyée.",
                      "Une erreur s'est produite durant l'envoie de l'évaluation.")
@@ -79,7 +85,8 @@ class FeedbacksController < ApplicationController
   end
 
   def destroy
-    @feedback.destroy
+    feedback = require_feedback!
+    feedback.destroy
     redirect_to feedbacks_url, flash: { success: "L'évaluation a bien été supprimée." }
   end
 
@@ -89,10 +96,8 @@ class FeedbacksController < ApplicationController
 
   private
 
-  def set_feedback
-    @feedback = Feedback.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to feedbacks_url, flash: { error: "L'évaluation est introuvable." }
+  def require_feedback!
+    Feedback.find(params[:id])
   end
 
   def feedback_params
