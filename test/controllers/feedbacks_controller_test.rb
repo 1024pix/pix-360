@@ -41,7 +41,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     class WhenUserHasSeenSignInPage < FeedbacksControllerTest
       class WhenFeedbackDoesNotExists < FeedbacksControllerTest
         test 'should can edit feedback' do
-          get edit_feedback_url(id: 55_665)
+          get edit_feedback_url(id: 55_665, params: { external_user: true })
 
           assert_response :redirect
           assert_equal "L'évaluation est introuvable.", flash[:error]
