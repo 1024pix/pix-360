@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/1024pix/pix-360/compare/v1.33.1...v1.34.0) (2022-08-03)
+
+
+### Features
+
+* add authorization to destroy feedback ([414940f](https://github.com/1024pix/pix-360/commit/414940f3c04daeb42c0fb3d65396641a8a6a8a02))
+
 ## [1.33.1](https://github.com/1024pix/pix-360/compare/v1.33.0...v1.33.1) (2022-06-27)
 
 
