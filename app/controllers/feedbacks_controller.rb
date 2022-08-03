@@ -1,16 +1,35 @@
 # frozen_string_literal: true
 
+class CannotShowFeedback < StandardError
+end
+class CannotUpdateFeedback < StandardError
+end
+class CannotEditFeedback < StandardError
+end
+
 # rubocop:disable Metrics/ClassLength
 class FeedbacksController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[edit update]
-  before_action :requester?, only: :show
   before_action :should_seen_sign_in_page, only: :edit
-  before_action :not_requester?, only: :edit
-  before_action :should_be_editable, only: :update
   helper_method :edit_feedback_link
 
   rescue_from ActiveRecord::RecordNotFound do
     redirect_to feedbacks_url, flash: { error: "L'évaluation est introuvable." }
+  end
+
+  rescue_from CannotShowFeedback do
+    redirect_to feedbacks_url,
+                flash: { error: "Vous n'êtes pas autorisé à consulter cette évaluation." }
+  end
+
+  rescue_from CannotUpdateFeedback do
+    redirect_to feedbacks_url,
+                flash: { error: 'Cette évaluation a déjà été soumise.' }
+  end
+
+  rescue_from CannotEditFeedback do
+    redirect_to feedbacks_url,
+                flash: { error: "Vous n'êtes pas autorisé à éditer votre évaluation." }
   end
 
   def index
@@ -23,6 +42,7 @@ class FeedbacksController < ApplicationController
 
   def show
     @feedback = require_feedback!
+    ensure_can_show!(@feedback)
     encryption_password = cookies.encrypted[:encryption_password]
     shared_key = if @feedback.respondent_id
                    shared_key_with @feedback.respondent_id
@@ -41,6 +61,7 @@ class FeedbacksController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def edit
     @feedback = require_feedback!
+    ensure_can_edit!(@feedback)
     if @feedback.already_edit_by_user? && user_signed_in? && @feedback.edited_by_user?(current_user.id)
       shared_key = shared_key_with(@feedback.requester.id)
       decrypt_content shared_key
@@ -73,6 +94,8 @@ class FeedbacksController < ApplicationController
 
   def update
     @feedback = require_feedback!
+    ensure_can_update!(@feedback)
+
     if params[:submit]
       update_content(true, "L'évaluation a bien été envoyée.",
                      "Une erreur s'est produite durant l'envoie de l'évaluation.")
@@ -105,18 +128,16 @@ class FeedbacksController < ApplicationController
                                                               respondent_information: %w[email full_name])
   end
 
-  def requester?
-    return if @feedback.requester_id == current_user.id
-
-    redirect_to feedbacks_url,
-                flash: { error: "Vous n'êtes pas autorisé à consulter cette évaluation." }
+  def ensure_can_show!(feedback)
+    raise CannotShowFeedback if feedback.requester_id != current_user.id
   end
 
-  def not_requester?
-    return if !user_signed_in? || @feedback.requester_id != current_user.id
+  def ensure_can_edit!(feedback)
+    raise CannotEditFeedback unless !user_signed_in? || feedback.requester_id != current_user.id
+  end
 
-    redirect_to feedbacks_url,
-                flash: { error: "Vous n'êtes pas autorisé à éditer votre évaluation." }
+  def ensure_can_update!(feedback)
+    raise CannotUpdateFeedback if feedback.is_submitted
   end
 
   def edit_feedback_link(feedback)
@@ -126,13 +147,6 @@ class FeedbacksController < ApplicationController
 
   def should_seen_sign_in_page
     redirect_to new_user_session_url(feedback: params[:id], shared_key: params[:shared_key]) unless seen_sign_in_page?
-  end
-
-  def should_be_editable
-    return unless @feedback.is_submitted
-
-    redirect_to feedbacks_url,
-                flash: { error: 'Cette évaluation a déjà été soumise.' }
   end
 
   def seen_sign_in_page?
