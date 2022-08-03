@@ -2,8 +2,10 @@
 
 class CannotShowFeedback < StandardError
 end
+
 class CannotUpdateFeedback < StandardError
 end
+
 class CannotEditFeedback < StandardError
 end
 
@@ -92,6 +94,7 @@ class FeedbacksController < ApplicationController
     end
   end
 
+  # rubocop:disable Metrics/MethodLength
   def update
     @feedback = require_feedback!
     ensure_can_update!(@feedback)
@@ -106,6 +109,7 @@ class FeedbacksController < ApplicationController
                      "Une erreur s'est produite durant la mise à jour de l'évaluation.")
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def destroy
     feedback = require_feedback!
