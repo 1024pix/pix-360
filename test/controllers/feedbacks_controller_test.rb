@@ -169,4 +169,30 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
       assert_equal 'Cette évaluation a déjà été soumise.', flash[:error]
     end
   end
+
+  class Destroy < FeedbacksControllerTest
+    setup do
+      sign_in_and_set_encryption users(:two)
+    end
+
+    test 'it should destroy feedback when user is requester' do
+      delete feedback_path(id: 3)
+
+      assert_response :redirect
+      assert_equal "L'évaluation a bien été supprimée.", flash[:success]
+
+      feedback = Feedback.find_by(id: 3)
+      assert_nil feedback
+    end
+
+    test 'it should not destroy feedback when user is not requester' do
+      delete feedback_path(id: 1)
+
+      assert_response :redirect
+      assert_equal "Vous n'êtes pas autorisé à supprimer cette évaluation.", flash[:error]
+
+      feedback = Feedback.find_by(id: 1)
+      assert_not feedback.nil?
+    end
+  end
 end

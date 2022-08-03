@@ -9,6 +9,9 @@ end
 class CannotEditFeedback < StandardError
 end
 
+class CannotDestroyFeedback < StandardError
+end
+
 # rubocop:disable Metrics/ClassLength
 class FeedbacksController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[edit update]
@@ -32,6 +35,11 @@ class FeedbacksController < ApplicationController
   rescue_from CannotEditFeedback do
     redirect_to feedbacks_url,
                 flash: { error: "Vous n'êtes pas autorisé à éditer votre évaluation." }
+  end
+
+  rescue_from CannotDestroyFeedback do
+    redirect_to feedbacks_url,
+                flash: { error: "Vous n'êtes pas autorisé à supprimer cette évaluation." }
   end
 
   def index
@@ -113,6 +121,7 @@ class FeedbacksController < ApplicationController
 
   def destroy
     feedback = require_feedback!
+    ensure_can_destroy!(feedback)
     feedback.destroy
     redirect_to feedbacks_url, flash: { success: "L'évaluation a bien été supprimée." }
   end
@@ -142,6 +151,10 @@ class FeedbacksController < ApplicationController
 
   def ensure_can_update!(feedback)
     raise CannotUpdateFeedback if feedback.is_submitted
+  end
+
+  def ensure_can_destroy!(feedback)
+    raise CannotDestroyFeedback if feedback.requester_id != current_user.id
   end
 
   def edit_feedback_link(feedback)
