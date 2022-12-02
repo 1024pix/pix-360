@@ -1,4 +1,4 @@
-# Sécurité - Fonctionnement du chiffrement de bout en bout
+# Sécurité - Fonctionnement du chiffrement des données
 
 L’application permet de recueillir des évaluations. Ces évaluations contiennent des informations personnelles et nous prenons à cœur la sécurité des données.
 
