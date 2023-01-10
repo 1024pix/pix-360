@@ -137,8 +137,13 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.fetch(:feedback, {}).permit(:decrypted_shared_key, content: %w[positive_points improvements_areas comments],
-                                                              respondent_information: %w[email full_name])
+    params
+      .fetch(:feedback, {})
+      .permit(
+        :decrypted_shared_key,
+        content: ['positive_points', 'improvements_areas', 'comments', { 'answers' => [] }],
+        respondent_information: %w[email full_name]
+      )
   end
 
   def ensure_can_show!(feedback)

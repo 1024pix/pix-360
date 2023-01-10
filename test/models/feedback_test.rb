@@ -19,4 +19,24 @@ class FeedbackTest < ActiveSupport::TestCase
       assert BCrypt::Password.new(feedback.shared_key_hash) == decrypted_shared_key
     end
   end
+
+  class UpdateContent < FeedbackTest
+    setup do
+      @user = users(:two)
+      @user.password = 'azerty123'
+      @user.create_encryption_keys
+    end
+
+    test 'it should merge content' do
+      feedback = @user.received_feedbacks.create_with_shared_key({ email: 'foo@example.net' }, 'toto123')
+      decrypted_shared_key = Aes256GcmEncryption.decrypt(feedback.shared_key, 'toto123')
+      feedback_params = { decrypted_shared_key: decrypted_shared_key,
+                          content: { answers: ['ma super réponse'] } }
+
+      feedback.update_content feedback_params
+
+      assert_not_empty feedback.decrypted_content[:questions]
+      assert_not_empty feedback.decrypted_content[:answers]
+    end
+  end
 end
