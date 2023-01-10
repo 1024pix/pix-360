@@ -3,6 +3,7 @@
 require('aes_256_gcm_encryption')
 require('elliptic_curve')
 require('bcrypt')
+require('json')
 
 class Feedback < ApplicationRecord
   attr_accessor :decrypted_shared_key, :decrypted_content, :decrypted_respondent_information
@@ -40,7 +41,7 @@ class Feedback < ApplicationRecord
 
   def decrypt_content
     decrypted_stringify_content = Aes256GcmEncryption.decrypt(content, decrypted_shared_key)
-    self.decrypted_content = ActiveSupport::JSON.decode(decrypted_stringify_content).symbolize_keys
+    self.decrypted_content = JSON.parse(decrypted_stringify_content, { symbolize_names: true })
   end
 
   def decrypt_respondent_information(encryption_password)
