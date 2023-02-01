@@ -8,6 +8,16 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+class JsonLogSerializer < ActiveSupport::Logger::SimpleFormatter
+  def call(severity, timestamp, _progname, message)
+    {
+      level: severity,
+      time: timestamp,
+      message: message
+    }.to_json + $INPUT_RECORD_SEPARATOR
+  end
+end
+
 module Pix360
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -15,7 +25,7 @@ module Pix360
     config.exceptions_app = routes
 
     config.i18n.default_locale = :fr
-
+    config.log_formatter = JsonLogSerializer.new
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
