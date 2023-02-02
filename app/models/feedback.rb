@@ -36,8 +36,12 @@ class Feedback < ApplicationRecord
 
   def create_content
     content = {
-      questions: [{ 'label': 'Points positifs' }, { 'label': 'Axes d\'amélioration' },
-                  { 'label': 'Commentaires' }], answers: []
+      questions: [
+        { 'label': 'Points positifs', type: 'textarea' },
+        { 'label': 'Axes d\'amélioration', type: 'textarea' },
+        { 'label': 'Commentaires', type: 'textarea' }
+      ],
+      answers: []
     }
     self.content = Aes256GcmEncryption.encrypt(content.to_json, decrypted_shared_key)
   end

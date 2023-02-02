@@ -60,7 +60,9 @@
             <label for="feedbacks_content_<%= index -%>" class="feedbacks-field__label">
                 <%= question[:label] %>
             </label>
-            <textarea id="feedbacks_content_<%= index -%>" class="feedbacks-field__input" name="feedback[content][answers][]"><%= @feedback.decrypted_content[:answers][index] || '' %></textarea>
+            <% if question[:type] == 'textarea' %>
+              <textarea id="feedbacks_content_<%= index -%>" class="feedbacks-field__input" name="feedback[content][answers][]"><%= @feedback.decrypted_content[:answers][index] || '' %></textarea>
+            <% end %>
           </div>
         <% end %>
       <% else %>
