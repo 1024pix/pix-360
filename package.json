@@ -3,7 +3,7 @@
   "private": true,
   "engines": {
     "node": "14",
-    "npm": "6"
+    "npm": "9"
   },
   "dependencies": {
     "@rails/actioncable": "^7.0.1",
