@@ -88,6 +88,28 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
               # then
               assert_response :success
+              assert_select 'h1', text: "Modification de l'évaluation"
+            end
+
+            test 'should correctly edit legacy feedback' do
+              # given
+              @user = users(:three)
+              sign_in @user
+              patch encryption_save_url,
+                    params: { user: { password: '123456' } }
+
+              # when
+              get edit_feedback_url(id: 3)
+
+              # then
+              assert_response :success
+              assert_select 'h1', text: "Modification de l'évaluation"
+              assert_select 'label[for=feedbacks_content_positive_points]', text: 'Points positifs'
+              assert_select 'textarea#feedbacks_content_positive_points', text: ''
+              assert_select 'label[for=feedbacks_content_improvements_areas]', text: "Axes d'amélioration"
+              assert_select 'textarea#feedbacks_content_improvements_areas', text: ''
+              assert_select 'label[for=feedbacks_content_comments]', text: 'Commentaires'
+              assert_select 'textarea#feedbacks_content_comments', text: ''
             end
           end
 
