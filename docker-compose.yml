@@ -12,7 +12,7 @@ services:
       - BUNDLE_PATH=/code/.bundle
 
   postgres:
-    image: postgres:12.7-alpine
+    image: postgres:12.14-alpine
     container_name: postgres
     ports:
       - "5432:5432"
