@@ -186,7 +186,7 @@ class FeedbacksController < ApplicationController
   end
 
   def update_content(is_submitted, success_message, error_message)
-    respondent_id = current_user ? current_user.id : nil
+    respondent_id = current_user&.id
     if @feedback.update_content(feedback_params, respondent_id, is_submitted: is_submitted)
       flash[:success] = success_message
       redirect_after_update
