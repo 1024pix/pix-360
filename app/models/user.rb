@@ -51,4 +51,10 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def deprecate
+    self.email = "deleted_#{id}_#{email}"
+    self.google_id = nil
+    save
+  end
 end
