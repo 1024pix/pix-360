@@ -24,5 +24,12 @@
         <%= f.submit "Confirmer", class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-blue' %>
       </div>
     <% end %>
+    <div class="encryption__separator"><span>OU</span></div>
+    <%= form_with model: current_user, url: users_delete_path, method: :delete, class: 'encryption__body' do |f| %>
+      <h2 class="encryption__reset-title">Vous avez oublié votre mot de passe ?</h2>
+      <div class="encryption-body__button">
+        <%= f.submit "Supprimer mon compte",  data: { confirm: "Vous allez supprimer votre compte. Vos évaluations précédemment envoyées seront conservées et accessibles par les concernés."}, class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-red' %>
+      </div>
+    <% end %>
   </main>
 </div>

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'encryption/edit'
   patch 'encryption/update'
 
+  delete 'users/delete', to: 'users#delete'
+
   devise_for :users, skip: %i[users registrable password], controllers: {
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
