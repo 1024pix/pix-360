@@ -53,20 +53,36 @@
         </div>
       </div>
 
-      <div class="feedbacks__field">
-        <label for="feedbacks_content_positive_points" class="feedbacks-field__label">Points positifs</label>
-        <textarea id="feedbacks_content_positive_points"  class="feedbacks-field__input" name="feedback[content][positive_points]"><%= @feedback.decrypted_content[:positive_points] %></textarea>
-      </div>
+      <% if @feedback.decrypted_content.key?(:questions) %>
+        <% @feedback.decrypted_content[:questions].each_with_index do |question, index| %>
 
-      <div class="feedbacks__field">
-        <label for="feedbacks_content_improvements_areas" class="feedbacks-field__label">Axes d'amélioration</label>
-        <textarea id="feedbacks_content_improvements_areas"  class="feedbacks-field__input" name="feedback[content][improvements_areas]"><%= @feedback.decrypted_content[:improvements_areas]%></textarea>
-      </div>
+          <div class="feedbacks__field">
+            <label for="feedbacks_content_<%= index -%>" class="feedbacks-field__label">
+                <%= question[:label] %>
+            </label>
+            <% if question[:type] == 'textarea' %>
+              <textarea id="feedbacks_content_<%= index -%>" class="feedbacks-field__input" name="feedback[content][answers][]"><%= @feedback.decrypted_content[:answers][index] || '' %></textarea>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
 
-      <div class="feedbacks__field">
-        <label for="feedbacks_content_comments" class="feedbacks-field__label">Commentaires</label>
-        <textarea id="feedbacks_content_comments"  class="feedbacks-field__input" name="feedback[content][comments]"><%= @feedback.decrypted_content[:comments]%></textarea>
-      </div>
+          <div class="feedbacks__field">
+            <label for="feedbacks_content_positive_points" class="feedbacks-field__label">Points positifs</label>
+            <textarea id="feedbacks_content_positive_points"  class="feedbacks-field__input" name="feedback[content][positive_points]"><%= @feedback.decrypted_content[:positive_points] %></textarea>
+          </div>
+
+          <div class="feedbacks__field">
+            <label for="feedbacks_content_improvements_areas" class="feedbacks-field__label">Axes d'amélioration</label>
+            <textarea id="feedbacks_content_improvements_areas"  class="feedbacks-field__input" name="feedback[content][improvements_areas]"><%= @feedback.decrypted_content[:improvements_areas]%></textarea>
+          </div>
+
+          <div class="feedbacks__field">
+            <label for="feedbacks_content_comments" class="feedbacks-field__label">Commentaires</label>
+            <textarea id="feedbacks_content_comments"  class="feedbacks-field__input" name="feedback[content][comments]"><%= @feedback.decrypted_content[:comments]%></textarea>
+          </div>
+      <% end %>
+
 
       <div class="feedbacks__actions">
         <%= form.button "Enregistrer", class: 'pix-button pix-button--shape-rounded pix-button--size-big pix-button--background-transparent-light pix-button--border' %>

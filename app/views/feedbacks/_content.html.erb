@@ -1,20 +1,31 @@
-<div class="show-feedback__field">
-  <div class="show-feedback-field__label">Points positifs</div>
-  <div class="show-feedback-field__input">
-    <%= sanitize markdown(@feedback.decrypted_content[:positive_points]) %>
+<% if @feedback.decrypted_content.key?(:questions) %>
+  <% @feedback.decrypted_content[:questions].each_with_index do |question, index| %>
+   <div class="show-feedback__field">
+      <div class="show-feedback-field__label"><%= question[:label] %></div>
+      <div class="show-feedback-field__input">
+        <%= sanitize markdown(@feedback.decrypted_content[:answers][index]) %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="show-feedback__field">
+    <div class="show-feedback-field__label">Points positifs</div>
+    <div class="show-feedback-field__input">
+      <%= sanitize markdown(@feedback.decrypted_content[:positive_points]) %>
+    </div>
   </div>
-</div>
 
-<div class="show-feedback__field">
-  <div class="show-feedback-field__label">Axes d'amélioration</div>
-  <div class="show-feedback-field__input">
-    <%= sanitize markdown(@feedback.decrypted_content[:improvements_areas]) %>
+  <div class="show-feedback__field">
+    <div class="show-feedback-field__label">Axes d'amélioration</div>
+    <div class="show-feedback-field__input">
+      <%= sanitize markdown(@feedback.decrypted_content[:improvements_areas]) %>
+    </div>
   </div>
-</div>
 
-<div class="show-feedback__field">
-  <div class="show-feedback-field__label">Commentaires</div>
-  <div class="show-feedback-field__input">
-    <%= sanitize markdown(@feedback.decrypted_content[:comments]) %>
+  <div class="show-feedback__field">
+    <div class="show-feedback-field__label">Commentaires</div>
+    <div class="show-feedback-field__input">
+      <%= sanitize markdown(@feedback.decrypted_content[:comments]) %>
+    </div>
   </div>
-</div>
+<% end %>

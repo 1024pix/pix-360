@@ -3,6 +3,7 @@
 require('aes_256_gcm_encryption')
 require('elliptic_curve')
 require('bcrypt')
+require('json')
 
 class Feedback < ApplicationRecord
   attr_accessor :decrypted_shared_key, :decrypted_content, :decrypted_respondent_information
@@ -34,13 +35,20 @@ class Feedback < ApplicationRecord
   end
 
   def create_content
-    content = { 'positive_points': '', 'improvements_areas': '', 'comments': '' }
+    content = {
+      questions: [
+        { 'label': 'Points positifs', type: 'textarea' },
+        { 'label': 'Axes d\'amélioration', type: 'textarea' },
+        { 'label': 'Commentaires', type: 'textarea' }
+      ],
+      answers: []
+    }
     self.content = Aes256GcmEncryption.encrypt(content.to_json, decrypted_shared_key)
   end
 
   def decrypt_content
     decrypted_stringify_content = Aes256GcmEncryption.decrypt(content, decrypted_shared_key)
-    self.decrypted_content = ActiveSupport::JSON.decode(decrypted_stringify_content).symbolize_keys
+    self.decrypted_content = JSON.parse(decrypted_stringify_content, { symbolize_names: true })
   end
 
   def decrypt_respondent_information(encryption_password)
@@ -52,14 +60,23 @@ class Feedback < ApplicationRecord
     self.decrypted_shared_key = Aes256GcmEncryption.decrypt(shared_key, encryption_password)
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def update_content(feedback_params, respondent_id = nil, is_submitted: false)
-    self.content = Aes256GcmEncryption.encrypt(feedback_params[:content].to_json,
+    self.decrypted_shared_key = feedback_params[:decrypted_shared_key]
+    decrypt_content
+    feedback_params[:content].each do |key, value|
+      decrypted_content[key] = value
+    end
+    self.content = Aes256GcmEncryption.encrypt(decrypted_content.to_json,
                                                feedback_params[:decrypted_shared_key])
     self.respondent_id = respondent_id
     self.is_filled = true
     self.is_submitted = is_submitted
     save
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def verify_shared_key(shared_key_to_verify)
     BCrypt::Password.new(shared_key_hash) == shared_key_to_verify

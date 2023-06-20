@@ -88,6 +88,49 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
               # then
               assert_response :success
+              assert_select 'h1', text: "Modification de l'évaluation"
+            end
+
+            test 'should correctly edit legacy feedback' do
+              # given
+              @user = users(:three)
+              sign_in @user
+              patch encryption_save_url,
+                    params: { user: { password: '123456' } }
+
+              # when
+              get edit_feedback_url(id: 3)
+
+              # then
+              assert_response :success
+              assert_select 'h1', text: "Modification de l'évaluation"
+              assert_select 'label[for=feedbacks_content_positive_points]', text: 'Points positifs'
+              assert_select 'textarea#feedbacks_content_positive_points', text: ''
+              assert_select 'label[for=feedbacks_content_improvements_areas]', text: "Axes d'amélioration"
+              assert_select 'textarea#feedbacks_content_improvements_areas', text: ''
+              assert_select 'label[for=feedbacks_content_comments]', text: 'Commentaires'
+              assert_select 'textarea#feedbacks_content_comments', text: ''
+            end
+
+            test 'should correctly edit feedback' do
+              # given
+              @user = users(:three)
+              sign_in @user
+              patch encryption_save_url,
+                    params: { user: { password: '123456' } }
+
+              # when
+              get edit_feedback_url(id: 5)
+
+              # then
+              assert_response :success
+              assert_select 'h1', text: "Modification de l'évaluation"
+              assert_select 'label[for=feedbacks_content_0]', text: 'Points positifs'
+              assert_select 'textarea#feedbacks_content_0', text: ''
+              assert_select 'label[for=feedbacks_content_1]', text: "Axes d'amélioration"
+              assert_select 'textarea#feedbacks_content_1', text: ''
+              assert_select 'label[for=feedbacks_content_2]', text: 'Commentaires'
+              assert_select 'textarea#feedbacks_content_2', text: ''
             end
           end
 
@@ -124,9 +167,9 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   class Update < FeedbacksControllerTest
     test 'it should update feedback content' do
       patch feedback_path(id: 1),
-            params: { feedback: { 'decrypted_shared_key': 'Azerty123*',
+            params: { feedback: { 'decrypted_shared_key': '123456',
                                   content: { 'positive_points' => 'foo', 'improvements_areas' => 'foo',
-                                             'comments' => 'foo' } } }
+                                             'comments' => 'foo', 'answers' => %w[foo bar] } } }
 
       assert_response :redirect
       assert_equal "L'évaluation a bien été modifiée.", flash[:success]
@@ -139,9 +182,9 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     test 'it should update feedback content and submit it' do
       patch feedback_path(id: 1),
             params: { submit: '',
-                      feedback: { 'decrypted_shared_key': 'Azerty123*',
+                      feedback: { 'decrypted_shared_key': '123456',
                                   content: { 'positive_points' => 'foo', 'improvements_areas' => 'foo',
-                                             'comments' => 'foo' } } }
+                                             'comments' => 'foo', 'answers' => %w[foo bar] } } }
 
       assert_response :redirect
       assert_equal "L'évaluation a bien été envoyée.", flash[:success]
