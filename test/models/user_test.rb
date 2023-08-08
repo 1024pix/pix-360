@@ -25,4 +25,11 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal public_key, elliptic_curve.public_key
   end
+
+  test '#deprecate: should change email and google_id' do
+    @user.deprecate
+
+    assert_equal 'deleted_1_test1@example.net', @user.email
+    assert_nil @user.google_id
+  end
 end
