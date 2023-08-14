@@ -2,7 +2,7 @@
   "name": "pix-360",
   "private": true,
   "engines": {
-    "node": "14",
+    "node": "18",
     "npm": "6"
   },
   "dependencies": {
