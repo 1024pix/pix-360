@@ -2,8 +2,7 @@
   "name": "pix-360",
   "private": true,
   "engines": {
-    "node": "14",
-    "npm": "6"
+    "node": "16"
   },
   "dependencies": {
     "@rails/actioncable": "^7.0.1",
