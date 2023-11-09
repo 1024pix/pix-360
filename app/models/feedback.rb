@@ -6,7 +6,7 @@ require('bcrypt')
 require('json')
 
 class Feedback < ApplicationRecord
-  attr_accessor :decrypted_shared_key, :decrypted_content, :decrypted_respondent_information
+  attr_accessor :decrypted_shared_key, :decrypted_content, :decrypted_respondent_information, :new_decrypted_shared_key
 
   scope :not_submitted, -> { where(is_submitted: false) }
   scope :submitted, -> { where(is_submitted: true) }
@@ -68,8 +68,9 @@ class Feedback < ApplicationRecord
     feedback_params[:content].each do |key, value|
       decrypted_content[key] = value
     end
+    self.decrypted_shared_key = feedback_params[:new_decrypted_shared_key] || feedback_params[:decrypted_shared_key]
     self.content = Aes256GcmEncryption.encrypt(decrypted_content.to_json,
-                                               feedback_params[:decrypted_shared_key])
+                                               decrypted_shared_key)
     self.respondent_id = respondent_id
     self.is_filled = true
     self.is_submitted = is_submitted

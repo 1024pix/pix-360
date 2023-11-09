@@ -38,5 +38,23 @@ class FeedbackTest < ActiveSupport::TestCase
       assert_not_empty feedback.decrypted_content[:questions]
       assert_not_empty feedback.decrypted_content[:answers]
     end
+
+    test 'it should merge content with new_shared_key' do
+      feedback = @user.received_feedbacks.create_with_shared_key({ email: 'foo@example.net' }, 'toto123')
+      decrypted_shared_key = Aes256GcmEncryption.decrypt(feedback.shared_key, 'toto123')
+      new_decrypted_shared_key = 'foo'
+      feedback_params = { decrypted_shared_key: decrypted_shared_key,
+                          new_decrypted_shared_key: new_decrypted_shared_key,
+                          content: { answers: ['ma super réponse'] } }
+
+      feedback.update_content feedback_params
+
+      edited_feedback = Feedback.find(feedback.id)
+      edited_feedback.decrypted_shared_key = new_decrypted_shared_key
+      edited_feedback.decrypt_content
+
+      assert_not_empty edited_feedback.decrypted_content[:questions]
+      assert_not_empty edited_feedback.decrypted_content[:answers]
+    end
   end
 end
