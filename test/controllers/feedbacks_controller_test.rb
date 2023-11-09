@@ -168,8 +168,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     test 'it should update feedback content' do
       patch feedback_path(id: 1),
             params: { feedback: { 'decrypted_shared_key': '123456',
-                                  content: { 'positive_points' => 'foo', 'improvements_areas' => 'foo',
-                                             'comments' => 'foo', 'answers' => %w[foo bar] } } }
+                                  content: { 'questions' => %w[foo bar], 'answers' => %w[foo bar] } } }
 
       assert_response :redirect
       assert_equal "L'évaluation a bien été modifiée.", flash[:success]
