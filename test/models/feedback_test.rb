@@ -35,8 +35,12 @@ class FeedbackTest < ActiveSupport::TestCase
 
       feedback.update_content feedback_params
 
-      assert_not_empty feedback.decrypted_content[:questions]
-      assert_not_empty feedback.decrypted_content[:answers]
+      edited_feedback = Feedback.find(feedback.id)
+      edited_feedback.decrypted_shared_key = decrypted_shared_key
+      edited_feedback.decrypt_content
+
+      assert_not_empty edited_feedback.decrypted_content[:questions]
+      assert_not_empty edited_feedback.decrypted_content[:answers]
     end
 
     test 'it should merge content with new_shared_key' do
