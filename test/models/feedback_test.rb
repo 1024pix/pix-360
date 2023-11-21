@@ -20,6 +20,28 @@ class FeedbackTest < ActiveSupport::TestCase
     end
   end
 
+  class DecryptContent < FeedbackTest
+    test 'it should decrypt content' do
+      feedback = Feedback.find(1)
+
+      feedback.decrypted_shared_key = '123456'
+      feedback.decrypt_content
+
+      assert_not_empty feedback.decrypted_content
+    end
+
+    test 'it should decrypt content with empty shared_key when shared_key is invalid' do
+      feedback = Feedback.new
+      feedback.decrypted_shared_key = ''
+      feedback.create_content
+
+      feedback.decrypted_shared_key = 'invalid_shared_key'
+      feedback.decrypt_content
+
+      assert_not_empty feedback.decrypted_content
+    end
+  end
+
   class UpdateContent < FeedbackTest
     setup do
       @user = users(:two)

@@ -47,7 +47,11 @@ class Feedback < ApplicationRecord
   end
 
   def decrypt_content
-    decrypted_stringify_content = Aes256GcmEncryption.decrypt(content, decrypted_shared_key)
+    begin
+      decrypted_stringify_content = Aes256GcmEncryption.decrypt(content, decrypted_shared_key)
+    rescue StandardError
+      decrypted_stringify_content = Aes256GcmEncryption.decrypt(content, '')
+    end
     self.decrypted_content = JSON.parse(decrypted_stringify_content, { symbolize_names: true })
   end
 
