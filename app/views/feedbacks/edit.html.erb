@@ -46,7 +46,10 @@
       <% end %>
 
       <%= form.hidden_field :decrypted_shared_key %>
+
+      <% unless @feedback.new_decrypted_shared_key.blank? %>
       <%= form.hidden_field :new_decrypted_shared_key %>
+      <% end %>
 
       <div class="feedbacks-content">
         <div class="feedbacks-content__details">

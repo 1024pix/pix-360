@@ -89,6 +89,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
               # then
               assert_response :success
               assert_select 'h1', text: "Modification de l'évaluation"
+              assert_select 'input#feedback_new_decrypted_shared_key', false
             end
 
             test 'should correctly edit legacy feedback' do
@@ -158,6 +159,20 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
             get edit_feedback_url(id: 1), params: { shared_key: '123456', external_user: 'true' }
 
             assert_response :success
+          end
+
+          class WhenUserIsConnected < FeedbacksControllerTest
+            test 'should can edit feedback when shared_key is valid' do
+              @user = users(:three)
+              sign_in @user
+              patch encryption_save_url,
+                    params: { user: { password: '123456' } }
+
+              get edit_feedback_url(id: 6), params: { shared_key: '123456' }
+
+              assert_response :success
+              assert_select 'input#feedback_new_decrypted_shared_key', true
+            end
           end
         end
       end
