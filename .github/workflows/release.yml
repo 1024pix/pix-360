@@ -16,4 +16,4 @@ jobs:
 
       - uses: 1024pix/pix-actions/release@main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PIX_SERVICE_ACTIONS_TOKEN }}
