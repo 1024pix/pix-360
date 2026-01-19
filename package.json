@@ -23,6 +23,6 @@
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "semantic-release": "19.0.5",
-    "webpack-dev-server": "^3"
+    "webpack-dev-server": "^5.0.0"
   }
 }
